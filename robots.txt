@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://livialin021120-droid.github.io/fushan-residence-site/sitemap.xml
+Sitemap: https://kp20240001-netizen.github.io/fushan-street/sitemap.xml

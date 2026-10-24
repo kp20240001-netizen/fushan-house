@@ -346,6 +346,38 @@
       </section>
     </div>
 
+    <!-- Google Ads A/B Test Monitoring Panel -->
+    <section class="panel" style="margin-bottom: 1.5rem; border-left: 4px solid var(--terracotta);">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.75rem;">
+        <h2 style="margin:0;">Google Ads（帳戶 928-353-5590）A/B Test 素材成效對照監控</h2>
+        <span style="font-size:0.82rem;background:#fef3c7;color:#92400e;padding:0.25rem 0.65rem;border-radius:999px;font-weight:600;">
+          規則：追蹤點擊率 (CTR)、轉換率 (CVR) 與費用 ➔ 測試結束保留勝出組、其餘停用
+        </span>
+      </div>
+      <p style="font-size:0.86rem;color:#525d5a;margin:0 0 1rem;">
+        共同文案：主標「介紹買家成交，賺三十萬」｜副標「福山里居 桃園透天 屋主自售」｜小字「不限親友，成交即撥」（預算 NT$1,000／天，轉換代碼 <code>AW-18532399026</code>）
+      </p>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>組別與素材資源群組名稱</th>
+              <th>視覺設計風格</th>
+              <th>投放狀態</th>
+              <th>曝光數 (Impr.)</th>
+              <th>點擊數 (Clicks)</th>
+              <th>點擊率 (CTR)</th>
+              <th>轉換數 (Leads)</th>
+              <th>轉換率 (CVR)</th>
+              <th>累計費用 (NT$)</th>
+              <th>A/B 測試決策操作</th>
+            </tr>
+          </thead>
+          <tbody id="abTestTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Leads Table -->
     <section class="panel">
       <h2>最新介紹人登記＆買家看屋確認名單</h2>
@@ -385,7 +417,73 @@
       if (val === PASSCODE) {
         sessionStorage.setItem('fushan_dash_unlocked', '1');
         lockScreen.classList.add('hidden');
-        renderDashboard();
+    
+    const defaultAB = [
+      {
+        id: 'group_a',
+        name: 'A組：繁體中文懸賞 POP 版（實驗組）',
+        style: '日式懸賞大獎 POP 風（放射光芒、3D 超大立體「賺三十萬」、皇冠吉祥物與鈔票束）',
+        status: '投放測試中（待審查／學習中）',
+        impressions: 0,
+        clicks: 0,
+        conversions: 0,
+        cost: 0,
+        previewUrl: 'assets/google-ads/pmax-landscape-1200x628.jpg'
+      },
+      {
+        id: 'group_b',
+        name: 'B組：日本建築企劃和紙明朝體版（對照組）',
+        style: 'Good Design 日本建築企劃風（和紙溫潤留白、格線排版、明朝體細節）',
+        status: '投放測試中（待審查／學習中）',
+        impressions: 0,
+        clicks: 0,
+        conversions: 0,
+        cost: 0,
+        previewUrl: 'assets/google-ads-editorial/editorial-landscape-1200x628.jpg'
+      }
+    ];
+
+    function renderABTest() {
+      const abData = JSON.parse(localStorage.getItem('fushan_ab_test') || JSON.stringify(defaultAB));
+      const tbody = document.getElementById('abTestTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = abData.map((row, i) => {
+        const ctr = row.impressions > 0 ? ((row.clicks / row.impressions) * 100).toFixed(2) + '%' : '0.00%';
+        const cvr = row.clicks > 0 ? ((row.conversions / row.clicks) * 100).toFixed(2) + '%' : '0.00%';
+        const isPaused = row.status.includes('已停用');
+        const isWinner = row.status.includes('勝出保留');
+        const badgeBg = isWinner ? '#dcfce7' : (isPaused ? '#f3f4f6' : '#e0f2fe');
+        const badgeColor = isWinner ? '#166534' : (isPaused ? '#6b7280' : '#075985');
+        return `
+          <tr style="${isPaused ? 'opacity:0.58;' : ''}">
+            <td><strong>${row.name}</strong><br><a href="${row.previewUrl}" target="_blank" style="font-size:0.78rem;color:var(--terracotta);">查看代表素材圖 ↗</a></td>
+            <td style="font-size:0.83rem;">${row.style}</td>
+            <td><span style="background:${badgeBg};color:${badgeColor};padding:0.2rem 0.55rem;border-radius:4px;font-size:0.78rem;font-weight:600;">${row.status}</span></td>
+            <td>${row.impressions.toLocaleString()}</td>
+            <td>${row.clicks.toLocaleString()}</td>
+            <td><strong>${ctr}</strong></td>
+            <td>${row.conversions}</td>
+            <td><strong>${cvr}</strong></td>
+            <td>NT$ ${row.cost.toLocaleString()}</td>
+            <td>
+              <button class="btn" style="padding:0.25rem 0.55rem;font-size:0.76rem;margin-right:0.25rem;" onclick="markABWinner(${i})">設為勝出保留（停用其餘）</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function markABWinner(winIdx) {
+      const abData = JSON.parse(localStorage.getItem('fushan_ab_test') || JSON.stringify(defaultAB));
+      abData.forEach((r, idx) => {
+        r.status = idx === winIdx ? '★ 勝出保留持續投放' : '已停用（A/B 測試淘汰）';
+      });
+      localStorage.setItem('fushan_ab_test', JSON.stringify(abData));
+      renderABTest();
+    }
+
+    renderDashboard();
+    renderABTest();
       } else {
         document.getElementById('lockErr').textContent = '通行碼不正確，請重新輸入。';
       }
@@ -447,6 +545,7 @@
       leads[idx].status = states[(cur + 1) % states.length];
       localStorage.setItem('fushan_bonus_leads', JSON.stringify(leads));
       renderDashboard();
+      renderABTest();
     }
 
     function adjustMetric(key, delta) {
@@ -454,6 +553,7 @@
       stats[key] = Math.max(0, (stats[key] || 0) + delta);
       localStorage.setItem('fushan_bonus_stats', JSON.stringify(stats));
       renderDashboard();
+      renderABTest();
     }
 
     function toggleCountdownMode() {
@@ -462,6 +562,7 @@
       config.startTs = Date.now();
       localStorage.setItem('fushan_bonus_config', JSON.stringify(config));
       renderDashboard();
+      renderABTest();
     }
 
     function saveWebhook() {
@@ -500,6 +601,7 @@
       stats.deals = 1;
       localStorage.setItem('fushan_bonus_stats', JSON.stringify(stats));
       renderDashboard();
+      renderABTest();
     }
 
     function exportCSV() {

@@ -69,39 +69,55 @@
       transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .sticky-bar.visible { transform: translateY(0); }
+    .sticky-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex: 1;
+      min-width: 0;
+    }
     .sticky-brand {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
       font-family: var(--serif);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       font-size: 0.95rem;
+      white-space: nowrap;
     }
     .sticky-bonus-pill {
       background: var(--terracotta);
       color: #fff;
       padding: 0.2rem 0.65rem;
       font-size: 0.78rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       font-family: var(--sans);
       font-weight: 500;
+      white-space: nowrap;
+      border-radius: 2px;
+      line-height: 1.35;
     }
     .sticky-timer {
       font-variant-numeric: tabular-nums;
       font-size: 0.88rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--gold-light);
+      white-space: nowrap;
+      line-height: 1.3;
     }
     .sticky-cta {
       background: var(--gold);
       color: #fff;
       text-decoration: none;
-      padding: 0.45rem 1.15rem;
+      padding: 0.48rem 1.15rem;
       font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       font-weight: 500;
       transition: 0.25s;
       white-space: nowrap;
+      flex-shrink: 0;
+      border-radius: 2px;
     }
     .sticky-cta:hover { background: var(--terracotta); }
 
@@ -731,7 +747,36 @@
       }
       .bonus-amount-box { border-left: none; border-top: 1px solid rgba(230,207,163,0.3); padding-left: 0; padding-top: 1.2rem; }
       .jp-vertical-tag, .nav-links { display: none; }
-      .countdown-boxes { width: 100%; grid-template-columns: repeat(4, 1fr); }
+      .countdown-boxes { width: 100%; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+      .cd-unit { padding: 0.65rem 0.35rem; }
+      .cd-label { letter-spacing: 0.08em; font-size: 0.7rem; }
+      .sticky-bar {
+        padding: 0.5rem 0.85rem;
+        gap: 0.65rem;
+      }
+      .sticky-info {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.22rem;
+      }
+      .sticky-brand-title {
+        display: none;
+      }
+      .sticky-bonus-pill {
+        font-size: 0.72rem;
+        padding: 0.12rem 0.52rem;
+        letter-spacing: 0.04em;
+      }
+      .sticky-timer {
+        font-size: 0.76rem;
+        letter-spacing: 0.02em;
+      }
+      .sticky-cta {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+      }
     }
   </style>
 </head>
@@ -739,11 +784,13 @@
 
   <!-- Sticky Scroll Countdown Bar -->
   <div class="sticky-bar" id="stickyBar" aria-label="限時倒數常駐列">
-    <div class="sticky-brand">
-      <span>福山里居・媽媽留下的家</span>
-      <span class="sticky-bonus-pill">成交介紹獎金 30 萬</span>
+    <div class="sticky-info">
+      <div class="sticky-brand">
+        <span class="sticky-brand-title">福山里居・媽媽留下的家</span>
+        <span class="sticky-bonus-pill">成交介紹獎金 30 萬</span>
+      </div>
+      <div class="sticky-timer" id="stickyTimerText">限時倒數：60 天 00 時 00 分 00 秒</div>
     </div>
-    <div class="sticky-timer" id="stickyTimerText">限時倒數：60 天 00 小時 00 分 00 秒</div>
     <a class="sticky-cta" href="#register-section">立即登記拿 30 萬</a>
   </div>
 

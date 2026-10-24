@@ -68,11 +68,111 @@
 }
 @media(max-width:600px) and (max-height:700px){.hero p{display:none}}
   </style>
-<style>.floorplan{max-width:560px;margin:3rem auto 0;text-align:center}.floorplan h3{margin-bottom:1rem}.floorplan img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.12)}.floorplan-note{font-size:.9rem;opacity:.75;margin-top:.6rem}</style></head>
+<style>.floorplan{max-width:560px;margin:3rem auto 0;text-align:center}.floorplan h3{margin-bottom:1rem}.floorplan img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.12)}.floorplan-note{font-size:.9rem;opacity:.75;margin-top:.6rem}</style>  <link rel="stylesheet" href="bonus/assets/short-video-showcase.css">
+</head>
 <body>
   <nav class="nav" aria-label="主要導覽"><a class="brand" href="#top">福山里居</a><div class="nav-links"><a href="#space">空間</a><a href="#video">影片</a><a href="#gallery">照片</a><a href="#area">生活圈</a><a href="#details">資料</a><a href="#news">動態</a><a href="#contact">預約</a></div></nav>
   <main>
     <section class="hero" id="top"><div class="hero-bg"></div><div class="hero-content"><div class="eyebrow">Taoyuan · Fushan Residence · 屋主自售</div><h1>讓一家人的生活<br>各有餘裕</h1><p>桃園市心，難得保留約 39 坪土地的透天大宅尺度。從一樓深車庫到三層獨立生活領域，容得下相聚，也保留彼此的從容。</p><div class="ad-facts" aria-label="廣告重點資訊"><span>2,795 萬（含車位）</span><span>土地約 39.1 坪</span><span>登記建坪 45.11 坪</span><span>3 房 2 廳 4 衛</span><span>一樓室內車庫</span><span>桃園區福山街42巷</span></div><div class="hero-actions"><a class="line-button" href="#space">走進這座家</a><a class="line-button ghost" href="#lead-form" data-track="hero_lead_click">索取完整資料／預約賞屋</a></div></div><div class="scroll-cue">SCROLL TO EXPLORE</div></section>
+    
+    <!-- D1: 20s 9:16 Vertical Short Film & Value Calculator Showcase (C-20261025-FUSHAN-SHORT-WEB-GADS) -->
+    <section class="fushan-short-showcase" id="short-video-showcase" data-site-context="main" data-asset-prefix="bonus/" aria-label="20秒直式影音快覽與三大算盤專區">
+      <div class="fs-short-container">
+        <!-- Left / Top: 9:16 Theater Phone Frame Player -->
+        <div class="fs-player-col">
+          <div class="fs-phone-bezel">
+            <div class="fs-phone-topbar">
+              <span class="fs-live-dot">9:16 VERTICAL SHORT</span>
+              <span>1080×1920 · 20.0s · -13.98 LUFS</span>
+            </div>
+            <div class="fs-video-stage">
+              <button type="button" class="fs-top-mute-pill" id="fsTopMuteBtn" onclick="fsToggleMutePreview()" aria-label="切換靜音或有聲播放">
+                🔇 靜音預覽中
+              </button>
+              <video id="fushanShortVideo" playsinline webkit-playsinline muted loop preload="metadata" poster="bonus/videos/fushan_short_poster.jpg">
+                <source src="bonus/videos/fushan_20yr_zero_fee_bounty_20s_web.mp4" type="video/mp4">
+                <source src="bonus/videos/fushan_20yr_zero_fee_bounty_20s.mp4" type="video/mp4">
+                您的瀏覽器不支援 HTML5 影片播放。
+              </video>
+              <button type="button" class="fs-sound-overlay-btn" id="fsSoundOverlayBtn" onclick="fsPlayWithSoundFromStart()">
+                🔊 點擊開啟聲音從頭播放（20秒精華）
+              </button>
+            </div>
+          </div>
+          <div class="fs-control-bar" role="group" aria-label="播放器聲音控制">
+            <button type="button" class="fs-ctrl-btn" id="fsCtrlUnmuteRestart" onclick="fsPlayWithSoundFromStart()">
+              🔊 點擊開啟聲音從頭播放
+            </button>
+            <button type="button" class="fs-ctrl-btn" id="fsCtrlMuteToggle" onclick="fsToggleMutePreview()">
+              🔇 靜音預覽切換
+            </button>
+          </div>
+          <div class="fs-chapter-pills" role="group" aria-label="20秒短片段落快選">
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(0, true)">00s｜20年省180萬管理費</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(5, true)">05s｜39.1坪實地＋雙車庫</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(11, true)">11s｜買方直購立省55萬</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(15, true)">15s｜介紹成交領30萬</button>
+          </div>
+        </div>
+
+        <!-- Right / Bottom: Three Calculation Cards & Mandatory Disclosures -->
+        <div class="fs-content-col">
+          <div class="fs-eyebrow-row">
+            <span class="fs-eyebrow-badge">20-SECOND VERTICAL FILM &amp; VALUE CALCULATOR</span>
+            <span class="fs-spec-pill">桃園區福山街靜巷透天｜屋主誠意自售</span>
+          </div>
+          <h2 class="fs-showcase-title">
+            20 秒直式影音快覽：<span>20 年省 180 萬管理費＋買方省 55 萬／介紹領 30 萬</span>
+          </h2>
+          <p class="fs-showcase-sub">
+            買大樓付一輩子管理費與公設虛坪，還是買桃園市區擁有<strong>約 39.1 坪完整土地＋1F 室內雙車庫＋3 間獨立衛浴套房</strong>的三層樓透天？用 20 秒幫您算清楚這筆最實在的家庭資產帳。
+          </p>
+
+          <div class="fs-compliance-banner" role="note" aria-label="AI情境示意與誠實揭露聲明">
+            <strong>※ 影片部分畫面為 AI 情境示意，非現況｜實際屋況以屋主實拍與地政謄本為準</strong><br>
+            <span>🔒 嚴守隱私與誠實揭露：本專區採零門牌巷弄號保護屋主與鄰里隱私；45 年加強磚造與 3F 彈性增建現況皆於實名看屋時完整公開。</span>
+          </div>
+
+          <div class="fs-calc-cards">
+            <article class="fs-calc-card">
+              <div class="fs-calc-num">①</div>
+              <div>
+                <div class="fs-calc-tag">持有算盤 01 · ZERO MANAGEMENT FEE</div>
+                <h3>0 元管理費：20 年激省 180 萬</h3>
+                <p>0 公設虛坪・0 管理費・0 停車清潔費。相較同總價電梯大樓每月動輒 7,500 元管理與車位清潔費，住進福山街靜巷透天，20 年直接為家庭省下約 180 萬元現金流。</p>
+              </div>
+            </article>
+
+            <article class="fs-calc-card">
+              <div class="fs-calc-num">②</div>
+              <div>
+                <div class="fs-calc-tag">購屋算盤 02 · DIRECT OWNER SALE</div>
+                <h3>屋主直售免仲介費：買方立省約 55 萬</h3>
+                <p>開價 2,795 萬元（含一樓電動捲門雙車位車庫），由屋主夫妻誠意自售。買方直接向屋主購屋無須支付傳統房仲 2% 買方服務費（立省約 55.9 萬元）。</p>
+              </div>
+            </article>
+
+            <article class="fs-calc-card card-bounty">
+              <div class="fs-calc-num">③</div>
+              <div>
+                <div class="fs-calc-tag">懸賞算盤 03 · NT$ 300,000 BOUNTY</div>
+                <h3>全民懸賞：介紹成交即撥 30 萬現金獎金</h3>
+                <p>首波限時 60 天企劃！非房仲之一般民眾推薦親友看屋，憑「專屬介紹確認碼」完成雙向實名認證並順利成交交屋，屋主依書面承諾匯款 30 萬元感謝金（含稅）。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="fs-cta-group">
+            <a class="fs-cta-primary" href="bonus/#register-section" data-track="short_showcase_bonus_cta">
+              🎁 前往「30 萬介紹獎金專頁」線上登記／預約看屋 →
+            </a>
+            <a class="fs-cta-secondary" href="#lead-form" data-track="short_showcase_main_lead">
+              📅 直接於本頁預約屋主實名賞屋
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="intro reveal"><div class="intro-copy"><div class="eyebrow" style="color:var(--gold)">A home with room to live</div><h2>不是更多房間，<br>是更多生活的可能。</h2><p>這是一座為真實日常長成的家。車輛、餐桌、家人與工作，都能找到自己的位置。總共三層樓、三間套房，每間都有獨立衛浴，不同世代各自保有隱私；兩廳一廚加上洗衣、晒衣空間，日常機能完整。</p><div class="statement"><strong>在市區裡，保留一座家真正需要的尺度。</strong></div></div><div class="numbers" aria-label="房屋摘要"><div class="number"><b>45.11</b><span>登記建坪／坪</span></div><div class="number"><b>3F</b><span>完整生活層次</span></div><div class="number"><b>3</b><span>房間配置</span></div><div class="number"><b>4</b><span>衛浴空間</span></div><div class="number actual-area"><b>39.1</b><span>土地面積／坪（約）・總價 2,795 萬含車位</span></div></div></section>
     <section class="advantages"><div class="advantages-head reveal"><h2>一棟房子，<br>六種難得。</h2><p>不把優勢藏在規格裡。從停車、共餐到每一代的獨立空間，這座家真正珍貴的是：每一天都能用得上。</p></div><div class="adv-grid"><article class="adv reveal"><b>01</b><h3>一樓車庫，可停雙車位</h3><p>一樓車庫可停兩台車，前後仍保有收納與彈性使用區；雨天返家、搬運物品更從容。</p></article><article class="adv reveal"><b>02</b><h3>兩廳一廚，日常更完整</h3><p>一個客廳、一個餐廳，加上一間廚房；廚房與餐廳集中在一樓後方，空間寬敞，料理、用餐與家人交流互不干擾。</p></article><article class="adv reveal"><b>03</b><h3>後方洗曬，家務有專屬位置</h3><p>獨立洗衣與曬衣空間，通風採光自然，讓生活機能不必占用主要起居區。</p></article><article class="adv reveal"><b>04</b><h3>二樓客廳，凝聚一家人的核心</h3><p>大尺度家庭客廳位在私領域中心，兼顧安靜與相聚，也能規劃閱讀、影音或親子空間。</p></article><article class="adv reveal"><b>05</b><h3>三間套房，每間獨立衛浴</h3><p>三間套房都有獨立衛浴，不同世代能有自己的臥房與衛浴，早晚作息互不打擾，長輩、成年子女或親友留宿都合適。</p></article><article class="adv reveal"><b>06</b><h3>三樓彈性空間，住家也能兼顧工作</h3><p>可依需求規劃臥室、辦公室、工作室、健身房或休閒室，讓空間跟著家庭一起成長。</p></article></div></section>
     <section class="chapter" id="space"><div class="chapter-head reveal"><div><div class="eyebrow">A home, floor by floor</div><h2>一層一種生活，<br>合成一個家。</h2></div><p>從回家停車、共餐相聚，到休息與獨處，每一層都有清楚而寬裕的角色。</p></div><div class="story-grid"><article class="story reveal"><img class="story-zoom" src="img/1f-garage.webp" alt="寬深的一樓室內車庫" loading="lazy"><div class="story-copy"><small>01 · ARRIVAL</small><h3>回家的第一段從容</h3><p>1F：車庫可停雙車位、後段廚房餐廳、洗衣晒衣區。</p></div></article><article class="story reveal"><img class="story-zoom" src="img/2f-living1.webp" alt="二樓寬敞明亮客廳" loading="lazy"><div class="story-copy"><small>02 · TOGETHER</small><h3>相聚，有足夠的距離</h3><p>2F：中段客廳、後主臥套房（含衛浴）、前套房（含衛浴）。</p></div></article><article class="story reveal"><img class="story-zoom" src="img/2f-master1.webp" alt="二樓後方主臥室" loading="lazy"><div class="story-copy"><small>03 · RETREAT</small><h3>各自安好，彼此靠近</h3><p>全棟三間套房（2F 兩間、3F 一間），每間都有獨立衛浴，不同世代各自保有生活節奏。</p></div></article><article class="story reveal"><img class="story-zoom" src="img/3f-suite1.webp" alt="三樓寬敞彈性房間" loading="lazy"><div class="story-copy"><small>04 · POSSIBILITY</small><h3>留給未來的一層</h3><p>3F：前空間、後套房（含衛浴）。三樓為增建，未登記。</p></div></article></div><div class="floorplan reveal" id="floorplan"><h3>格局平面圖</h3><a href="img/floorplan.png" target="_blank" rel="noopener"><picture><source srcset="img/floorplan.webp" type="image/webp"><img src="img/floorplan.png" alt="福山街透天格局平面圖：1F 車庫、倉庫、樓梯、廚房、廁所與晒衣間；2F 前後兩間套房與中段客廳；3F 大空間與套房" loading="lazy" width="1080" height="1920"></picture></a><p class="floorplan-note">示意圖，非實際比例（點圖可看大圖）</p></div></section>
@@ -96,5 +196,6 @@
     const track=(event,details={})=>{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,...details})};document.querySelectorAll('[data-track]').forEach(item=>item.addEventListener('click',()=>track(item.dataset.track)));const reportContactConversion=()=>{};document.querySelectorAll('[data-whatsapp-link]').forEach(item=>item.addEventListener('click',reportContactConversion));const leadForm=document.querySelector('#lead-form'),leadMessage=()=>{const data=new FormData(leadForm),utm=new URLSearchParams(location.search),source=utm.get('utm_source')||'direct';return {source,text:`您好，我想預約福山街生活圈透天賞屋。\n姓名：${data.get('name')}\n手機：${data.get('phone')}\n方便時間：${data.get('viewing_time')}\n補充需求：${data.get('notes')||'無'}\n來源：${source}`}},showLeadNotice=text=>{const notice=leadForm.querySelector('.lead-notice');notice.textContent=text;notice.classList.add('visible')};leadForm.addEventListener('submit',event=>{event.preventDefault();if(!leadForm.reportValidity())return;const message=leadMessage();track('lead_form_whatsapp',{lead_source:message.source});reportContactConversion();showLeadNotice('已開啟 WhatsApp，請按下傳送完成賞屋需求。');window.open(`https://wa.me/886975066275?text=${encodeURIComponent(message.text)}`,'_blank','noopener')});document.querySelector('#email-lead-button').addEventListener('click',()=>{if(!leadForm.reportValidity())return;const message=leadMessage();track('lead_form_email',{lead_source:message.source});reportContactConversion();showLeadNotice('已開啟 Email 草稿，請按下寄送完成賞屋需求。');location.href=`mailto:jsweb.jay@gmail.com?subject=${encodeURIComponent('福山街生活圈透天｜賞屋需求')}&body=${encodeURIComponent(message.text)}`});
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));fetch('updates.json',{cache:'no-cache'}).then(r=>r.json()).then(a=>{a.sort((x,y)=>y.date.localeCompare(x.date));document.getElementById('feed').innerHTML=a.map(u=>`<article class="scene"><small>${esc(u.date)} · ${esc(u.platform)}</small><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p>${u.url?`<p><a href="${esc(u.url)}" target="_blank" rel="noopener">看貼文 →</a></p>`:''}</article>`).join('')}).catch(()=>{document.getElementById('feed').innerHTML='<p class="scene">暫無動態</p>'});
   </script>
+  <script src="bonus/assets/short-video-showcase.js" defer></script>
 </body>
 </html>

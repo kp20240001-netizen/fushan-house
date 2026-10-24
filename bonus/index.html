@@ -937,6 +937,7 @@
     }
 
   </style>
+  <link rel="stylesheet" href="assets/short-video-showcase.css">
 </head>
 <body>
 
@@ -957,6 +958,7 @@
     <a class="brand" href="../">福山里居</a>
     <div class="nav-links">
       <a href="#top">30萬獎金企劃</a>
+      <a href="#short-video-showcase">20秒算盤短片</a>
       <a href="#story">媽媽留下的家</a>
       <a href="#space">實景與格局</a>
       <a href="#register-section">介紹人登記／預約看屋</a>
@@ -1056,6 +1058,106 @@
     <div class="ai-notice-bar">
       <strong>【AI 畫面與實拍標註說明】</strong>本企劃短片與部分情境圖含 AI 虛擬主持人及 AI 依實拍格局美化示意（均已標註「AI 情境示意，非現況」）；以下房屋介紹均以屋主實拍現況與地政謄本資料為準。
     </div>
+
+    
+    <!-- D1: 20s 9:16 Vertical Short Film & Value Calculator Showcase (C-20261025-FUSHAN-SHORT-WEB-GADS) -->
+    <section class="fushan-short-showcase" id="short-video-showcase" data-site-context="bonus" data-asset-prefix="" aria-label="20秒直式影音快覽與三大算盤專區">
+      <div class="fs-short-container">
+        <!-- Left / Top: 9:16 Theater Phone Frame Player -->
+        <div class="fs-player-col">
+          <div class="fs-phone-bezel">
+            <div class="fs-phone-topbar">
+              <span class="fs-live-dot">9:16 VERTICAL SHORT</span>
+              <span>1080×1920 · 20.0s · -13.98 LUFS</span>
+            </div>
+            <div class="fs-video-stage">
+              <button type="button" class="fs-top-mute-pill" id="fsTopMuteBtn" onclick="fsToggleMutePreview()" aria-label="切換靜音或有聲播放">
+                🔇 靜音預覽中
+              </button>
+              <video id="fushanShortVideo" playsinline webkit-playsinline muted loop preload="metadata" poster="videos/fushan_short_poster.jpg">
+                <source src="videos/fushan_20yr_zero_fee_bounty_20s_web.mp4" type="video/mp4">
+                <source src="videos/fushan_20yr_zero_fee_bounty_20s.mp4" type="video/mp4">
+                您的瀏覽器不支援 HTML5 影片播放。
+              </video>
+              <button type="button" class="fs-sound-overlay-btn" id="fsSoundOverlayBtn" onclick="fsPlayWithSoundFromStart()">
+                🔊 點擊開啟聲音從頭播放（20秒精華）
+              </button>
+            </div>
+          </div>
+          <div class="fs-control-bar" role="group" aria-label="播放器聲音控制">
+            <button type="button" class="fs-ctrl-btn" id="fsCtrlUnmuteRestart" onclick="fsPlayWithSoundFromStart()">
+              🔊 點擊開啟聲音從頭播放
+            </button>
+            <button type="button" class="fs-ctrl-btn" id="fsCtrlMuteToggle" onclick="fsToggleMutePreview()">
+              🔇 靜音預覽切換
+            </button>
+          </div>
+          <div class="fs-chapter-pills" role="group" aria-label="20秒短片段落快選">
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(0, true)">00s｜20年省180萬管理費</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(5, true)">05s｜39.1坪實地＋雙車庫</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(11, true)">11s｜買方直購立省55萬</button>
+            <button type="button" class="fs-chapter-btn" onclick="fsSeekChapter(15, true)">15s｜介紹成交領30萬</button>
+          </div>
+        </div>
+
+        <!-- Right / Bottom: Three Calculation Cards & Mandatory Disclosures -->
+        <div class="fs-content-col">
+          <div class="fs-eyebrow-row">
+            <span class="fs-eyebrow-badge">20-SECOND VERTICAL FILM &amp; VALUE CALCULATOR</span>
+            <span class="fs-spec-pill">桃園區福山街靜巷透天｜屋主誠意自售</span>
+          </div>
+          <h2 class="fs-showcase-title">
+            20 秒直式影音快覽：<span>20 年省 180 萬管理費＋買方省 55 萬／介紹領 30 萬</span>
+          </h2>
+          <p class="fs-showcase-sub">
+            買大樓付一輩子管理費與公設虛坪，還是買桃園市區擁有<strong>約 39.1 坪完整土地＋1F 室內雙車庫＋3 間獨立衛浴套房</strong>的三層樓透天？用 20 秒幫您算清楚這筆最實在的家庭資產帳。
+          </p>
+
+          <div class="fs-compliance-banner" role="note" aria-label="AI情境示意與誠實揭露聲明">
+            <strong>※ 影片部分畫面為 AI 情境示意，非現況｜實際屋況以屋主實拍與地政謄本為準</strong><br>
+            <span>🔒 嚴守隱私與誠實揭露：本專區採零門牌巷弄號保護屋主與鄰里隱私；45 年加強磚造與 3F 彈性增建現況皆於實名看屋時完整公開。</span>
+          </div>
+
+          <div class="fs-calc-cards">
+            <article class="fs-calc-card">
+              <div class="fs-calc-num">①</div>
+              <div>
+                <div class="fs-calc-tag">持有算盤 01 · ZERO MANAGEMENT FEE</div>
+                <h3>0 元管理費：20 年激省 180 萬</h3>
+                <p>0 公設虛坪・0 管理費・0 停車清潔費。相較同總價電梯大樓每月動輒 7,500 元管理與車位清潔費，住進福山街靜巷透天，20 年直接為家庭省下約 180 萬元現金流。</p>
+              </div>
+            </article>
+
+            <article class="fs-calc-card">
+              <div class="fs-calc-num">②</div>
+              <div>
+                <div class="fs-calc-tag">購屋算盤 02 · DIRECT OWNER SALE</div>
+                <h3>屋主直售免仲介費：買方立省約 55 萬</h3>
+                <p>開價 2,795 萬元（含一樓電動捲門雙車位車庫），由屋主夫妻誠意自售。買方直接向屋主購屋無須支付傳統房仲 2% 買方服務費（立省約 55.9 萬元）。</p>
+              </div>
+            </article>
+
+            <article class="fs-calc-card card-bounty">
+              <div class="fs-calc-num">③</div>
+              <div>
+                <div class="fs-calc-tag">懸賞算盤 03 · NT$ 300,000 BOUNTY</div>
+                <h3>全民懸賞：介紹成交即撥 30 萬現金獎金</h3>
+                <p>首波限時 60 天企劃！非房仲之一般民眾推薦親友看屋，憑「專屬介紹確認碼」完成雙向實名認證並順利成交交屋，屋主依書面承諾匯款 30 萬元感謝金（含稅）。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="fs-cta-group">
+            <a class="fs-cta-primary" href="#register-section" onclick="if(typeof switchTab==='function')switchTab('introducer')">
+              🎁 我是介紹人：立即登記領取 30 萬確認碼 →
+            </a>
+            <a class="fs-cta-secondary" href="#register-section" onclick="if(typeof switchTab==='function')switchTab('buyer')">
+              🏡 我是買家：預約看屋（立省約 55 萬仲介費）
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- STORY & PROPERTY OVERVIEW -->
     <section class="section" id="story">
@@ -1491,6 +1593,7 @@
     </div>
   </footer>
 
+  <script src="assets/short-video-showcase.js" defer></script>
   <script src="assets/b2b-turnkey.js" defer></script>
   <script>
     // Track page views in localStorage for owner dashboard synchronization

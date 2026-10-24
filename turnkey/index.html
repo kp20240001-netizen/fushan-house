@@ -260,11 +260,20 @@
       </div>
 
       <div class="tk-demo-grid">
-        <div class="tk-video-frame">
-          <video controls playsinline preload="metadata" poster="../bonus/videos/fushan_short_poster.jpg">
-            <source src="../bonus/videos/fushan_20yr_zero_fee_bounty_20s_web.mp4" type="video/mp4">
-            <source src="../bonus/videos/fushan_20yr_zero_fee_bounty_20s.mp4" type="video/mp4">
-          </video>
+        <div>
+          <div style="display:flex;gap:0.45rem;justify-content:center;margin-bottom:0.65rem;flex-wrap:wrap;">
+            <button type="button" id="tkVidBtnOwner" class="tk-btn-primary" style="padding:0.4rem 0.8rem;font-size:0.78rem;" onclick="switchTurnkeyDemoVideo('owner')">
+              🎬 屋主算盤版（省 112 萬仲介費）
+            </button>
+            <button type="button" id="tkVidBtnBuyer" class="tk-btn-outline" style="padding:0.4rem 0.8rem;font-size:0.78rem;color:var(--color-forest-900);border-color:var(--color-forest-800);" onclick="switchTurnkeyDemoVideo('buyer')">
+              🏡 買家懸賞版（省 180 萬管理費）
+            </button>
+          </div>
+          <div class="tk-video-frame">
+            <video id="tkDemoVideo" controls playsinline preload="metadata" poster="videos/owner_saas_poster.jpg">
+              <source id="tkDemoVideoSrc" src="videos/owner_saas_112w_calculator_20s.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
 
         <div class="tk-demo-cards">

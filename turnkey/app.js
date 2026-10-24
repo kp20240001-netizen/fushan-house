@@ -302,3 +302,24 @@
     }
   });
 })();
+
+
+window.switchTurnkeyDemoVideo = function (mode) {
+  var video = document.getElementById('tkDemoVideo');
+  var btnOwner = document.getElementById('tkVidBtnOwner');
+  var btnBuyer = document.getElementById('tkVidBtnBuyer');
+  if (!video) return;
+  if (mode === 'buyer') {
+    video.poster = '../bonus/videos/fushan_short_poster.jpg';
+    video.src = '../bonus/videos/fushan_20yr_zero_fee_bounty_20s_web.mp4';
+    if (btnOwner) { btnOwner.className = 'tk-btn-outline'; btnOwner.style.color = 'var(--color-forest-900)'; btnOwner.style.borderColor = 'var(--color-forest-800)'; }
+    if (btnBuyer) { btnBuyer.className = 'tk-btn-primary'; btnBuyer.style.color = ''; btnBuyer.style.borderColor = ''; }
+  } else {
+    video.poster = 'videos/owner_saas_poster.jpg';
+    video.src = 'videos/owner_saas_112w_calculator_20s.mp4';
+    if (btnOwner) { btnOwner.className = 'tk-btn-primary'; btnOwner.style.color = ''; btnOwner.style.borderColor = ''; }
+    if (btnBuyer) { btnBuyer.className = 'tk-btn-outline'; btnBuyer.style.color = 'var(--color-forest-900)'; btnBuyer.style.borderColor = 'var(--color-forest-800)'; }
+  }
+  video.load();
+  video.play().catch(function () {});
+};

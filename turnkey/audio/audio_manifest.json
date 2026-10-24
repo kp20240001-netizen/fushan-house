@@ -1,0 +1,101 @@
+{
+  "contract_id": "C-20261025-OWNER-DIRECT-SAAS-LAUNCH",
+  "deliverable": "D4",
+  "studio": "Livia Music Studio",
+  "de_ai_4_layer_pipeline": {
+    "layer_1_metadata_strip": "ffmpeg -map_metadata -1 (all generator/encoder tags stripped)",
+    "layer_2_spectral_naturalization": "14kHz-18kHz high-frequency softening (equalizer=f=15500:g=-2.5dB, lowpass=17200Hz) + stereo imaging (extrastereo=1.12)",
+    "layer_3_loudness_standard": "EBU R128 -14.0 LUFS / -1.0 dBTP / 48kHz 320kbps CBR Stereo",
+    "layer_4_zero_ai_naming": "100% Livia Music Studio branding, zero AI/Suno strings"
+  },
+  "tracks": [
+    {
+      "file": "sonic_logo_fushan_turnkey.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/sonic_logo_fushan_turnkey.mp3",
+      "duration_sec": 4.03,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 322,
+      "integrated_lufs": -14.1,
+      "true_peak_dbtp": -1.1,
+      "metadata_tags": {}
+    },
+    {
+      "file": "sonic_logo_fushan_turnkey_20s.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/sonic_logo_fushan_turnkey_20s.mp3",
+      "duration_sec": 20.04,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -14.6,
+      "true_peak_dbtp": -1.0,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_trust.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_trust.mp3",
+      "duration_sec": 60.02,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -14.1,
+      "true_peak_dbtp": -2.2,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_trust_20s.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_trust_20s.mp3",
+      "duration_sec": 20.04,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -13.9,
+      "true_peak_dbtp": -3.4,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_pro.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_pro.mp3",
+      "duration_sec": 60.02,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -13.9,
+      "true_peak_dbtp": -2.6,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_pro_20s.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_pro_20s.mp3",
+      "duration_sec": 20.04,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -14.0,
+      "true_peak_dbtp": -3.8,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_warm.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_warm.mp3",
+      "duration_sec": 60.02,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -12.5,
+      "true_peak_dbtp": -0.7,
+      "metadata_tags": {}
+    },
+    {
+      "file": "bgm_warm_20s.mp3",
+      "path": "/workspace/fushan-street/turnkey/audio/bgm_warm_20s.mp3",
+      "duration_sec": 20.04,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bitrate_kbps": 320,
+      "integrated_lufs": -14.2,
+      "true_peak_dbtp": -0.9,
+      "metadata_tags": {}
+    }
+  ]
+}

@@ -9,7 +9,7 @@
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       btn.innerHTML = isOpen
         ? '收合系統代建方案與線上洽詢 ▲'
-        : '展開查看「雙方案透明報價」與線上洽詢 ▼';
+        : '展開查看「9,800 / 16,800 雙方案報價」與線上洽詢 ▼';
     }
   };
 
@@ -67,7 +67,7 @@
         window.gtag('event', 'generate_lead', {
           event_category: 'B2B_系統代建洽詢',
           event_label: sysId + ' | ' + plan,
-          value: plan.indexOf('36,000') !== -1 ? 36000 : 18800
+          value: plan.indexOf('16,800') !== -1 ? 16800 : 9800
         });
       }
 
@@ -75,7 +75,7 @@
       if (codeEl) codeEl.textContent = sysId;
 
       var msg = [
-        'Jay 您好，我在「福山里居」看到同款【屋主自售實名防詐懸賞網站＋Google Ads 導流系統】代建服務，想進一步洽詢：',
+        'Jay 您好，我在「福山里居」看到同款【屋主自售防詐懸賞官網＋Google Ads 導流系統】代建服務，想進一步洽詢：',
         '洽詢編號：' + sysId,
         '稱呼：' + name,
         '聯絡電話／LINE：' + contactInfo,

@@ -1,0 +1,842 @@
+/* ==========================================================================
+   Fushan Residence · Owner-Direct Turnkey System (/turnkey/style.css)
+   Three-Layer Token Architecture: Primitive -> Semantic -> Component
+   ========================================================================== */
+:root {
+  /* Layer 1: Primitive Tokens */
+  --color-forest-900: #121b19;
+  --color-forest-800: #1b2825;
+  --color-forest-700: #253632;
+  --color-washi-100: #faf8f3;
+  --color-washi-200: #f3f0e9;
+  --color-washi-300: #e7e1d4;
+  --color-gold-500: #b9914f;
+  --color-gold-300: #dfc088;
+  --color-terracotta-600: #a84b31;
+  --color-terracotta-700: #8e3b24;
+  --color-emerald-600: #16a34a;
+  --color-ink-900: #18201f;
+  --color-ink-600: #4c5855;
+  --color-ink-400: #6f7c78;
+
+  /* Layer 2: Semantic Tokens */
+  --bg-page: var(--color-washi-200);
+  --bg-surface: var(--color-washi-100);
+  --bg-elevated: var(--color-forest-800);
+  --bg-deep: var(--color-forest-900);
+  --text-primary: var(--color-ink-900);
+  --text-secondary: var(--color-ink-600);
+  --text-muted: var(--color-ink-400);
+  --accent-gold: var(--color-gold-500);
+  --accent-gold-light: var(--color-gold-300);
+  --accent-cta: var(--color-terracotta-600);
+  --border-subtle: rgba(24, 32, 31, 0.14);
+  --border-gold: rgba(185, 145, 79, 0.45);
+
+  /* Layer 3: Typography & Layout */
+  --font-serif: "Noto Serif TC", "Songti TC", Georgia, serif;
+  --font-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w: 1220px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 18px 48px rgba(18, 27, 25, 0.08);
+  --shadow-gold: 0 20px 55px rgba(185, 145, 79, 0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Top Navigation */
+.tk-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(18, 27, 25, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-gold);
+  color: #fff;
+  padding: 0.8rem clamp(1.2rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tk-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 1.05rem;
+}
+
+.tk-brand-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  background: rgba(185, 145, 79, 0.22);
+  color: var(--accent-gold-light);
+  border: 1px solid var(--border-gold);
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
+}
+
+.tk-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  font-size: 0.88rem;
+}
+
+.tk-nav-links a {
+  color: rgba(243, 240, 233, 0.86);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tk-nav-links a:hover {
+  color: var(--accent-gold-light);
+}
+
+.tk-nav-cta {
+  background: #06c755;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.48rem 1rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Hero Section + Calculator */
+.tk-hero {
+  background: radial-gradient(circle at 80% 15%, rgba(185, 145, 79, 0.18), transparent 48%),
+              linear-gradient(165deg, var(--color-forest-900) 0%, var(--color-forest-800) 100%);
+  color: #fff;
+  padding: clamp(3.2rem, 6vw, 5.5rem) clamp(1.2rem, 5vw, 4rem);
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+.tk-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.tk-hero-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.tk-eyebrow {
+  display: inline-block;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-gold-light);
+  border: 1px solid var(--border-gold);
+  background: rgba(185, 145, 79, 0.12);
+  padding: 0.28rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tk-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.4vw, 2.95rem);
+  line-height: 1.28;
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+.tk-hero h1 em {
+  font-style: normal;
+  color: var(--accent-gold-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(223, 192, 136, 0.45);
+  text-underline-offset: 6px;
+}
+
+.tk-hero-lead {
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  color: rgba(243, 240, 233, 0.88);
+  margin: 0 0 1.6rem;
+}
+
+.tk-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.tk-hero-badges span {
+  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.32rem 0.75rem;
+  color: #f3f0e9;
+}
+
+.tk-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.tk-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-cta);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.9rem 1.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--accent-cta);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: 0.22s;
+}
+
+.tk-btn-primary:hover {
+  background: var(--color-terracotta-700);
+}
+
+.tk-btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #06c755;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.9rem 1.55rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-sm);
+  transition: 0.22s;
+}
+
+.tk-btn-line:hover {
+  filter: brightness(1.06);
+}
+
+.tk-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent-gold-light);
+  border: 1px solid var(--border-gold);
+  text-decoration: none;
+  padding: 0.88rem 1.4rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: 0.22s;
+}
+
+.tk-btn-ghost:hover {
+  background: var(--accent-gold);
+  color: #121b19;
+}
+
+/* Interactive Commission Calculator Box */
+.tk-calc-box {
+  background: rgba(243, 240, 233, 0.98);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.4rem, 2.8vw, 2.1rem);
+  box-shadow: var(--shadow-gold);
+}
+
+.tk-calc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tk-calc-head h2 {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  margin: 0;
+  color: var(--color-forest-800);
+}
+
+.tk-calc-tag {
+  font-size: 0.75rem;
+  background: var(--color-forest-800);
+  color: var(--accent-gold-light);
+  padding: 0.2rem 0.55rem;
+  font-weight: 600;
+}
+
+.tk-slider-wrap {
+  margin-bottom: 1.1rem;
+}
+
+.tk-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.tk-slider-label strong {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  color: var(--accent-cta);
+}
+
+.tk-range {
+  width: 100%;
+  accent-color: var(--accent-cta);
+  cursor: pointer;
+  height: 8px;
+}
+
+.tk-preset-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+.tk-preset-btn {
+  font-size: 0.76rem;
+  padding: 0.25rem 0.6rem;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.tk-preset-btn.active,
+.tk-preset-btn:hover {
+  background: var(--color-forest-800);
+  color: var(--accent-gold-light);
+  border-color: var(--color-forest-800);
+}
+
+.tk-calc-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.tk-calc-col {
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+}
+
+.tk-calc-col.highlight {
+  background: #182522;
+  color: #fff;
+  border-color: var(--accent-gold);
+}
+
+.tk-calc-col small {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.tk-calc-col .amt {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.tk-calc-col.bad .amt {
+  color: #b91c1c;
+  text-decoration: line-through;
+}
+
+.tk-calc-col.highlight .amt {
+  color: var(--accent-gold-light);
+}
+
+.tk-calc-saving-banner {
+  background: linear-gradient(90deg, #fef3c7, #fde68a);
+  border: 1px solid #f59e0b;
+  color: #78350f;
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Section Layout */
+.tk-section {
+  padding: clamp(3.8rem, 7vw, 6rem) clamp(1.2rem, 5vw, 4rem);
+}
+
+.tk-section.dark {
+  background: var(--color-forest-800);
+  color: #fff;
+}
+
+.tk-section.washi-alt {
+  background: var(--color-washi-300);
+}
+
+.tk-sec-head {
+  max-width: 820px;
+  margin: 0 auto 2.6rem;
+  text-align: center;
+}
+
+.tk-sec-head h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  margin: 0.4rem 0 0.75rem;
+  line-height: 1.3;
+}
+
+.tk-sec-head p {
+  margin: 0;
+  opacity: 0.86;
+  font-size: 1rem;
+}
+
+/* BGM Interactive Audition Switcher */
+.bgm-studio-panel {
+  background: linear-gradient(145deg, #131d1b, #1d2c28);
+  border: 1.5px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3.5vw, 2.6rem);
+  color: #fff;
+  box-shadow: var(--shadow-gold);
+}
+
+.bgm-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(185, 145, 79, 0.3);
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bgm-gift-pill {
+  background: rgba(185, 145, 79, 0.22);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold-light);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.bgm-tabs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bgm-mood-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  text-align: left;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bgm-mood-card:hover {
+  border-color: var(--accent-gold-light);
+  background: rgba(185, 145, 79, 0.1);
+}
+
+.bgm-mood-card.active {
+  background: rgba(185, 145, 79, 0.18);
+  border: 2px solid var(--accent-gold-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+.bgm-mood-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold-light);
+  margin-bottom: 0.35rem;
+}
+
+.bgm-mood-title {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin: 0 0 0.45rem;
+}
+
+.bgm-mood-desc {
+  font-size: 0.84rem;
+  color: rgba(243, 240, 233, 0.82);
+  margin: 0 0 0.8rem;
+  line-height: 1.55;
+}
+
+.bgm-mood-play-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-gold-light);
+}
+
+.bgm-player-console {
+  background: rgba(10, 16, 15, 0.78);
+  border: 1px solid rgba(185, 145, 79, 0.38);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem 1.4rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.bgm-main-play-btn {
+  background: var(--accent-gold);
+  color: #121b19;
+  border: none;
+  padding: 0.78rem 1.35rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bgm-main-play-btn:hover {
+  background: var(--accent-gold-light);
+}
+
+.bgm-wave-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bgm-now-playing {
+  font-size: 0.88rem;
+  color: #f3f0e9;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bgm-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 24px;
+}
+
+.bgm-bar {
+  flex: 1;
+  background: rgba(223, 192, 136, 0.35);
+  height: 25%;
+  border-radius: 2px;
+  transition: height 0.15s ease;
+}
+
+.bgm-bars.playing .bgm-bar {
+  background: var(--accent-gold-light);
+}
+
+/* Pricing Packages Grid */
+.tk-pkg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+.tk-pkg-card {
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.tk-pkg-card.featured {
+  background: linear-gradient(165deg, #172320, #1f302c);
+  color: #fff;
+  border: 2px solid var(--accent-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.tk-pkg-ribbon {
+  position: absolute;
+  top: -13px;
+  right: 1.5rem;
+  background: var(--accent-gold);
+  color: #121b19;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.85rem;
+  border-radius: 2px;
+}
+
+.tk-pkg-code {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.tk-pkg-card.featured .tk-pkg-code {
+  color: var(--accent-gold-light);
+}
+
+.tk-pkg-name {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.tk-pkg-price {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--accent-cta);
+  line-height: 1.15;
+}
+
+.tk-pkg-card.featured .tk-pkg-price {
+  color: var(--accent-gold-light);
+}
+
+.tk-pkg-billing {
+  font-size: 0.85rem;
+  opacity: 0.82;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(185, 145, 79, 0.28);
+}
+
+.tk-pkg-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.6rem;
+}
+
+.tk-pkg-list li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.55rem;
+  font-size: 0.93rem;
+  border-bottom: 1px dashed rgba(140, 150, 146, 0.22);
+}
+
+.tk-pkg-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* Live Demo Showcase Grid */
+.tk-demo-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.tk-video-frame {
+  max-width: 320px;
+  margin: 0 auto;
+  background: #0d1413;
+  border: 2px solid var(--accent-gold);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-gold);
+}
+
+.tk-video-frame video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  display: block;
+  background: #000;
+}
+
+.tk-demo-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.tk-demo-card {
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-gold);
+  padding: 1.2rem 1.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.tk-demo-card h3 {
+  font-family: var(--font-serif);
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.tk-demo-card p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Lead Form & FAQ */
+.tk-form-card {
+  background: #fff;
+  color: var(--text-primary);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.tk-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.tk-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.tk-field input,
+.tk-field select {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #b8c2be;
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.tk-result-box {
+  display: none;
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: #131e1c;
+  color: #fff;
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius-sm);
+}
+
+.tk-result-box.show {
+  display: block;
+}
+
+.tk-faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.tk-faq-item {
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  padding: 1.15rem 1.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.tk-faq-item h3 {
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  margin: 0 0 0.4rem;
+  color: var(--color-forest-800);
+}
+
+.tk-faq-item p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.tk-footer {
+  background: #0d1413;
+  color: rgba(243, 240, 233, 0.72);
+  padding: 2.4rem clamp(1.2rem, 5vw, 4rem);
+  font-size: 0.84rem;
+  border-top: 1px solid var(--border-gold);
+}
+
+@media (max-width: 860px) {
+  .tk-nav-links { display: none; }
+  .tk-hero-grid,
+  .bgm-tabs-grid,
+  .tk-pkg-grid,
+  .tk-demo-grid,
+  .tk-form-grid,
+  .tk-calc-compare {
+    grid-template-columns: 1fr;
+  }
+  .bgm-player-console {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .bgm-main-play-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

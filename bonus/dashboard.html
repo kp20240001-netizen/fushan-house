@@ -288,10 +288,13 @@
         <div class="kpi-val" id="kpiDeals">0</div>
         <div class="kpi-sub">完成看屋進入出價協商階段</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card highlight">
         <span class="kpi-label">07 · 廣告預算進度 (Google Ads)</span>
-        <div class="kpi-val">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000 滿額贈門檻</small></div>
-        <div class="kpi-sub">優惠碼 AXPFL-QTVLC-6QM9 放送中（12/23 前滿 $12,000 送 $12,000 抵免額）</div>
+        <div class="kpi-val">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000</small></div>
+        <div style="margin:0.45rem 0 0.35rem;height:8px;background:#e2dfd7;border-radius:999px;overflow:hidden;" title="目前進度：$77.00 / $12,000.00（0.64%，還差 $11,923.00）">
+          <div style="width:1.8%;min-width:6px;height:100%;background:#16a34a;"></div>
+        </div>
+        <div class="kpi-sub">已正式放送｜優惠碼 <code>AXPFL-QTVLC-6QM9</code> 滿 $12,000 送 $12,000，12/23 到期（還差 $11,923）</div>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">08 · 總行銷＋獎金上限控管</span>
@@ -354,9 +357,22 @@
           規則：追蹤點擊率 (CTR)、轉換率 (CVR) 與費用 ➔ 測試結束保留勝出組、其餘停用
         </span>
       </div>
-      <p style="font-size:0.86rem;color:#525d5a;margin:0 0 1rem;">
-        共同文案：主標「介紹買家成交，賺三十萬」｜副標「福山里居 桃園透天 屋主自售」｜小字「不限親友，成交即撥」（預算 NT$1,000／天，轉換代碼 <code>AW-18532399026</code>）
+      <p style="font-size:0.86rem;color:#525d5a;margin:0 0 0.85rem;">
+        共同文案：主標「介紹買家成交，賺三十萬」｜副標「福山里居 桃園透天 屋主自售」｜小字「不限親友，成交即撥」（目前設定日預算 NT$1,000／天，轉換代碼 <code>AW-18532399026</code>）
       </p>
+      <div style="background:#f4f8f5;border:1px solid #bcd4c3;padding:0.9rem 1.1rem;margin-bottom:1.1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
+          <strong style="font-size:0.9rem;color:#166534;">🎁 Google Ads 促銷抵免額追蹤（優惠碼：<code>AXPFL-QTVLC-6QM9</code>｜狀態：已兌換・正式放送計費中）</strong>
+          <span style="font-size:0.82rem;color:#1b2825;font-weight:600;">目前支出：<strong>NT$ 77.00</strong> / 目標 NT$ 12,000.00（達成 0.64%，還差 NT$ 11,923.00）</span>
+        </div>
+        <div style="height:10px;background:#dce5df;border-radius:999px;overflow:hidden;margin-bottom:0.35rem;">
+          <div style="width:1.5%;min-width:8px;height:100%;background:#16a34a;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;font-size:0.79rem;color:#4a5a54;">
+          <span>優惠期間：2026年10月24日 ～ 2026年12月23日（共 60 天，滿 $12,000 獲贈 $12,000 抵免額）</span>
+          <span>配速對照：NT$1,000/天 約 12 天達標｜NT$300～$400/天 約 30～40 天穩健達標</span>
+        </div>
+      </div>
       <div style="overflow-x:auto;">
         <table>
           <thead>
@@ -417,73 +433,8 @@
       if (val === PASSCODE) {
         sessionStorage.setItem('fushan_dash_unlocked', '1');
         lockScreen.classList.add('hidden');
-    
-    const defaultAB = [
-      {
-        id: 'group_a',
-        name: 'A組：繁體中文懸賞 POP 版（實驗組）',
-        style: '日式懸賞大獎 POP 風（放射光芒、3D 超大立體「賺三十萬」、皇冠吉祥物與鈔票束）',
-        status: '投放測試中（待審查／學習中）',
-        impressions: 0,
-        clicks: 0,
-        conversions: 0,
-        cost: 0,
-        previewUrl: 'assets/google-ads/pmax-landscape-1200x628.jpg'
-      },
-      {
-        id: 'group_b',
-        name: 'B組：日本建築企劃和紙明朝體版（對照組）',
-        style: 'Good Design 日本建築企劃風（和紙溫潤留白、格線排版、明朝體細節）',
-        status: '投放測試中（待審查／學習中）',
-        impressions: 0,
-        clicks: 0,
-        conversions: 0,
-        cost: 0,
-        previewUrl: 'assets/google-ads-editorial/editorial-landscape-1200x628.jpg'
-      }
-    ];
-
-    function renderABTest() {
-      const abData = JSON.parse(localStorage.getItem('fushan_ab_test') || JSON.stringify(defaultAB));
-      const tbody = document.getElementById('abTestTableBody');
-      if (!tbody) return;
-      tbody.innerHTML = abData.map((row, i) => {
-        const ctr = row.impressions > 0 ? ((row.clicks / row.impressions) * 100).toFixed(2) + '%' : '0.00%';
-        const cvr = row.clicks > 0 ? ((row.conversions / row.clicks) * 100).toFixed(2) + '%' : '0.00%';
-        const isPaused = row.status.includes('已停用');
-        const isWinner = row.status.includes('勝出保留');
-        const badgeBg = isWinner ? '#dcfce7' : (isPaused ? '#f3f4f6' : '#e0f2fe');
-        const badgeColor = isWinner ? '#166534' : (isPaused ? '#6b7280' : '#075985');
-        return `
-          <tr style="${isPaused ? 'opacity:0.58;' : ''}">
-            <td><strong>${row.name}</strong><br><a href="${row.previewUrl}" target="_blank" style="font-size:0.78rem;color:var(--terracotta);">查看代表素材圖 ↗</a></td>
-            <td style="font-size:0.83rem;">${row.style}</td>
-            <td><span style="background:${badgeBg};color:${badgeColor};padding:0.2rem 0.55rem;border-radius:4px;font-size:0.78rem;font-weight:600;">${row.status}</span></td>
-            <td>${row.impressions.toLocaleString()}</td>
-            <td>${row.clicks.toLocaleString()}</td>
-            <td><strong>${ctr}</strong></td>
-            <td>${row.conversions}</td>
-            <td><strong>${cvr}</strong></td>
-            <td>NT$ ${row.cost.toLocaleString()}</td>
-            <td>
-              <button class="btn" style="padding:0.25rem 0.55rem;font-size:0.76rem;margin-right:0.25rem;" onclick="markABWinner(${i})">設為勝出保留（停用其餘）</button>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function markABWinner(winIdx) {
-      const abData = JSON.parse(localStorage.getItem('fushan_ab_test') || JSON.stringify(defaultAB));
-      abData.forEach((r, idx) => {
-        r.status = idx === winIdx ? '★ 勝出保留持續投放' : '已停用（A/B 測試淘汰）';
-      });
-      localStorage.setItem('fushan_ab_test', JSON.stringify(abData));
-      renderABTest();
-    }
-
-    renderDashboard();
-    renderABTest();
+        renderDashboard();
+        renderABTest();
       } else {
         document.getElementById('lockErr').textContent = '通行碼不正確，請重新輸入。';
       }
@@ -618,7 +569,72 @@
       a.click();
     }
 
+    const defaultAB = [
+      {
+        id: 'group_a',
+        name: 'A組：繁體中文懸賞 POP 版（實驗組）',
+        style: '日式懸賞大獎 POP 風（放射光芒、3D 超大立體「賺三十萬」、皇冠吉祥物與鈔票束）',
+        status: '已正式放送計費中（Campaign #1 累計 NT$ 77）',
+        impressions: 0,
+        clicks: 0,
+        conversions: 0,
+        cost: 77,
+        previewUrl: 'assets/google-ads/pmax-landscape-1200x628.jpg'
+      },
+      {
+        id: 'group_b',
+        name: 'B組：日本建築企劃和紙明朝體版（對照組）',
+        style: 'Good Design 日本建築企劃風（和紙溫潤留白、格線排版、明朝體細節）',
+        status: '已正式放送計費中（與 A 組平行測試）',
+        impressions: 0,
+        clicks: 0,
+        conversions: 0,
+        cost: 0,
+        previewUrl: 'assets/google-ads-editorial/editorial-landscape-1200x628.jpg'
+      }
+    ];
+
+    function renderABTest() {
+      const abData = JSON.parse(localStorage.getItem('fushan_ab_test_v2') || JSON.stringify(defaultAB));
+      const tbody = document.getElementById('abTestTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = abData.map((row, i) => {
+        const ctr = row.impressions > 0 ? ((row.clicks / row.impressions) * 100).toFixed(2) + '%' : '統計中';
+        const cvr = row.clicks > 0 ? ((row.conversions / row.clicks) * 100).toFixed(2) + '%' : '統計中';
+        const isPaused = row.status.includes('已停用');
+        const isWinner = row.status.includes('勝出保留');
+        const badgeBg = isWinner ? '#dcfce7' : (isPaused ? '#f3f4f6' : '#dcfce7');
+        const badgeColor = isWinner ? '#166534' : (isPaused ? '#6b7280' : '#166534');
+        return `
+          <tr style="${isPaused ? 'opacity:0.58;' : ''}">
+            <td><strong>${row.name}</strong><br><a href="${row.previewUrl}" target="_blank" style="font-size:0.78rem;color:var(--terracotta);">查看代表素材圖 ↗</a></td>
+            <td style="font-size:0.83rem;">${row.style}</td>
+            <td><span style="background:${badgeBg};color:${badgeColor};padding:0.2rem 0.55rem;border-radius:4px;font-size:0.78rem;font-weight:600;">${row.status}</span></td>
+            <td>${row.impressions.toLocaleString()}</td>
+            <td>${row.clicks.toLocaleString()}</td>
+            <td><strong>${ctr}</strong></td>
+            <td>${row.conversions}</td>
+            <td><strong>${cvr}</strong></td>
+            <td>NT$ ${row.cost.toLocaleString()}</td>
+            <td>
+              <button class="btn" style="padding:0.25rem 0.55rem;font-size:0.76rem;margin-right:0.25rem;" onclick="markABWinner(${i})">設為勝出保留（停用其餘）</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function markABWinner(winIdx) {
+      const abData = JSON.parse(localStorage.getItem('fushan_ab_test_v2') || JSON.stringify(defaultAB));
+      abData.forEach((r, idx) => {
+        r.status = idx === winIdx ? '★ 勝出保留持續投放' : '已停用（A/B 測試淘汰）';
+      });
+      localStorage.setItem('fushan_ab_test_v2', JSON.stringify(abData));
+      renderABTest();
+    }
+
     renderDashboard();
+    renderABTest();
   </script>
 </body>
 </html>

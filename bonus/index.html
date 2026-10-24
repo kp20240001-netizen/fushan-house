@@ -778,6 +778,164 @@
         letter-spacing: 0.04em;
       }
     }
+
+    /* B2B Turnkey System Footer Section (Low-key Magazine Editorial Card) */
+    .b2b-turnkey-wrap {
+      background: linear-gradient(180deg, #16221f 0%, #111917 100%);
+      color: #f3f0e9;
+      border-top: 1px solid rgba(185, 145, 79, 0.35);
+      padding: clamp(2.2rem, 4vw, 3.2rem) clamp(1.25rem, 6vw, 6rem);
+    }
+    .b2b-turnkey-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      border: 1px solid rgba(185, 145, 79, 0.32);
+      background: rgba(27, 40, 37, 0.72);
+      padding: clamp(1.35rem, 3vw, 2.2rem);
+    }
+    .b2b-turnkey-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .b2b-eyebrow {
+      display: inline-block;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      color: var(--gold-light);
+      background: rgba(185, 145, 79, 0.16);
+      border: 1px solid rgba(185, 145, 79, 0.4);
+      padding: 0.22rem 0.7rem;
+      margin-bottom: 0.55rem;
+    }
+    .b2b-title {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      color: #fff;
+      margin: 0 0 0.35rem;
+      letter-spacing: 0.04em;
+    }
+    .b2b-sub {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(243, 240, 233, 0.82);
+      max-width: 760px;
+      line-height: 1.7;
+    }
+    .b2b-toggle-btn {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      padding: 0.65rem 1.25rem;
+      font-size: 0.86rem;
+      font-family: var(--sans);
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: 0.25s;
+      white-space: nowrap;
+    }
+    .b2b-toggle-btn:hover {
+      background: var(--gold);
+      color: #18201f;
+    }
+    .b2b-drawer-body {
+      display: none;
+      margin-top: 1.6rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .b2b-drawer-body.open {
+      display: block;
+    }
+    .b2b-pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.6rem;
+    }
+    .b2b-pkg-card {
+      background: rgba(24, 32, 31, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .b2b-pkg-card.featured {
+      border-color: var(--gold);
+      box-shadow: inset 0 0 0 1px rgba(185, 145, 79, 0.35);
+    }
+    .b2b-pkg-tag {
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+    .b2b-pkg-name {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      color: #fff;
+      margin: 0 0 0.4rem;
+    }
+    .b2b-pkg-price {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+    .b2b-pkg-price small {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(243, 240, 233, 0.7);
+    }
+    .b2b-pkg-list {
+      margin: 0 0 1.2rem;
+      padding-left: 1.15rem;
+      font-size: 0.88rem;
+      color: rgba(243, 240, 233, 0.88);
+      line-height: 1.75;
+    }
+    .b2b-pkg-list li { margin-bottom: 0.35rem; }
+    .b2b-form-box {
+      background: rgba(250, 248, 243, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 1.4rem 1.5rem;
+    }
+    .b2b-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .b2b-field label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      margin-bottom: 0.35rem;
+    }
+    .b2b-field input, .b2b-field select {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      background: rgba(17, 25, 23, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+    }
+    .b2b-disclaimer {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: rgba(243, 240, 233, 0.62);
+      line-height: 1.65;
+    }
+    @media (max-width: 780px) {
+      .b2b-pkg-grid, .b2b-form-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1218,6 +1376,111 @@
     </section>
   </main>
 
+  <!-- B2B Turnkey System Inquiry Section (Low-key Collapsible Card Above Footer) -->
+  <section class="b2b-turnkey-wrap" id="b2b-turnkey-service" aria-label="同款屋主自售系統代建服務洽詢">
+    <div class="b2b-turnkey-inner">
+      <div class="b2b-turnkey-head">
+        <div>
+          <span class="b2b-eyebrow">✨ 同款「屋主自售實名防詐懸賞網站＋Google Ads 導流系統」代建服務洽詢</span>
+          <h2 class="b2b-title">您也有高價值房產想自售、省下百萬仲介費嗎？</h2>
+          <p class="b2b-sub">本套「屋主自售實名防詐懸賞系統（含介紹確認碼核發、買家雙向認證、Google 試算表即時同步與屋主數據後台）」開放同款系統技術代建服務。</p>
+        </div>
+        <button type="button" class="b2b-toggle-btn" id="b2bToggleBtn" aria-expanded="false" onclick="toggleB2BDrawer()">
+          展開查看「雙方案透明報價」與線上洽詢 ▼
+        </button>
+      </div>
+
+      <div class="b2b-drawer-body" id="b2bDrawerBody">
+        <div class="b2b-pkg-grid">
+          <div class="b2b-pkg-card">
+            <div>
+              <div class="b2b-pkg-tag">方案 A · 輕量啟動</div>
+              <h3 class="b2b-pkg-name">【標準自售建站包】</h3>
+              <div class="b2b-pkg-price">NT$ 18,800 <small>（一次性技術建置費）</small></div>
+              <ul class="b2b-pkg-list">
+                <li>高質感響應式屋主自售單頁網站（手機／桌面雙視口最佳化）</li>
+                <li>介紹人／買家防詐確認碼生成系統（FS / BK 專屬編號核發）</li>
+                <li>Google Sheets 自動同步 Webhook 即時名單串接</li>
+                <li>專屬網域或 GitHub Pages 免費高速託管設定</li>
+              </ul>
+            </div>
+            <button type="button" class="b2b-toggle-btn" style="width:100%;text-align:center;" onclick="selectB2BPlan('18,800 標準自售建站包')">
+              選擇「18,800 標準包」線上洽詢 ↓
+            </button>
+          </div>
+
+          <div class="b2b-pkg-card featured">
+            <div>
+              <div class="b2b-pkg-tag">方案 B · 屋主首選全配</div>
+              <h3 class="b2b-pkg-name">【尊榮自售導流全配包】</h3>
+              <div class="b2b-pkg-price">NT$ 36,000 <small>（一次性技術建置費）</small></div>
+              <ul class="b2b-pkg-list">
+                <li><strong>包含「標準自售建站包」全套核心功能</strong></li>
+                <li><strong>屋主專屬密碼數據監控後台</strong>（轉換漏斗、名單管理、CSV 匯出）</li>
+                <li><strong>AI 依實拍格局美化示意圖（6 張）</strong>（保留原始結構、切換現代裝潢氛圍）</li>
+                <li><strong>Google Ads 精準搜尋／PMax 廣告初始架設與轉換追蹤</strong>（並協助綁定 Google 新戶滿 $12,000 送 $12,000 抵免額優惠）</li>
+              </ul>
+            </div>
+            <button type="button" class="b2b-toggle-btn" style="width:100%;text-align:center;background:var(--gold);color:#18201f;font-weight:600;" onclick="selectB2BPlan('36,000 尊榮自售導流全配包')">
+              選擇「36,000 導流全配包」線上洽詢 ↓
+            </button>
+          </div>
+        </div>
+
+        <div class="b2b-form-box">
+          <h3 style="font-family:var(--serif);font-size:1.12rem;color:#fff;margin:0 0 0.35rem;">線上預約「同款自售系統代建」技術評估（核發 SYS 專屬洽詢編號）</h3>
+          <p style="font-size:0.84rem;color:rgba(243,240,233,0.78);margin:0 0 1rem;">填寫後系統將立即產生您的專屬代建洽詢編號（<code>SYS-2026-XXXX</code>），並可直接透過 LINE 或 WhatsApp 與技術團隊對接需求：</p>
+          <form id="b2bInquiryForm">
+            <div class="b2b-form-grid">
+              <div class="b2b-field">
+                <label for="b2bName">您的稱呼 *</label>
+                <input id="b2bName" name="b2bName" type="text" required placeholder="例如：陳先生／林小姐">
+              </div>
+              <div class="b2b-field">
+                <label for="b2bContact">聯絡電話 或 LINE ID *</label>
+                <input id="b2bContact" name="b2bContact" type="text" required placeholder="例如：0912-345-678 或 LINE ID">
+              </div>
+              <div class="b2b-field">
+                <label for="b2bProperty">預計自售物件地區與總價 *</label>
+                <input id="b2bProperty" name="b2bProperty" type="text" required placeholder="例如：桃園/雙北 2,500 萬透天或電梯大樓">
+              </div>
+              <div class="b2b-field">
+                <label for="b2bPlanSelect">想了解的方案 *</label>
+                <select id="b2bPlanSelect" name="b2bPlan" required>
+                  <option value="36,000 尊榮自售導流全配包">【尊榮自售導流全配包】NT$ 36,000（含後台＋AI美化＋Ads架設）</option>
+                  <option value="18,800 標準自售建站包">【標準自售建站包】NT$ 18,800（單頁網站＋防詐確認碼＋試算表同步）</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-top:1.1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.85rem;">
+              <button type="submit" class="submit-btn" style="width:auto;padding:0.75rem 1.8rem;margin:0;">
+                送出代建洽詢並取得 SYS 編號 →
+              </button>
+              <span style="font-size:0.8rem;color:rgba(243,240,233,0.7);">身分標記：<code>B2B_系統代建洽詢</code>（自動同步後台與試算表）</span>
+            </div>
+          </form>
+
+          <div class="result-box" id="b2bInquiryResult" style="margin-top:1.1rem;background:#18201f;border-color:var(--gold);color:#fff;">
+            <div style="font-size:0.8rem;letter-spacing:0.12em;color:var(--gold-light);">SYSTEM TURNKEY INQUIRY CONFIRMED</div>
+            <div style="margin:0.35rem 0;font-size:0.95rem;">您的專屬系統代建洽詢編號：</div>
+            <div class="code-badge" id="b2bGeneratedCode" style="background:rgba(185,145,79,0.2);color:var(--gold-light);border:1px solid var(--gold);">SYS-2026-0000</div>
+            <p style="font-size:0.86rem;color:rgba(243,240,233,0.85);margin:0.5rem 0 0.9rem;">
+              資料已同步寫入系統後台。請點擊下方按鈕一鍵傳送洽詢編號給屋主／技術團隊優先排程：
+            </p>
+            <div class="result-actions">
+              <a id="b2bLineLink" class="line-btn" href="https://line.me/ti/p/~rainbow0725" target="_blank" rel="noopener">點此加 LINE 傳送代建洽詢單</a>
+              <a id="b2bWaLink" class="wa-btn" href="https://wa.me/886975066275" target="_blank" rel="noopener">透過 WhatsApp 傳送洽詢單</a>
+            </div>
+          </div>
+
+          <p class="b2b-disclaimer">
+            ※ 本服務僅提供「網頁系統開發、AI 視覺美化與數位廣告技術設定」之純技術外包服務，絕不介入不動產買賣居間、不代理議價斡旋、不經手買賣價金，亦不收取任何成交仲介佣金。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div>
       <strong>福山里居｜媽媽留下的家・限時尋覓下一個珍惜它的家庭</strong><br>
@@ -1228,6 +1491,7 @@
     </div>
   </footer>
 
+  <script src="assets/b2b-turnkey.js" defer></script>
   <script>
     // Track page views in localStorage for owner dashboard synchronization
     (function trackVisit() {

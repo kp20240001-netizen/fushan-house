@@ -220,6 +220,7 @@
     }
     .badge.intro { background: var(--terracotta); }
     .badge.buyer { background: #2c5e4f; }
+    .badge.b2b { background: #8a6421; color: #fff; }
 
     @media (max-width: 920px) {
       .kpi-grid, .panel-grid { grid-template-columns: 1fr 1fr; }
@@ -290,16 +291,16 @@
       </div>
       <div class="kpi-card highlight">
         <span class="kpi-label">07 · 廣告預算進度 (Google Ads)</span>
-        <div class="kpi-val">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000</small></div>
+        <div class="kpi-val">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000 滿額贈門檻</small></div>
         <div style="margin:0.45rem 0 0.35rem;height:8px;background:#e2dfd7;border-radius:999px;overflow:hidden;" title="目前進度：$77.00 / $12,000.00（0.64%，還差 $11,923.00）">
           <div style="width:1.8%;min-width:6px;height:100%;background:#16a34a;"></div>
         </div>
-        <div class="kpi-sub">已正式放送｜優惠碼 <code>AXPFL-QTVLC-6QM9</code> 滿 $12,000 送 $12,000，12/23 到期（還差 $11,923）</div>
+        <div class="kpi-sub">優惠碼 AXPFL-QTVLC-6QM9 放送中（12/23 前滿 $12,000 送 $12,000 抵免額）</div>
       </div>
-      <div class="kpi-card">
-        <span class="kpi-label">08 · 總行銷＋獎金上限控管</span>
-        <div class="kpi-val">45 萬</div>
-        <div class="kpi-sub">成交獎金 30 萬 ＋ 廣告上限 15 萬</div>
+      <div class="kpi-card highlight" style="border-color:var(--gold);">
+        <span class="kpi-label">08 · B2B 系統代建洽詢數 (SYS)</span>
+        <div class="kpi-val" id="kpiB2BLeads">0</div>
+        <div class="kpi-sub">頁尾同款自售系統代建（18,800 標準包／36,000 全配包）</div>
       </div>
     </div>
 
@@ -447,6 +448,7 @@
 
       const intros = leads.filter(l => l.type === 'introducer');
       const buyers = leads.filter(l => l.type === 'buyer');
+      const b2bLeads = leads.filter(l => l.type === 'B2B_系統代建洽詢');
       const views = stats.views || 0;
       const viewings = stats.viewings || 0;
       const deals = stats.deals || 0;
@@ -456,6 +458,8 @@
       document.getElementById('kpiBuyers').textContent = buyers.length;
       document.getElementById('kpiViewings').textContent = viewings;
       document.getElementById('kpiDeals').textContent = deals;
+      const b2bEl = document.getElementById('kpiB2BLeads');
+      if (b2bEl) b2bEl.textContent = b2bLeads.length;
 
       document.getElementById('fnViews').textContent = views;
       document.getElementById('fnIntro').textContent = intros.length;
@@ -473,19 +477,27 @@
         tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#68736f;padding:2rem;">目前尚無登記資料（可至公開活動頁填表測試，或點擊「載入測試範例數據」預覽）</td></tr>';
         return;
       }
-      tbody.innerHTML = leads.map((l, idx) => `
+      tbody.innerHTML = leads.map((l, idx) => {
+        const isB2B = l.type === 'B2B_系統代建洽詢';
+        const isIntro = l.type === 'introducer';
+        const badgeCls = isB2B ? 'b2b' : (isIntro ? 'intro' : 'buyer');
+        const badgeText = isB2B ? 'B2B_系統代建洽詢' : (isIntro ? '介紹人' : '買家');
+        const col5 = isB2B ? (l.contact || l.propertyInfo || '') : (isIntro ? (l.contact || '') : (l.viewingTime || ''));
+        const col6 = isB2B ? (l.relation || l.plan || '') : (isIntro ? (l.relation || '') : ('介紹碼：' + (l.refCode || '無')));
+        return `
         <tr>
           <td><strong>${l.id}</strong></td>
-          <td><span class="badge ${l.type === 'introducer' ? 'intro' : 'buyer'}">${l.type === 'introducer' ? '介紹人' : '買家'}</span></td>
+          <td><span class="badge ${badgeCls}">${badgeText}</span></td>
           <td>${l.name || ''}</td>
           <td>${l.phone || ''}</td>
-          <td>${l.type === 'introducer' ? (l.contact || '') : (l.viewingTime || '')}</td>
-          <td>${l.type === 'introducer' ? (l.relation || '') : ('介紹碼：' + (l.refCode || '無'))}</td>
+          <td>${col5}</td>
+          <td>${col6}</td>
           <td>${l.status || '待核對'}</td>
           <td>${l.createdAt || ''}</td>
           <td><button class="btn secondary" style="padding:0.25rem 0.6rem;font-size:0.78rem;" onclick="cycleStatus(${idx})">更新狀態</button></td>
         </tr>
-      `).join('');
+      `;
+      }).join('');
     }
 
     function cycleStatus(idx) {
@@ -543,6 +555,16 @@
           refCode: 'FS-2026-8391',
           status: '已完成身分證實名看屋',
           createdAt: '2026/10/24 19:35:00'
+        },
+        {
+          id: 'SYS-2026-6820',
+          type: 'B2B_系統代建洽詢',
+          name: '張屋主（範例代建洽詢）',
+          phone: '0910-888-999 / LINE: chang_home',
+          contact: '物件：桃園藝文特區 3,200 萬電梯透天',
+          relation: '方案：36,000 尊榮自售導流全配包',
+          status: '待聯繫報價（B2B代建）',
+          createdAt: '2026/10/25 04:48:00'
         }
       ];
       localStorage.setItem('fushan_bonus_leads', JSON.stringify(sampleLeads));

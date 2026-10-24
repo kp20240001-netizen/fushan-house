@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18532399026"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18532399026');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>福山里居｜媽媽留下的家・介紹買家成交致贈 30 萬元獎金｜桃園區透天屋主自售</title>
@@ -1269,6 +1277,7 @@
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
       };
       saveLead(record);
+      if (typeof gtag === 'function') { gtag('event', 'generate_lead', { event_category: record.type, event_label: record.id, value: 1 }); }
       document.getElementById('generatedCode').textContent = code;
       const msg = `屋主 Jay 您好，我已完成「福山里居 30 萬介紹獎金」介紹人線上登記！\n我的專屬介紹確認碼：${code}\n介紹人姓名：${record.name}\n聯絡電話：${record.phone}\n與買家關係：${record.relation}\n（我確認本人非房仲，請協助建檔核對）`;
       document.getElementById('introLineLink').href = `https://line.me/R/oaMessage/@rainbow0725/?${encodeURIComponent(msg)}`;
@@ -1298,6 +1307,7 @@
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
       };
       saveLead(record);
+      if (typeof gtag === 'function') { gtag('event', 'generate_lead', { event_category: record.type, event_label: record.id, value: 1 }); }
       document.getElementById('buyerBookingId').textContent = bkId;
       const msg = `屋主 Jay 您好，我想預約「福山里居」實名看屋並確認介紹關係！\n預約編號：${bkId}\n買家姓名：${record.name}\n聯絡電話：${record.phone}\n希望看屋時段：${record.viewingTime}\n介紹人確認碼／姓名：${record.refCode}\n補充需求：${record.note || '無'}`;
       document.getElementById('buyerLineLink').onclick = function() {

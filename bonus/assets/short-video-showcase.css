@@ -1,4 +1,4 @@
-/* Fushan Residence 20s 9:16 Vertical Short Showcase Module (D1) */
+/* Fushan Residence Dual 20s 9:16 AI Virtual Anchor Short Showcase Module (D1) */
 .fushan-short-showcase {
   --fs-ink: #18201f;
   --fs-deep: #1b2825;
@@ -12,7 +12,7 @@
 
   background: linear-gradient(155deg, var(--fs-deep) 0%, var(--fs-darker) 100%);
   color: var(--fs-paper);
-  padding: clamp(2.2rem, 3.5vw, 3.2rem) clamp(1.25rem, 5vw, 5.5rem);
+  padding: clamp(2rem, 3.2vw, 3rem) clamp(1.25rem, 5vw, 5.5rem);
   border-top: 1px solid rgba(185, 145, 79, 0.38);
   border-bottom: 1px solid rgba(185, 145, 79, 0.38);
   position: relative;
@@ -29,6 +29,81 @@
   pointer-events: none;
 }
 
+/* Top Dual-Video Switcher Tabs Bar */
+.fs-video-tabs-wrap {
+  max-width: 1180px;
+  margin: 0 auto 1.35rem;
+  position: relative;
+  z-index: 3;
+}
+
+.fs-video-tabs-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.78rem;
+  color: var(--fs-gold-light);
+  letter-spacing: 0.06em;
+}
+
+.fs-video-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.fs-video-tab-btn {
+  appearance: none;
+  background: rgba(17, 26, 24, 0.85);
+  color: rgba(243, 240, 233, 0.88);
+  border: 1px solid rgba(185, 145, 79, 0.42);
+  border-radius: 8px;
+  padding: 0.7rem 0.95rem;
+  font-family: var(--fs-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  text-align: left;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.fs-video-tab-btn:hover {
+  border-color: var(--fs-gold-light);
+  background: rgba(185, 145, 79, 0.18);
+  color: #fff;
+}
+
+.fs-video-tab-btn.active {
+  background: linear-gradient(135deg, rgba(185, 145, 79, 0.96), rgba(168, 75, 49, 0.94));
+  color: #fff;
+  border-color: var(--fs-gold-light);
+  box-shadow: 0 10px 26px rgba(168, 75, 49, 0.38);
+}
+
+.fs-tab-pill {
+  font-size: 0.7rem;
+  padding: 0.18rem 0.52rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--fs-gold-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fs-video-tab-btn.active .fs-tab-pill {
+  background: rgba(17, 26, 24, 0.85);
+  color: #fff;
+}
+
 .fs-short-container {
   max-width: 1180px;
   margin: 0 auto;
@@ -37,7 +112,7 @@
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
   gap: clamp(1.75rem, 3.5vw, 3.25rem);
-  align-items: center;
+  align-items: start;
 }
 
 /* Left Column: 9:16 Vertical Theater Player */
@@ -51,7 +126,7 @@
   width: 100%;
   max-width: 308px;
   background: #0b1110;
-  border: 2px solid rgba(185, 145, 79, 0.65);
+  border: 2px solid rgba(185, 145, 79, 0.72);
   border-radius: 20px;
   padding: 8px;
   box-shadow: 0 20px 52px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(255, 255, 255, 0.06);
@@ -117,11 +192,11 @@
   color: #fff;
   border: 1px solid rgba(230, 207, 163, 0.85);
   border-radius: 999px;
-  padding: 0.54rem 0.85rem;
+  padding: 0.52rem 0.8rem;
   font-family: var(--fs-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -169,7 +244,7 @@
 .fs-control-bar {
   width: 100%;
   max-width: 308px;
-  margin-top: 0.6rem;
+  margin-top: 0.55rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.45rem;
@@ -180,9 +255,9 @@
   color: var(--fs-paper);
   border: 1px solid rgba(185, 145, 79, 0.45);
   border-radius: 4px;
-  padding: 0.45rem 0.5rem;
+  padding: 0.42rem 0.45rem;
   font-family: var(--fs-sans);
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   font-weight: 500;
   cursor: pointer;
   transition: 0.2s;
@@ -209,12 +284,12 @@
 
 .fs-chapter-btn {
   background: rgba(17, 26, 24, 0.78);
-  color: rgba(243, 240, 233, 0.86);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(243, 240, 233, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 3px;
-  padding: 0.32rem 0.48rem;
+  padding: 0.32rem 0.45rem;
   font-family: var(--fs-sans);
-  font-size: 0.71rem;
+  font-size: 0.7rem;
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
@@ -228,40 +303,40 @@
   color: var(--fs-gold-light);
 }
 
-/* Right Column: Editorial Copy + 3 Calculation Cards + CTA */
+/* Right Column: Editorial Copy + Dual Poster Preview Strip + 3 Calculation Cards + CTA */
 .fs-content-col {
   display: flex;
   flex-direction: column;
-  gap: 0.95rem;
+  gap: 0.85rem;
 }
 
 .fs-eyebrow-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
 }
 
 .fs-eyebrow-badge {
   display: inline-block;
-  background: rgba(185, 145, 79, 0.18);
+  background: rgba(185, 145, 79, 0.2);
   border: 1px solid var(--fs-gold);
   color: var(--fs-gold-light);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   padding: 0.2rem 0.68rem;
   text-transform: uppercase;
 }
 
 .fs-spec-pill {
   font-size: 0.75rem;
-  color: rgba(243, 240, 233, 0.74);
-  letter-spacing: 0.05em;
+  color: rgba(243, 240, 233, 0.78);
+  letter-spacing: 0.04em;
 }
 
 .fs-showcase-title {
   font-family: var(--fs-serif);
-  font-size: clamp(1.45rem, 2.35vw, 2.1rem);
+  font-size: clamp(1.4rem, 2.25vw, 2rem);
   line-height: 1.3;
   color: #fff;
   margin: 0;
@@ -274,9 +349,75 @@
 
 .fs-showcase-sub {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: rgba(243, 240, 233, 0.86);
-  line-height: 1.65;
+  line-height: 1.62;
+}
+
+/* Dual Cover Poster Cards (Side-by-Side AI Virtual Anchor & 3-Suites Covers) */
+.fs-dual-cover-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.fs-cover-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  background: rgba(17, 26, 24, 0.84);
+  border: 1px solid rgba(185, 145, 79, 0.36);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  color: var(--fs-paper);
+}
+
+.fs-cover-card:hover {
+  border-color: var(--fs-gold-light);
+  background: rgba(185, 145, 79, 0.16);
+}
+
+.fs-cover-card.active {
+  border-color: var(--fs-gold-light);
+  background: rgba(185, 145, 79, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(230, 207, 163, 0.45);
+}
+
+.fs-cover-thumb {
+  width: 64px;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(230, 207, 163, 0.5);
+  display: block;
+  background: #080d0c;
+}
+
+.fs-cover-meta small {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--fs-gold-light);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.fs-cover-meta strong {
+  display: block;
+  font-family: var(--fs-serif);
+  font-size: 0.9rem;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
+}
+
+.fs-cover-meta span {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: rgba(243, 240, 233, 0.8);
 }
 
 /* Mandatory Compliance & Privacy Notice Box */
@@ -286,10 +427,10 @@
   border-top: 1px solid rgba(185, 145, 79, 0.3);
   border-right: 1px solid rgba(185, 145, 79, 0.3);
   border-bottom: 1px solid rgba(185, 145, 79, 0.3);
-  padding: 0.58rem 0.9rem;
-  font-size: 0.8rem;
+  padding: 0.55rem 0.88rem;
+  font-size: 0.79rem;
   color: var(--fs-gold-light);
-  line-height: 1.55;
+  line-height: 1.52;
 }
 
 .fs-compliance-banner strong {
@@ -300,7 +441,7 @@
 .fs-calc-cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.68rem;
+  gap: 0.62rem;
 }
 
 .fs-calc-card {
@@ -308,10 +449,10 @@
   color: var(--fs-ink);
   border: 1px solid rgba(185, 145, 79, 0.45);
   border-left: 4px solid var(--fs-gold);
-  padding: 0.85rem 1.1rem;
+  padding: 0.78rem 1.05rem;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.85rem;
+  gap: 0.8rem;
   align-items: start;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
 }
@@ -323,11 +464,11 @@
 
 .fs-calc-num {
   font-family: var(--fs-serif);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: var(--fs-gold);
   line-height: 1.1;
-  padding-top: 0.08rem;
+  padding-top: 0.06rem;
 }
 
 .fs-calc-card.card-bounty .fs-calc-num {
@@ -335,26 +476,26 @@
 }
 
 .fs-calc-tag {
-  font-size: 0.69rem;
+  font-size: 0.68rem;
   letter-spacing: 0.11em;
   color: #697470;
   text-transform: uppercase;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.08rem;
 }
 
 .fs-calc-card h3 {
   font-family: var(--fs-serif);
-  font-size: 1.08rem;
+  font-size: 1.04rem;
   color: var(--fs-ink);
-  margin: 0 0 0.22rem;
+  margin: 0 0 0.2rem;
   line-height: 1.32;
 }
 
 .fs-calc-card p {
   margin: 0;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: #424d4a;
-  line-height: 1.58;
+  line-height: 1.55;
 }
 
 /* CTA Row */
@@ -362,7 +503,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
   align-items: center;
 }
 
@@ -373,8 +514,8 @@
   background: var(--fs-terracotta);
   color: #fff;
   text-decoration: none;
-  padding: 0.72rem 1.35rem;
-  font-size: 0.9rem;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   border: 1px solid var(--fs-terracotta);
@@ -394,8 +535,8 @@
   background: rgba(185, 145, 79, 0.16);
   color: var(--fs-gold-light);
   text-decoration: none;
-  padding: 0.72rem 1.25rem;
-  font-size: 0.88rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.86rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   border: 1px solid var(--fs-gold);
@@ -408,29 +549,39 @@
 }
 
 @media (max-width: 920px) {
+  .fs-video-tabs {
+    grid-template-columns: 1fr;
+  }
   .fs-short-container {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
   .fs-phone-bezel,
   .fs-control-bar,
   .fs-chapter-pills {
     max-width: 320px;
   }
+  .fs-dual-cover-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 520px) {
   .fushan-short-showcase {
-    padding: 2.4rem 1rem;
+    padding: 2rem 1rem;
+  }
+  .fs-video-tab-btn {
+    font-size: 0.8rem;
+    padding: 0.62rem 0.75rem;
   }
   .fs-phone-bezel,
   .fs-control-bar,
   .fs-chapter-pills {
-    max-width: 292px;
+    max-width: 296px;
   }
   .fs-calc-card {
-    padding: 0.85rem 0.95rem;
-    gap: 0.7rem;
+    padding: 0.8rem 0.9rem;
+    gap: 0.65rem;
   }
   .fs-cta-group a {
     width: 100%;

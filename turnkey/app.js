@@ -308,17 +308,40 @@ window.switchTurnkeyDemoVideo = function (mode) {
   var video = document.getElementById('tkDemoVideo');
   var btnOwner = document.getElementById('tkVidBtnOwner');
   var btnBuyer = document.getElementById('tkVidBtnBuyer');
+  var btnSuites = document.getElementById('tkVidBtnSuites');
   if (!video) return;
+
+  function setBtnState(btn, active) {
+    if (!btn) return;
+    if (active) {
+      btn.className = 'tk-btn-primary';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    } else {
+      btn.className = 'tk-btn-outline';
+      btn.style.color = 'var(--color-forest-900)';
+      btn.style.borderColor = 'var(--color-forest-800)';
+    }
+  }
+
   if (mode === 'buyer') {
-    video.poster = '../bonus/videos/fushan_short_poster.jpg';
-    video.src = '../bonus/videos/fushan_20yr_zero_fee_bounty_20s_web.mp4';
-    if (btnOwner) { btnOwner.className = 'tk-btn-outline'; btnOwner.style.color = 'var(--color-forest-900)'; btnOwner.style.borderColor = 'var(--color-forest-800)'; }
-    if (btnBuyer) { btnBuyer.className = 'tk-btn-primary'; btnBuyer.style.color = ''; btnBuyer.style.borderColor = ''; }
+    video.poster = '../bonus/videos/cover_01_zero_mgmt_fee_1080x1920.jpg';
+    video.src = '../bonus/videos/fushan_avatar_300k_bounty_20s.mp4';
+    setBtnState(btnOwner, false);
+    setBtnState(btnBuyer, true);
+    setBtnState(btnSuites, false);
+  } else if (mode === 'suites') {
+    video.poster = '../bonus/videos/cover_04_three_suites_living_1080x1920.jpg';
+    video.src = '../bonus/videos/fushan_avatar_3suites_tour_20s.mp4';
+    setBtnState(btnOwner, false);
+    setBtnState(btnBuyer, false);
+    setBtnState(btnSuites, true);
   } else {
     video.poster = 'videos/owner_saas_poster.jpg';
     video.src = 'videos/owner_saas_112w_calculator_20s.mp4';
-    if (btnOwner) { btnOwner.className = 'tk-btn-primary'; btnOwner.style.color = ''; btnOwner.style.borderColor = ''; }
-    if (btnBuyer) { btnBuyer.className = 'tk-btn-outline'; btnBuyer.style.color = 'var(--color-forest-900)'; btnBuyer.style.borderColor = 'var(--color-forest-800)'; }
+    setBtnState(btnOwner, true);
+    setBtnState(btnBuyer, false);
+    setBtnState(btnSuites, false);
   }
   video.load();
   video.play().catch(function () {});

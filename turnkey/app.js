@@ -242,6 +242,8 @@
 
         var record = {
           id: sysId,
+          code: sysId,
+          source: '/turnkey/',
           type: 'B2B_系統代建洽詢',
           name: name,
           phone: contact,

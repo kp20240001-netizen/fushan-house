@@ -264,6 +264,48 @@
     .badge.buyer { background: #2c5e4f; }
     .badge.b2b { background: #8a6421; color: #fff; }
 
+    .autosync-bar {
+      background: #13211e;
+      color: #e6efe9;
+      padding: 0.65rem clamp(1.25rem, 5vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(185, 145, 79, 0.35);
+      font-size: 0.84rem;
+    }
+    .autosync-status {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .autosync-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(22, 163, 74, 0.18);
+      border: 1px solid rgba(74, 222, 128, 0.45);
+      color: #bbf7d0;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .autosync-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-xs {
+      padding: 0.36rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 3px;
+    }
+
     @media (max-width: 920px) {
       .kpi-grid, .panel-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -297,6 +339,19 @@
       <button class="btn secondary" style="color:#fff;border-color:rgba(255,255,255,0.4);" type="button" onclick="exportCSV()">匯出名單 CSV</button>
     </div>
   </header>
+
+  <!-- Zero-AI 60s Auto-Sync & Google Sheets Status Bar -->
+  <div class="autosync-bar" id="autoSyncBar" role="status" aria-live="polite">
+    <div class="autosync-status">
+      <span class="autosync-pill" id="autoSyncBadgeText">🟢 零算力自動同步開啟（每 60 秒刷新｜下次同步：60s）</span>
+      <span id="lastSyncTimeText" style="color:#cbd5d1;">最後同步時間：2026/10/25 13:48:00 (UTC+8)</span>
+      <span style="color:#b9914f;font-size:0.78rem;">★ Linux Cron 每 30 分鐘底層巡檢 ＋ Google 試算表跨裝置中樞（0 AI 算力消耗）</span>
+    </div>
+    <div class="autosync-actions">
+      <button class="btn btn-xs" type="button" id="manualSyncBtn" onclick="if(window.triggerManualSync)triggerManualSync()">⚡ 立即同步</button>
+      <a class="btn secondary btn-xs" style="color:#fff;border-color:rgba(185,145,79,0.75);background:rgba(185,145,79,0.16);" data-sheet-link href="https://docs.google.com/spreadsheets/d/1BEWWI-Py5HGtCo6EUB5b4rQNv-uKKkQ4XStBt3i9Cno/edit?usp=drivesdk" target="_blank" rel="noopener">📊 開啟雲端試算表 ↗</a>
+    </div>
+  </div>
 
   <main class="container">
     <!-- KPI Row -->
@@ -333,9 +388,9 @@
       </div>
       <div class="kpi-card highlight">
         <span class="kpi-label">07 · 廣告預算進度 (Google Ads)</span>
-        <div class="kpi-val">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000 滿額贈門檻</small></div>
-        <div style="margin:0.45rem 0 0.35rem;height:8px;background:#e2dfd7;border-radius:999px;overflow:hidden;" title="目前進度：$77.00 / $12,000.00（0.64%，還差 $11,923.00）">
-          <div style="width:1.8%;min-width:6px;height:100%;background:#16a34a;"></div>
+        <div class="kpi-val" id="kpiAdsSpendVal">NT$ 77 <small style="font-size:0.45em;font-weight:400;">/ 12,000 滿額贈門檻</small></div>
+        <div id="kpiAdsProgressWrap" style="margin:0.45rem 0 0.35rem;height:8px;background:#e2dfd7;border-radius:999px;overflow:hidden;" title="目前進度：$77.00 / $12,000.00（0.64%，還差 $11,923.00）">
+          <div id="kpiAdsProgressBar" style="width:1.8%;min-width:6px;height:100%;background:#16a34a;"></div>
         </div>
         <div class="kpi-sub">優惠碼 AXPFL-QTVLC-6QM9 放送中（12/23 前滿 $12,000 送 $12,000 抵免額）</div>
       </div>
@@ -373,13 +428,22 @@
       </section>
 
       <section class="panel">
-        <h2>Google 試算表即時同步＆手動新增看屋紀錄</h2>
-        <p style="font-size:0.86rem;color:#525d5a;margin:0 0 0.75rem;">
-          貼上您的 Google Apps Script 網頁應用程式網址，前台每一筆「介紹人登記」與「買家確認」都會自動同步寫入您的 Google 試算表：
+        <h2>Google 試算表跨裝置中樞＆即時同步設定</h2>
+        <div style="background:#f4f8f5;border:1px solid #bcd4c3;padding:0.65rem 0.85rem;margin-bottom:0.75rem;font-size:0.82rem;color:#1e3a2f;">
+          <div><strong>✓ 已綁定雲端試算表中樞：</strong><code>1BEWWI-Py5HGtCo6EUB5b4rQNv-uKKkQ4XStBt3i9Cno</code></div>
+          <div style="margin-top:0.3rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+            <a data-sheet-link href="https://docs.google.com/spreadsheets/d/1BEWWI-Py5HGtCo6EUB5b4rQNv-uKKkQ4XStBt3i9Cno/edit?usp=drivesdk" target="_blank" rel="noopener" style="color:var(--terracotta);font-weight:600;">📊 開啟主試算表（含 3 工作表）↗</a>
+            <a href="https://docs.google.com/spreadsheets/d/1Nmemo1B7Ip0niNOK1zN5V7feoAkEjpF7FVOlxBEvr-M/edit?usp=drivesdk" target="_blank" rel="noopener" style="color:#2c5e4f;font-weight:600;">📁 備援試算表 (jsweb.j05) ↗</a>
+            <a href="assets/google_apps_script_webhook.gs" target="_blank" style="color:#525d5a;">📄 查看免算力 Apps Script 範本 ↗</a>
+          </div>
+        </div>
+        <p style="font-size:0.84rem;color:#525d5a;margin:0 0 0.55rem;">
+          貼上試算表部署之 Apps Script Web App 網址，前台填單與後台開啟皆可<strong>跨手機／電腦雙向即時讀寫（0 AI 算力）</strong>：
         </p>
-        <div style="display:flex;gap:0.5rem;margin-bottom:1.2rem;">
-          <input id="webhookInput" style="flex:1;padding:0.55rem 0.75rem;border:1px solid #b8bfbc;" placeholder="https://script.google.com/macros/s/.../exec">
-          <button class="btn" type="button" onclick="saveWebhook()">儲存綁定</button>
+        <div style="display:flex;gap:0.5rem;margin-bottom:0.9rem;flex-wrap:wrap;">
+          <input id="webhookInput" style="flex:1;min-width:200px;padding:0.5rem 0.7rem;border:1px solid #b8bfbc;font-size:0.85rem;" placeholder="https://script.google.com/macros/s/.../exec">
+          <button class="btn" type="button" onclick="saveWebhook()" style="padding:0.5rem 0.95rem;">儲存綁定</button>
+          <button class="btn secondary" type="button" onclick="if(window.pushLocalLeadsToSheetWebhook)pushLocalLeadsToSheetWebhook()" style="padding:0.5rem 0.85rem;font-size:0.82rem;">推送本機名單上雲端</button>
         </div>
         <div style="border-top:1px solid var(--line);padding-top:1rem;">
           <strong style="font-size:0.9rem;display:block;margin-bottom:0.5rem;">手動調整看屋／議價組數（屋主 LINE 確認後更新）：</strong>
@@ -406,7 +470,7 @@
       <div style="background:#f4f8f5;border:1px solid #bcd4c3;padding:0.9rem 1.1rem;margin-bottom:1.1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
           <strong style="font-size:0.9rem;color:#166534;">🎁 Google Ads 促銷抵免額追蹤（優惠碼：<code>AXPFL-QTVLC-6QM9</code>｜狀態：已兌換・正式放送計費中）</strong>
-          <span style="font-size:0.82rem;color:#1b2825;font-weight:600;">目前支出：<strong>NT$ 77.00</strong> / 目標 NT$ 12,000.00（達成 0.64%，還差 NT$ 11,923.00）</span>
+          <span id="adsPromoBannerText" style="font-size:0.82rem;color:#1b2825;font-weight:600;">目前支出：<strong>NT$ 77.00</strong> / 目標 NT$ 12,000.00（達成 0.64%，還差 NT$ 11,923.00）</span>
         </div>
         <div style="height:10px;background:#dce5df;border-radius:999px;overflow:hidden;margin-bottom:0.35rem;">
           <div style="width:1.5%;min-width:8px;height:100%;background:#16a34a;"></div>
@@ -483,6 +547,7 @@
         lockScreen.classList.add('hidden');
         renderDashboard();
         renderABTest();
+        if (window.FushanAutoSync) window.FushanAutoSync.syncNow(true);
       } else {
         document.getElementById('lockErr').textContent = '通行碼不正確，請重新輸入。';
       }
@@ -644,8 +709,8 @@
         name: 'A組：繁體中文懸賞 POP 版（實驗組）',
         style: '日式懸賞大獎 POP 風（放射光芒、3D 超大立體「賺三十萬」、皇冠吉祥物與鈔票束）',
         status: '已正式放送計費中（Campaign #1 累計 NT$ 77）',
-        impressions: 0,
-        clicks: 0,
+        impressions: 298,
+        clicks: 9,
         conversions: 0,
         cost: 77,
         previewUrl: 'assets/google-ads/pmax-landscape-1200x628.jpg'
@@ -705,5 +770,6 @@
     renderDashboard();
     renderABTest();
   </script>
+  <script src="assets/dashboard-autosync.js" defer></script>
 </body>
 </html>

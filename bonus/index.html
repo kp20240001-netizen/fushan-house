@@ -1749,8 +1749,22 @@
       document.getElementById('panelBuyer').classList.toggle('active', !isIntro);
     }
 
-    // Save Lead Helper (localStorage + Optional Google Sheets Apps Script Webhook)
+    // Save Lead Helper (localStorage + Cloud live-metrics / Google Sheets Apps Script Webhook)
+    (function preloadCloudWebhook() {
+      try {
+        fetch('assets/live-metrics.json?t=' + Date.now(), { cache: 'no-store' })
+          .then(r => r.ok ? r.json() : null)
+          .then(d => {
+            if (d && d.googleSheets && d.googleSheets.webhookUrl && !localStorage.getItem('fushan_sheets_webhook')) {
+              localStorage.setItem('fushan_sheets_webhook', d.googleSheets.webhookUrl);
+            }
+          }).catch(() => {});
+      } catch (e) {}
+    })();
+
     function saveLead(record) {
+      record.code = record.id || record.code;
+      record.source = record.source || (window.location.pathname || '/bonus/');
       const leads = JSON.parse(localStorage.getItem('fushan_bonus_leads') || '[]');
       leads.unshift(record);
       localStorage.setItem('fushan_bonus_leads', JSON.stringify(leads));
@@ -1764,6 +1778,7 @@
         }).catch(() => {});
       }
     }
+    window.saveLead = saveLead;
 
     // Introducer Form Submission
     document.getElementById('introducerForm').addEventListener('submit', function(e) {

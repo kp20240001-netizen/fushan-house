@@ -55,12 +55,23 @@
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
       };
 
+      record.code = record.id;
+      record.source = window.location.pathname || '/bonus/#b2b';
       if (typeof window.saveLead === 'function') {
         window.saveLead(record);
       } else {
         var leads = JSON.parse(localStorage.getItem('fushan_bonus_leads') || '[]');
         leads.unshift(record);
         localStorage.setItem('fushan_bonus_leads', JSON.stringify(leads));
+        var webhook = localStorage.getItem('fushan_sheets_webhook');
+        if (webhook) {
+          fetch(webhook, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(record)
+          }).catch(function () {});
+        }
       }
 
       if (typeof window.gtag === 'function') {

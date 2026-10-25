@@ -701,3 +701,159 @@ body {
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   獨立專區：📅 今日任務執行時間軸 (Daily Execution Timeline - Option B)
+   ========================================================================== */
+.timeline-panel {
+  background: linear-gradient(155deg, rgba(17, 27, 33, 0.96), rgba(10, 16, 20, 0.99));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--card-radius);
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1.6rem;
+  box-shadow: var(--shadow-card);
+}
+
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.timeline-head h2 {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  color: var(--gold-400);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timeline-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tl-filter-btn {
+  background: var(--obsidian-850);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.32rem 0.72rem;
+  border-radius: var(--pill-radius);
+  font-size: 0.77rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.tl-filter-btn:hover,
+.tl-filter-btn.active {
+  background: rgba(207, 163, 88, 0.22);
+  color: var(--gold-400);
+  border-color: var(--gold-400);
+  font-weight: 700;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(207, 163, 88, 0.35);
+}
+
+.tl-item {
+  position: relative;
+  background: var(--obsidian-850);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: border-color 0.16s ease;
+}
+
+.tl-item:hover {
+  border-color: rgba(207, 163, 88, 0.45);
+}
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -1.38rem;
+  top: 1.1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--emerald-400);
+  border: 2px solid var(--obsidian-950);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.35);
+}
+
+.tl-item.tl-paused::before {
+  background: var(--amber-500);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.35);
+}
+
+.tl-main {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.tl-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+}
+
+.tl-time {
+  font-family: var(--font-mono);
+  color: var(--gold-400);
+  font-weight: 700;
+}
+
+.tl-proj-badge {
+  background: rgba(207, 163, 88, 0.14);
+  color: var(--ivory-100);
+  border: 1px solid rgba(207, 163, 88, 0.36);
+  padding: 0.08rem 0.5rem;
+  border-radius: var(--pill-radius);
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+.tl-id-code {
+  font-family: var(--font-mono);
+  color: var(--cyan-400);
+  background: rgba(56, 189, 248, 0.12);
+  padding: 0.06rem 0.42rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.tl-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ivory-50);
+}
+
+.tl-summary {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}

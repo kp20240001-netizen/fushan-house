@@ -1,5 +1,5 @@
 /**
- * 全專案中控儀表板 (Master Command Center) — 零 Token 前端互動與外部 AI 算力分流引擎
+ * 全專案中控儀表板 (Master Command Center) — 零 Token 前端互動、今日任務時間軸與外部 AI 算力分流引擎
  * Path: /workspace/fushan-street/hub/app.js
  */
 (function () {
@@ -7,9 +7,11 @@
   var POLL_SECONDS = 60;
   var remainingSec = POLL_SECONDS;
   var masterData = null;
+  var timelineItems = [];
   var currentFilter = 'all';
+  var timelineFilter = 'all';
+  var timelineExpanded = false;
   var searchQuery = '';
-  var currentExternalUrl = 'https://claude.ai/';
 
   function loadSavedToggles() {
     try {
@@ -72,7 +74,6 @@
 
     if (extBtn) {
       if (externalAiUrl) {
-        currentExternalUrl = externalAiUrl;
         extBtn.href = externalAiUrl;
         extBtn.textContent = '🚀 開啟 ' + (externalAiLabel || '外部付費 AI') + ' 貼上執行 ↗';
         extBtn.style.display = 'inline-flex';
@@ -100,6 +101,18 @@
     }
   };
 
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function escapeAttr(s) {
+    return escapeHtml(s);
+  }
+
   function renderAiPool(pool) {
     var container = document.getElementById('aiPoolGrid');
     if (!container || !Array.isArray(pool)) return;
@@ -121,17 +134,78 @@
     }).join('');
   }
 
-  function escapeHtml(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+  function renderDailyTimeline() {
+    var listEl = document.getElementById('dailyTimelineList');
+    var totalBadge = document.getElementById('tlTotalBadge');
+    var topCount = document.getElementById('topTimelineCount');
+    var expandBtn = document.getElementById('tlToggleExpandBtn');
+    if (!listEl) return;
+
+    var all = Array.isArray(timelineItems) && timelineItems.length > 0
+      ? timelineItems
+      : ((masterData && Array.isArray(masterData.dailyTimeline)) ? masterData.dailyTimeline : []);
+
+    if (totalBadge) totalBadge.textContent = String(all.length);
+    if (topCount) topCount.textContent = String(all.length);
+
+    var filtered = all.filter(function (item) {
+      if (timelineFilter !== 'all' && item.category !== timelineFilter) return false;
+      return true;
+    });
+
+    var previewLimit = 3;
+    var visible = timelineExpanded ? filtered : filtered.slice(0, previewLimit);
+
+    if (expandBtn) {
+      if (filtered.length <= previewLimit) {
+        expandBtn.style.display = 'none';
+      } else {
+        expandBtn.style.display = 'inline-flex';
+        expandBtn.textContent = timelineExpanded
+          ? '▲ 收合為最新 ' + previewLimit + ' 筆摘要'
+          : '▼ 展開全部 ' + filtered.length + ' 筆今日任務摘要';
+      }
+    }
+
+    listEl.innerHTML = visible.map(function (it) {
+      var isPaused = it.status === 'paused';
+      var stTag = isPaused
+        ? '<span style="color:#fcd34d;font-weight:700;">⏸️ 已暫停</span>'
+        : '<span style="color:#34d399;font-weight:700;">✓ 已完成</span>';
+      return (
+        '<div class="tl-item ' + (isPaused ? 'tl-paused' : '') + '">' +
+          '<div class="tl-main">' +
+            '<div class="tl-meta-row">' +
+              '<span class="tl-time">🕒 ' + escapeHtml(it.time) + ' (UTC+8)</span>' +
+              '<span class="tl-proj-badge">' + escapeHtml(it.projectBadge) + '</span>' +
+              '<span class="tl-id-code">' + escapeHtml(it.contractId || it.id) + '</span>' +
+              stTag +
+            '</div>' +
+            '<div class="tl-title">' + escapeHtml(it.title) + '</div>' +
+            '<div class="tl-summary">' + escapeHtml(it.summary) + '</div>' +
+          '</div>' +
+          '<div style="flex-shrink:0;">' +
+            '<a class="link-chip primary" href="' + escapeAttr(it.linkUrl || '#') + '" target="_blank" rel="noopener">' +
+              escapeHtml(it.linkLabel || '查看產出 ↗') +
+            '</a>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
   }
 
-  function escapeAttr(s) {
-    return escapeHtml(s);
-  }
+  window.setTimelineFilter = function (cat, btnEl) {
+    timelineFilter = cat || 'all';
+    var btns = document.querySelectorAll('.tl-filter-btn');
+    btns.forEach(function (b) { b.classList.remove('active'); });
+    if (btnEl) btnEl.classList.add('active');
+    renderDailyTimeline();
+  };
+
+  window.toggleTimelineExpand = function () {
+    timelineExpanded = !timelineExpanded;
+    renderDailyTimeline();
+  };
 
   function renderProjects() {
     var grid = document.getElementById('projectsGrid');
@@ -340,6 +414,16 @@
       if (res.ok) {
         masterData = await res.json();
       }
+      try {
+        var tlRes = await fetch('./daily-timeline.json?t=' + Date.now(), { cache: 'no-store' });
+        if (tlRes.ok) {
+          var tlJson = await tlRes.json();
+          if (tlJson && Array.isArray(tlJson.items)) {
+            timelineItems = tlJson.items;
+          }
+        }
+      } catch (e) {}
+
       // Also pull latest bonus live-metrics.json to keep Project 1 & 2 counts real-time
       try {
         var fRes = await fetch('../bonus/assets/live-metrics.json?t=' + Date.now(), { cache: 'no-store' });
@@ -360,6 +444,7 @@
 
       if (masterData) {
         renderAiPool(masterData.externalAiPool);
+        renderDailyTimeline();
         renderProjects();
         var syncTimeEl = document.getElementById('hubLastSyncText');
         if (syncTimeEl) {

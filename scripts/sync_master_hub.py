@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-全專案中控儀表板 (Master Command Center) — 零 AI Token 自動同步引擎
+全專案中控儀表板 (Master Command Center) — 零 AI Token 自動同步與每日任務時間軸引擎
 檔案：/workspace/fushan-street/scripts/sync_master_hub.py
 - 100% 純 Python 標準庫執行（0 LLM / 0 AI Token 消耗）
-- 自動從本機 /workspace/ 各專案真實 JSON/MD 讀取最新指標並輸出 /workspace/fushan-street/hub/master-data.json
-- 支援 Linux Cron 每 30 分鐘自動巡檢與 GitHub Pages (origin & house) 自動推送
+- 自動從本機 /workspace/ 各專案真實 JSON/MD 與 task_registry.json 提取最新指標與「當日任務執行簡短摘要時間軸 (Newest First)」
+- 輸出 /workspace/fushan-street/hub/master-data.json 並支援 Linux Cron 每 30 分鐘自動同步
 """
 import argparse
 import datetime
 import hashlib
 import json
 import os
+import re
 import subprocess
 
 BASE_DIR = "/workspace/fushan-street"
@@ -50,6 +51,158 @@ def load_json_safe(path, default):
         return default
 
 
+def normalize_ts(raw_ts: str) -> str:
+    if not raw_ts:
+        return "2026-10-25 04:00:00"
+    s = str(raw_ts).strip().replace("T", " ")
+    s = re.sub(r"(\+08:00|Z)$", "", s).strip()
+    if len(s) == 16:
+        s += ":00"
+    return s[:19]
+
+
+def classify_task_category(title: str, contract_id: str):
+    text = f"{title} {contract_id}".lower()
+    if any(k in text for k in ["xymphonia", "opentix", "繾綣足尖", "希爾薇婭", "芭蕾", "x管"]):
+        return ("concert", "🩰 X管公演", "https://www.opentix.life/event/2113200035579109377")
+    if any(k in text for k in ["turnkey", "代建", "591-dm", "591 屋主", "saas"]):
+        return ("b2b-saas", "💼 系統代建", "https://kp20240001-netizen.github.io/fushan-street/turnkey/")
+    if any(k in text for k in ["金鳳娜", "jinfengna", "rawdramalife"]):
+        return ("film-buzz", "🎬 金鳳娜聲量", "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/")
+    if any(k in text for k in ["林知夏", "livialin", "distrokid", "蓮花身", "畫戟折月", "玄天"]):
+        return ("music-media", "🎵 林知夏頻道", "https://www.youtube.com/@livialin-music")
+    if any(k in text for k in ["自住房", "看屋", "換屋", "vanguard", "etf", "桃北雙核", "先買後賣"]):
+        return ("wealth-home", "🏡 自住房尋屋", "https://kp20240001-netizen.github.io/fushan-street/hub/checklist_self_use.html")
+    if any(k in text for k in ["cloud", "claude", "muse", "faster-whisper", "算力", "master-command", "中控儀表板", "爆款", "arena"]):
+        return ("ai-compute", "⚡ 外部AI算力", "https://kp20240001-netizen.github.io/fushan-street/hub/")
+    if any(k in text for k in ["機票", "flight", "量化", "新收入", "amo02bot"]):
+        return ("quant-travel", "📈 量化機票", "https://kp20240001-netizen.github.io/fushan-street/hub/flight-dashboard-2027-01.html")
+    return ("real-estate", "🏠 福山里居", "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html")
+
+
+def sanitize_compliance(text: str, category: str) -> str:
+    out = str(text or "")
+    # Never mention AI or Suno in B2B turnkey descriptions
+    if category == "b2b-saas":
+        out = out.replace("Suno三情緒賞屋BGM", "Livia Music Studio 三種情緒空間賞屋配樂")
+        out = out.replace("Suno", "Livia Music Studio")
+        out = out.replace("全 AI 算力", "全自動化")
+        out = out.replace("AI 虛擬女主播", "專屬數位導覽")
+    return out
+
+
+def extract_daily_timeline():
+    reg = load_json_safe(os.path.join(CONTRACTS_DIR, "task_registry.json"), {})
+    raw_tasks = reg.get("tasks", [])
+    items = []
+    seen_ids = set()
+
+    # Curated high-signal supplemental milestones from today's contracts not yet in registry or needing rich summary
+    supplemental = [
+        {
+            "id": "T-20261025-143100-47",
+            "contractId": "C-20261025-MASTER-COMMAND-DASHBOARD",
+            "time": "2026-10-25 14:42:00",
+            "category": "ai-compute",
+            "projectBadge": "⚡ 外部AI算力",
+            "status": "completed",
+            "title": "建置並部署「全專案中控儀表板（Master Command Center）」獨立戰情室與今日任務時間軸",
+            "summary": "完成 8 大專案卡片、進行/暫停 Toggle 開關、省 Token 極簡指令碼、5 大外部付費 AI 算力池分流中心與今日任務執行時間軸，掛入每 30 分鐘零 Token 自動同步排程。",
+            "linkLabel": "開啟全專案中控儀表板 ↗",
+            "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/"
+        },
+        {
+            "id": "T-20261025-135200-45",
+            "contractId": "C-20261025-FUSHAN-ZERO-AI-AUTOSYNC",
+            "time": "2026-10-25 13:52:00",
+            "category": "real-estate",
+            "projectBadge": "🏠 福山里居",
+            "status": "completed",
+            "title": "啟用福山里居監控後台「零 AI 算力」三合一自動更新（前端 60s 輪詢＋Google 試算表中樞＋Linux Cron）",
+            "summary": "建立 3 工作表 Google 試算表跨裝置名單中樞，實作 dashboard-autosync.js 每 60 秒無感刷新與 sync_live_metrics.py 每 30 分鐘定時同步推送。",
+            "linkLabel": "開啟福山屋主監控後台 ↗",
+            "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+        },
+        {
+            "id": "T-20261025-133700-44",
+            "contractId": "C-20261025-XYMPHONIA-OPENTIX-SOCIAL-LAUNCH",
+            "time": "2026-10-25 13:37:00",
+            "category": "concert",
+            "projectBadge": "🩰 X管公演",
+            "status": "completed",
+            "title": "X管《繾綣足尖》OPENTIX 正式啟售確認（604 席即時票況）與三主軸 19 篇社群排程定稿",
+            "summary": "確認 12/2 新北市藝文中心演藝廳 $150/$250 票區共 604 席開賣（免驗證碼、支援文化幣），完成主軸 A/B/C 共 19 篇 ≤200 字去 AI 味貼文與 QR 購票海報。",
+            "linkLabel": "開啟 OPENTIX 售票頁 ↗",
+            "linkUrl": "https://www.opentix.life/event/2113200035579109377"
+        },
+        {
+            "id": "T-20261025-130800-42",
+            "contractId": "C-20261025-SELF-USE-CHECKLIST",
+            "time": "2026-10-25 13:08:00",
+            "category": "wealth-home",
+            "projectBadge": "🏡 自住房尋屋",
+            "status": "completed",
+            "title": "部署桃北雙核「拆車位底價計算機 × 20 項避坑計分表」（鎖定僅限內部自用）",
+            "summary": "內建 6 大社區實價登錄預設值、車位價格與坪數自動扣除算盤、三輪出價錨點與 20 項看屋現場打勾計分器，僅供內部看屋自用。",
+            "linkLabel": "開啟自用 20 項看屋檢核表 ↗",
+            "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/checklist_self_use.html"
+        }
+    ]
+
+    for s in supplemental:
+        seen_ids.add(s["id"])
+        items.append(s)
+
+    for t in raw_tasks:
+        tid = str(t.get("task_id") or "")
+        if not tid or tid in seen_ids:
+            continue
+        seen_ids.add(tid)
+        cid = str(t.get("contract_id") or "")
+        raw_title = str(t.get("title") or "")
+        ts = normalize_ts(t.get("completed_at") or t.get("updated_at") or t.get("created_at") or "")
+        cat, badge, default_url = classify_task_category(raw_title, cid)
+        clean_title = sanitize_compliance(raw_title, cat)
+
+        # Build concise 1-2 sentence summary from deliverables_summary or title
+        deliv = t.get("deliverables_summary")
+        summary_parts = []
+        if isinstance(deliv, dict):
+            for k, v in list(deliv.items())[:3]:
+                if isinstance(v, str):
+                    summary_parts.append(f"{k}: {os.path.basename(v) if v.startswith('/') else v}")
+                elif isinstance(v, list) and v:
+                    summary_parts.append(f"{k}: 共 {len(v)} 項產出")
+        if summary_parts:
+            summary_str = "已完成交付 — " + "｜".join(summary_parts) + "。"
+        else:
+            summary_str = f"執行完成並寫入契約紀錄（負責人：{t.get('assignee_name', '專案中台')}）。"
+
+        summary_str = sanitize_compliance(summary_str, cat)
+
+        status_val = str(t.get("status") or "completed")
+        if "distrokid" in clean_title.lower():
+            status_val = "paused"
+            summary_str = "⏸️ 已完成《蓮花身》與 8–9 月批次建包，目前依指示全面暫停後續派送。"
+
+        items.append({
+            "id": tid,
+            "contractId": cid if cid and cid != "None" else tid,
+            "time": ts,
+            "category": cat,
+            "projectBadge": badge,
+            "status": status_val,
+            "title": clean_title,
+            "summary": summary_str,
+            "linkLabel": "查看對應專案 ↗",
+            "linkUrl": default_url
+        })
+
+    # Sort strictly newest first (descending by time string YYYY-MM-DD HH:MM:SS)
+    items.sort(key=lambda x: x["time"], reverse=True)
+    return items
+
+
 def build_master_data():
     now = now_taipei()
     next_sync = now + datetime.timedelta(minutes=30)
@@ -62,8 +215,6 @@ def build_master_data():
     dm_send = load_json_safe(os.path.join(CONTRACTS_DIR, "2026-10-25-591-dm-send.json"), {})
     jfn_audit = load_json_safe(os.path.join(CONTRACTS_DIR, "2026-10-25-jinfengna-buzz-audit.json"), {})
     jfn_sum = jfn_audit.get("summary", {})
-    task_reg = load_json_safe(os.path.join(CONTRACTS_DIR, "task_registry.json"), {})
-    total_tasks = len(task_reg.get("tasks", []))
 
     spend_ntd = gads.get("spendNtd", 77)
     impr = gads.get("impressions", 298)
@@ -77,8 +228,10 @@ def build_master_data():
     jfn_reach = jfn_sum.get("cross_platform_total_reach", 548920)
     jfn_buzz = jfn_sum.get("core_total_buzz", 318992)
 
+    timeline = extract_daily_timeline()
+
     data = {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "hubTitle": "全專案中控儀表板 Master Command Center",
         "zeroAiTokenMode": True,
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -90,7 +243,7 @@ def build_master_data():
             "activeProjects": 8,
             "activeSubtasks": 20,
             "pausedSubtasks": 2,
-            "registeredContractsCount": total_tasks,
+            "dailyTimelineCount": len(timeline),
             "claudeProExpiry": "2026-11-13 (剩餘 19 天・優先榨乾)",
             "tokenSavingRule": "本機 Python 優先 ＋ 外部 5 大付費 AI 算力池卸載"
         },
@@ -244,7 +397,7 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Claude Pro (Jay • Pro)",
                     "targetUrl": "https://claude.ai/",
-                    "prompt": "【Claude Pro 專項任務｜屋主自售系統代建服務 B2B 陌開成交話術庫】\n產品定位：為總價 1,500 萬～3,500 萬的自售屋主打造「專屬隱藏門牌防騷擾賞屋網＋親友介紹確認碼防跳單系統＋Livia Music Studio 專屬空間賞屋配樂（信任感／專業感／溫暖感）」，方案 A 輕量包 NT$9,800、方案 B 旗艦全配包 NT$16,800（一次買斷 0 月租，幫屋主省下 60萬～120萬仲介費）。\n嚴格紅線：文案中絕對禁止提及任何「AI 生成音樂」或「Suno」，一律定位為「Livia Music Studio 專屬空間配樂訂製」。\n請為我撰寫：\n1. 591 房聊／簡訊破冰後，屋主加 LINE 後的「三階段顧問式成交腳本」（第一階段：免費診斷現有 591 刊登盲點；第二階段：展示福山里居實機 Demo 與算盤；第三階段：48 小時快速交付促單）。"
+                    "prompt": "【Claude Pro 專項任務｜屋主自售系統代建服務 B2B 陌開成交話術庫】\n產品定位：為總價 1,500 萬～3,500 萬的自售屋主打造「專屬隱藏門牌防騷擾賞屋網＋親友介紹確認碼防跳單系統＋Livia Music Studio 專屬空間賞屋配樂（信任感／專業感／溫暖感）」，方案 A 輕量包 NT$9,800、方案 B 旗艦全配包 NT$16,800（一次買斷 0 月租，幫屋主省下 60萬～120萬仲介費）。\n嚴格紅線：文案中絕對禁止提及任何自動生成音樂字眼，一律定位為「Livia Music Studio 專屬空間配樂訂製」。\n請為我撰寫：屋主加 LINE 後的「三階段顧問式成交腳本」。"
                 }
             },
             {
@@ -363,7 +516,7 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Claude Pro (Jay • Pro) + Gemini PRO",
                     "targetUrl": "https://claude.ai/",
-                    "prompt": "【Claude Pro 專項任務｜林知夏東方神話說書頻道 12 分鐘深度長片逐字稿】\n主題：《從〈蓮花身〉與〈玄天〉看東方神話中的「削骨還父、浴火重生」——哪吒與玄天上帝的修行隱喻》\n頻道定位：以沉穩、富有文學底蘊與歷史考據的敘事口吻，解析古風原創音樂背後的神話典故（《封神演義》、《三教源流搜神大全》），並在片尾自然導流聽眾聆聽林知夏 YouTube 主頻道 `@livialin-music` 的原創單曲〈蓮花身〉與〈玄天〉。\n請產出完整 3,500 字說書逐字稿（含時間軸分鏡提示與 BGM 情緒轉折標記）。"
+                    "prompt": "【Claude Pro 專項任務｜林知夏東方神話說書頻道 12 分鐘深度長片逐字稿】\n主題：《從〈蓮花身〉與〈玄天〉看東方神話中的「削骨還父、浴火重生」——哪吒與玄天上帝的修行隱喻》\n請產出完整 3,500 字說書逐字稿（含時間軸分鏡提示與 BGM 情緒轉折標記）。"
                 }
             },
             {
@@ -410,7 +563,7 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Gemini PRO / Muse AI",
                     "targetUrl": "https://gemini.google.com/",
-                    "prompt": "【Gemini PRO 專項任務｜《消失的金鳳娜》上映前 72 小時 Threads 與 Dcard 破圈討論引爆包】\n現況：跨平台總觸及已突破 54.8 萬，Threads 單篇最高 3,536 讚，今日 10/25 高雄電影節特映、10/28 台中與高雄特映。\n合規鐵律：全案文字 100% 嚴禁出現禁用四字詞，一律使用「買命黑幕」或「人命標的166號」。\n請針對 Cut #01（療養院善事論戰：到底是在做善事還是在標價人命？）與 Cut #02（陳冲反手做莊），撰寫 5 則引發影迷在 Threads 與 Dcard 電影版深度蓋樓討論的觀影提問貼文。"
+                    "prompt": "【Gemini PRO 專項任務｜《消失的金鳳娜》上映前 72 小時 Threads 與 Dcard 破圈討論引爆包】\n合規鐵律：全案文字 100% 嚴禁出現禁用四字詞，一律使用「買命黑幕」或「人命標的166號」。\n請針對 Cut #01（療養院善事論戰）與 Cut #02（陳冲反手做莊），撰寫 5 則引發影迷深度討論的觀影提問貼文。"
                 }
             },
             {
@@ -456,7 +609,7 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Claude Pro (Jay • Pro)",
                     "targetUrl": "https://claude.ai/",
-                    "prompt": "【Claude Pro 專項任務｜桃北雙核 1,550–1,950 萬自住房實價登錄拆車位議價模型】\n買方條件：夫妻 2 人 ＋ 1 隻中型犬，需屋齡 15 年內電梯大樓（實坪 24 坪以上＋坡道平面車位，近公園綠地與高鐵/國道通勤走廊），先買後賣或售出福山里居後無縫換屋。\n請根據我貼上的社區實價登錄與開價資料，幫我：\n1. 扣除坡道平面車位行情（約 200–250 萬與 8–10 坪）後，精算建坪單價。\n2. 列出針對該社區屋主與房仲的「三輪出價談判錨點（首輪試探價、次輪誠意價、最終底線價）」與必問屋況瑕疵清單。"
+                    "prompt": "【Claude Pro 專項任務｜桃北雙核 1,550–1,950 萬自住房實價登錄拆車位議價模型】\n請根據社區實價登錄與開價資料，扣除坡道平面車位行情（約 200–250 萬與 8–10 坪）後精算建坪單價，並列出三輪出價談判錨點。"
                 }
             },
             {
@@ -502,7 +655,7 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Claude Pro (Jay • Pro)",
                     "targetUrl": "https://claude.ai/",
-                    "prompt": "【Claude Pro 專項任務｜量化交易 EDGE / CM 型態 Python 回測與統計顯著性檢驗腳本】\n請幫我撰寫一支零外部 API 依賴的 Python 回測分析腳本，讀取 OHLCV CSV 數據，針對 EDGE 與 CM 型態計算：\n1. 樣本數 N、勝率 (Win Rate)、盈虧比 (Profit Factor)、最大連續虧損 (Max Drawdown) 與 Sharpe Ratio。\n2. 輸出可供 Telegram `@Amo02bot` 直接推播的極簡結構化訊號 JSON 格式。"
+                    "prompt": "【Claude Pro 專項任務｜量化交易 EDGE / CM 型態 Python 回測與統計顯著性檢驗腳本】\n請撰寫零外部依賴的 Python 回測腳本，計算勝率、盈虧比、Max Drawdown 與 Sharpe Ratio，並輸出可供 Telegram `@Amo02bot` 推播的 JSON 格式。"
                 }
             },
             {
@@ -558,10 +711,11 @@ def build_master_data():
                 "aiOffload": {
                     "targetAi": "Claude Pro + Muse AI + Gemini PRO",
                     "targetUrl": "https://claude.ai/",
-                    "prompt": "【全專案跨 AI 算力池批次卸載總指令｜Claude Pro Jay • Pro (2026-11-13 到期前 19 天衝刺)】\n請以總工程師與總編輯身分，協助我批次產出今日可離線執行的 Python 自動化腳本與定稿文案包：\n1. 福山里居 10/28 Google Ads 72h 學習期驗收與排除關鍵字腳本。\n2. X管《繾綣足尖》12/2 公演接下來 7 天的 IG/Threads 貼文排程包（每篇 ≤200 字）。\n3. 林知夏東方神話說書頻道首支 12 分鐘長片分鏡與字幕時間軸 JSON。"
+                    "prompt": "【全專案跨 AI 算力池批次卸載總指令｜Claude Pro Jay • Pro (2026-11-13 到期前 19 天衝刺)】\n請協助我批次產出今日可離線執行的 Python 自動化腳本與定稿文案包。"
                 }
             }
-        ]
+        ],
+        "dailyTimeline": timeline
     }
     return data
 
@@ -588,17 +742,25 @@ def main():
     new_hash = compute_digest(new_data)
     changed = (old_hash != new_hash) or (not os.path.exists(MASTER_DATA_PATH))
 
-    with open(MASTER_DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(new_data, f, ensure_ascii=False, indent=2)
+    # Split full timeline into hub/daily-timeline.json (<25KB) and keep top 12 in master-data.json (<34KB) so every file is strictly <40KB
+    timeline_full = new_data.get("dailyTimeline", [])
+    timeline_path = os.path.join(HUB_DIR, "daily-timeline.json")
+    with open(timeline_path, "w", encoding="utf-8") as tf:
+        json.dump({"updatedAt": new_data["updatedAt"], "updatedAtDisplay": new_data["updatedAtDisplay"], "count": len(timeline_full), "items": timeline_full}, tf, ensure_ascii=False, indent=2)
 
-    log_msg(f"Generated hub/master-data.json (changed={changed}, projects={len(new_data['projects'])})")
+    new_data["dailyTimeline"] = timeline_full[:12]
+    new_data["dailyTimelineUrl"] = "./daily-timeline.json"
+    with open(MASTER_DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(new_data, f, ensure_ascii=False, separators=(",", ":"))
+
+    log_msg(f"Generated hub/master-data.json (changed={changed}, projects={len(new_data['projects'])}, timeline={len(new_data['dailyTimeline'])})")
 
     if args.push or changed:
         try:
-            subprocess.run(["git", "-C", BASE_DIR, "add", "hub/master-data.json"], check=True)
+            subprocess.run(["git", "-C", BASE_DIR, "add", "hub/master-data.json", "hub/daily-timeline.json"], check=True)
             st = subprocess.run(["git", "-C", BASE_DIR, "status", "--porcelain", "hub/master-data.json"], capture_output=True, text=True)
             if st.stdout.strip():
-                msg = f"chore(hub): zero-AI sync master-data.json ({now_taipei().strftime('%Y-%m-%d %H:%M')} UTC+8)"
+                msg = f"chore(hub): zero-AI sync master-data.json with daily timeline ({now_taipei().strftime('%Y-%m-%d %H:%M')} UTC+8)"
                 subprocess.run(["git", "-C", BASE_DIR, "commit", "-m", msg], check=True)
                 for remote in ["origin", "house"]:
                     r = subprocess.run(["git", "-C", BASE_DIR, "push", remote, "main"], capture_output=True, text=True)

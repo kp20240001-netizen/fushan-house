@@ -15,14 +15,15 @@
   <!-- Top Command Header -->
   <header class="hub-topbar">
     <div class="hub-brand">
-      <span class="hub-badge-seal">MASTER HUB v2.1</span>
+      <span class="hub-badge-seal">MASTER HUB v2.2</span>
       <div>
         <h1 class="hub-title">全專案中控儀表板・Master Command Center</h1>
-        <div class="hub-subtitle">8 大專案戰情總覽 × 進行／暫停開關 × 零 Token 自動同步 × 五大外部付費 AI 算力分流</div>
+        <div class="hub-subtitle">8 大專案戰情總覽 × 進行／暫停開關 × 今日任務執行時間軸 × 五大外部付費 AI 算力分流</div>
       </div>
     </div>
     <div class="hub-top-actions">
       <button type="button" class="btn btn-gold" id="globalSyncBtn" onclick="triggerGlobalSync()">🔄 立即刷新全站數據</button>
+      <a class="btn btn-outline" href="#dailyTimelineSection">📅 今日任務時間軸 (<span id="topTimelineCount">46</span>)</a>
       <a class="btn btn-outline" href="../bonus/dashboard.html" target="_blank" rel="noopener">🏠 福山屋主後台 ↗</a>
       <a class="btn btn-outline" href="checklist_self_use.html" target="_blank" rel="noopener">🧮 自用看屋20項檢核 ↗</a>
       <a class="btn btn-outline" href="flight-dashboard-2027-01.html" target="_blank" rel="noopener">✈️ 2027日本機票雷達 ↗</a>
@@ -33,7 +34,7 @@
   <div class="sync-strip" role="status" aria-live="polite">
     <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
       <span class="sync-pill">🟢 100% 零 AI Token 自動同步開啟（下次輪詢：<span id="hubCountdownSec">60s</span>）</span>
-      <span class="sync-meta" id="hubLastSyncText">最後同步：2026/10/25 14:38:00 (UTC+8)｜Linux Cron 每 30 分鐘本機 Python 巡檢</span>
+      <span class="sync-meta" id="hubLastSyncText">最後同步：2026/10/25 14:45:00 (UTC+8)｜Linux Cron 每 30 分鐘本機 Python 巡檢</span>
     </div>
     <div style="font-size:0.78rem;color:#cfa358;font-weight:600;">
       💡 點擊任一開關或按鈕，皆自動產生「極簡省 Token 指令碼」或「外部付費 AI 專用 Prompt」
@@ -54,10 +55,43 @@
       </div>
     </section>
 
-    <!-- Category Filter & Search Toolbar -->
+    <!-- Standalone Section (Option B): 📅 今日任務執行時間軸 (Daily Execution Timeline - Newest First) -->
+    <section class="timeline-panel" id="dailyTimelineSection" aria-label="今日任務執行時間軸">
+      <div class="timeline-head">
+        <div>
+          <h2>📅 今日任務執行時間軸（Daily Execution Timeline・按時間新到舊）</h2>
+          <p style="font-size:0.79rem;color:#a7bdc9;margin-top:0.2rem;">
+            由本機 <code>sync_master_hub.py</code> 零 Token 自動彙整今日（2026-10-25）所有已完成／執行中／已暫停任務之精簡摘要（共 <strong id="tlTotalBadge" style="color:#e2b96f;">46</strong> 筆紀錄）
+          </p>
+        </div>
+        <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+          <button type="button" class="btn btn-outline" id="tlToggleExpandBtn" onclick="toggleTimelineExpand()">
+            ▼ 展開全部今日任務紀錄
+          </button>
+        </div>
+      </div>
+
+      <div class="timeline-filter-bar" role="tablist" aria-label="時間軸專案篩選">
+        <button type="button" class="tl-filter-btn active" onclick="setTimelineFilter('all', this)">全部任務</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('real-estate', this)">🏠 福山里居</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('b2b-saas', this)">💼 系統代建</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('concert', this)">🩰 X管公演</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('music-media', this)">🎵 林知夏頻道</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('film-buzz', this)">🎬 金鳳娜聲量</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('wealth-home', this)">🏡 自住房尋屋</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('quant-travel', this)">📈 量化機票</button>
+        <button type="button" class="tl-filter-btn" onclick="setTimelineFilter('ai-compute', this)">⚡ 外部AI算力</button>
+      </div>
+
+      <div class="timeline-list" id="dailyTimelineList">
+        <!-- Populated newest-first by app.js -->
+      </div>
+    </section>
+
+    <!-- Category Filter & Search Toolbar for 8 Project Cards -->
     <div class="toolbar-row">
       <div class="filter-tabs" role="tablist" aria-label="專案分類篩選">
-        <button type="button" class="filter-btn active" onclick="setCategoryFilter('all', this)">全部 8 大專案 (8)</button>
+        <button type="button" class="filter-btn active" onclick="setCategoryFilter('all', this)">全部 8 大專案卡片 (8)</button>
         <button type="button" class="filter-btn" onclick="setCategoryFilter('real-estate', this)">🏠 福山里居自售</button>
         <button type="button" class="filter-btn" onclick="setCategoryFilter('b2b-saas', this)">💼 自售系統代建</button>
         <button type="button" class="filter-btn" onclick="setCategoryFilter('concert', this)">🩰 X管《繾綣足尖》</button>
@@ -72,7 +106,7 @@
       </div>
     </div>
 
-    <!-- 8 Project Cards Grid -->
+    <!-- 8 Clean Project Cards Grid -->
     <section class="projects-grid" id="projectsGrid" aria-label="八大專案卡片區">
       <!-- Rendered by app.js from master-data.json -->
     </section>

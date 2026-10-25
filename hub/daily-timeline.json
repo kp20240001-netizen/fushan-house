@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-25T19:30:02+08:00",
-  "updatedAtDisplay": "2026/10/25 19:30:02 (UTC+8)",
-  "count": 46,
+  "updatedAt": "2026-10-25T19:31:14+08:00",
+  "updatedAtDisplay": "2026/10/25 19:31:14 (UTC+8)",
+  "count": 47,
   "items": [
+    {
+      "id": "T-20261025-193000-48",
+      "contractId": "C-20261025-XYMPHONIA-1026-SCHEDULE",
+      "time": "2026-10-25 19:30:00",
+      "category": "concert",
+      "projectBadge": "🩰 X管公演",
+      "status": "in_progress",
+      "title": "X管《繾綣足尖》P01 史實年份修正（1877 年底，162字）更新雲端，並預排明日 10/26 12:30 P01 與 20:00 P02 至 FB、IG、Threads",
+      "summary": "執行完成並寫入契約紀錄（負責人：專案中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.opentix.life/event/2113200035579109377"
+    },
     {
       "id": "T-20261025-143100-47",
       "contractId": "C-20261025-MASTER-COMMAND-DASHBOARD",

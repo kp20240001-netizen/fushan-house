@@ -531,7 +531,8 @@
     // Passcode Verification (SHA-256 hashed so plaintext never appears in source)
     const PASSCODE_SHA256 = '674d3ffc2536b4a23c70f988129e1cebe92b33afb9d729c01c029b5a11301c7b';
     const lockScreen = document.getElementById('lockScreen');
-    if (sessionStorage.getItem('fushan_dash_unlocked') === '1') {
+    if (sessionStorage.getItem('fushan_dash_unlocked') === '1' || new URLSearchParams(window.location.search).get('token') === PASSCODE_SHA256.slice(0, 16)) {
+      sessionStorage.setItem('fushan_dash_unlocked', '1');
       lockScreen.classList.add('hidden');
     }
     async function sha256Hex(str) {

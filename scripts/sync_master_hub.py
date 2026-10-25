@@ -524,7 +524,7 @@ def build_master_data():
                 "number": "05",
                 "icon": "🎬",
                 "title": "《消失的金鳳娜》全網聲量戰情 ＆ 破圈短片",
-                "subtitle": "上映倒數 4 天｜跨平台總觸及 548,920 (+14%)｜嚴格過濾僅計金鳳娜相關影片",
+                "subtitle": "上映倒數 3 天｜跨平台總觸及 548,920 (+14%)｜嚴格過濾僅計金鳳娜相關影片",
                 "category": "film-buzz",
                 "enabled": True,
                 "statusLabel": "進行中 ON",
@@ -717,6 +717,42 @@ def build_master_data():
         ],
         "dailyTimeline": timeline
     }
+    # Preserve task enabled/note states from existing master-data.json & enforce explicit user OFF commands
+    existing = load_json_safe(MASTER_DATA_PATH, {})
+    existing_task_map = {}
+    for ep in existing.get("projects", []):
+        for et in ep.get("tasks", []):
+            if et.get("id"):
+                existing_task_map[et["id"]] = (et.get("enabled"), et.get("note"))
+
+    paused_defaults = {
+        "T2-1": (False, "⏸️ 已依使用者指令 [CMD:TASK:T2-1:OFF] (2026-10-26 03:17) 暫停每日 591 & PTT 自售屋主巡檢"),
+        "T2-2": (False, "⏸️ 已依使用者指令 [CMD:TASK:T2-2:OFF] (2026-10-26 03:17) 暫停 591 屋主名單私訊跟進"),
+        "T2-3": (False, "鎖定「屋主自售 網站 / 省仲介費 自售合約」長尾字（目前預設待啟動）"),
+        "T4-4": (False, "⏸️ 已完成《蓮花身》與 8–9 月批次建包，依使用者指示全面暫停後續派送"),
+        "T5-2": (False, "⏸️ 已依使用者指令 [CMD:TASK:T5-2:OFF] (2026-10-26 03:14) 暫停 Top 3 黃金 60 秒切片發佈"),
+        "T6-1": (False, "⏸️ 已依使用者指令 [CMD:TASK:T6-1:OFF] (2026-10-26 03:14) 暫停每日桃北雙核物件巡檢"),
+    }
+
+    active_cnt = 0
+    paused_cnt = 0
+    for proj in data.get("projects", []):
+        for t in proj.get("tasks", []):
+            tid = t.get("id")
+            if tid in paused_defaults:
+                t["enabled"] = paused_defaults[tid][0]
+                t["note"] = paused_defaults[tid][1]
+            elif tid in existing_task_map and existing_task_map[tid][0] is not None:
+                t["enabled"] = existing_task_map[tid][0]
+                if existing_task_map[tid][1]:
+                    t["note"] = existing_task_map[tid][1]
+            if t.get("enabled"):
+                active_cnt += 1
+            else:
+                paused_cnt += 1
+
+    data["globalSummary"]["activeSubtasks"] = active_cnt
+    data["globalSummary"]["pausedSubtasks"] = paused_cnt
     return data
 
 

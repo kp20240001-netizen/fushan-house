@@ -1,8 +1,80 @@
 {
-  "updatedAt": "2026-10-26T03:00:01+08:00",
-  "updatedAtDisplay": "2026/10/26 03:00:01 (UTC+8)",
-  "count": 49,
+  "updatedAt": "2026-10-26T03:30:02+08:00",
+  "updatedAtDisplay": "2026/10/26 03:30:02 (UTC+8)",
+  "count": 55,
   "items": [
+    {
+      "id": "T-20261026-031700-52",
+      "contractId": "T-20261026-031700-52",
+      "time": "2026-10-26 03:18:22",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "cancelled",
+      "title": "[CMD:TASK:T2-1:OFF] & [CMD:TASK:T2-2:OFF] 暫停每日 591/PTT 自售屋主巡檢與私訊跟進",
+      "summary": "執行完成並寫入契約紀錄（負責人：商務開發與名單獵頭）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
+    {
+      "id": "T-20261026-031500-51",
+      "contractId": "T-20261026-031500-51",
+      "time": "2026-10-26 03:16:46",
+      "category": "quant-travel",
+      "projectBadge": "📈 量化機票",
+      "status": "in_progress",
+      "title": "[CMD:TASK:T7-1:ON] 保持 @Amo02bot EDGE/CM 訊號本機 Python 監控開啟",
+      "summary": "執行完成並寫入契約紀錄（負責人：量化交易與盤勢研究員）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/flight-dashboard-2027-01.html"
+    },
+    {
+      "id": "T-20261026-031400-49",
+      "contractId": "T-20261026-031400-49",
+      "time": "2026-10-26 03:15:03",
+      "category": "wealth-home",
+      "projectBadge": "🏡 自住房尋屋",
+      "status": "cancelled",
+      "title": "[CMD:TASK:T6-1:OFF] 暫停每日桃北雙核物件巡檢",
+      "summary": "執行完成並寫入契約紀錄（負責人：家庭資產與房市財務長）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/checklist_self_use.html"
+    },
+    {
+      "id": "T-20261026-031430-50",
+      "contractId": "T-20261026-031430-50",
+      "time": "2026-10-26 03:15:03",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "cancelled",
+      "title": "[CMD:TASK:T5-2:OFF] 暫停 Top 3 黃金 60 秒切片發佈",
+      "summary": "執行完成並寫入契約紀錄（負責人：影視聲量與公關戰情官）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
+    {
+      "id": "T-20261026-030630-48",
+      "contractId": "T-20261026-030630-48",
+      "time": "2026-10-26 03:07:15",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "in_progress",
+      "title": "《02-玄天》YouTube 社群貼文與 Shorts 21天排程（2026-11-16～12-06 共41則）",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261026-030500-47",
+      "contractId": "C-20261026-LIVIALIN-XUANTIAN43-AND-SONG183",
+      "time": "2026-10-26 03:04:08",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "林知夏字卡旗艦包第2首《玄天》全套43檔組裝上傳＋第183首歌Suno v6雙軌製作包與39鏡三幕MV製作包",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
     {
       "id": "T-20261026-024056-46",
       "contractId": "T-20261026-024056-46",

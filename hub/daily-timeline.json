@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-26T02:28:44+08:00",
-  "updatedAtDisplay": "2026/10/26 02:28:44 (UTC+8)",
-  "count": 48,
+  "updatedAt": "2026-10-26T02:30:02+08:00",
+  "updatedAtDisplay": "2026/10/26 02:30:02 (UTC+8)",
+  "count": 47,
   "items": [
     {
       "id": "T-20261025-064330-29",
@@ -36,18 +36,6 @@
       "status": "completed",
       "title": "將『懸賞三十萬』最新極簡大字版 20s 影片上傳至福山里居 YouTube 頻道 (@fushan.residence) 並設為公開最新影片",
       "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台 & 地產行銷與廣告投手）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
-    },
-    {
-      "id": "T-20261026-022844-45",
-      "contractId": "T-20261026-022844-45",
-      "time": "2026-10-26 02:28:44",
-      "category": "real-estate",
-      "projectBadge": "🏠 福山里居",
-      "status": "completed",
-      "title": "registry-write smoke test",
-      "summary": "執行完成並寫入契約紀錄（負責人：總幕僚長）。",
       "linkLabel": "查看對應專案 ↗",
       "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
     },

@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-26T03:30:02+08:00",
-  "updatedAtDisplay": "2026/10/26 03:30:02 (UTC+8)",
+  "updatedAt": "2026-10-26T04:00:11+08:00",
+  "updatedAtDisplay": "2026/10/26 04:00:11 (UTC+8)",
   "count": 55,
   "items": [
+    {
+      "id": "T-20261026-030630-48",
+      "contractId": "T-20261026-030630-48",
+      "time": "2026-10-26 03:49:00",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "《02-玄天》YouTube 社群貼文與 Shorts 21天排程（2026-11-16～12-06 共41則）",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
     {
       "id": "T-20261026-031700-52",
       "contractId": "T-20261026-031700-52",
@@ -50,18 +62,6 @@
       "summary": "執行完成並寫入契約紀錄（負責人：影視聲量與公關戰情官）。",
       "linkLabel": "查看對應專案 ↗",
       "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
-    },
-    {
-      "id": "T-20261026-030630-48",
-      "contractId": "T-20261026-030630-48",
-      "time": "2026-10-26 03:07:15",
-      "category": "music-media",
-      "projectBadge": "🎵 林知夏頻道",
-      "status": "in_progress",
-      "title": "《02-玄天》YouTube 社群貼文與 Shorts 21天排程（2026-11-16～12-06 共41則）",
-      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://www.youtube.com/@livialin-music"
     },
     {
       "id": "T-20261026-030500-47",

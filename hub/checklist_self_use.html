@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>專屬自用版：桃北看屋拆車位底價計算機 × 20項避坑計分表</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px 14px 64px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .container { max-width: 940px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    h2 { margin: 0 0 14px; font-size: 18px; color: var(--accent); }
+    p.sub { margin: 0; color: var(--muted); font-size: 13.5px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .preset-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .preset-btn {
+      background: #0f172a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .preset-btn:hover, .preset-btn.active {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 12px;
+    }
+    label.field { display: block; font-size: 12.5px; color: var(--muted); }
+    label.field input {
+      width: 100%;
+      margin-top: 5px;
+      padding: 9px 11px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+    }
+    .stat {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 13px;
+    }
+    .stat .k { font-size: 12px; color: var(--muted); }
+    .stat .v { font-size: 19px; font-weight: 700; margin-top: 3px; }
+    .stat.highlight { border-color: var(--green); background: rgba(16, 185, 129, 0.08); }
+    .stat.warn { border-color: var(--amber); background: rgba(245, 158, 11, 0.08); }
+    .veto-item, .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--border);
+      margin-bottom: 9px;
+      cursor: pointer;
+    }
+    .veto-item input, .check-item input {
+      margin-top: 4px;
+      transform: scale(1.25);
+      cursor: pointer;
+    }
+    .pts {
+      margin-left: auto;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .score-bar {
+      position: sticky;
+      bottom: 12px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      padding: 13px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    .btn {
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">🔒 家庭專屬自用實戰版（1,550～1,950 萬黃金預算帶）</span>
+      <h1>🐾 桃北看屋「拆車位底價計算機」× 20項毛孩看屋計分表</h1>
+      <p class="sub">點選下方口袋名單按鈕即可一鍵載入建坪、車位與 2026 最新實價登錄均價，也可在看屋現場手動修改數字。</p>
+    </header>
+
+    <div class="card">
+      <h2>💰 模組一：口袋名單一鍵切換 ＆ 拆車位底價試算器</h2>
+      <div class="preset-bar">
+        <button class="preset-btn active" onclick="loadPreset('paris', this)">🥇 青埔A19 巴黎線上 2F (雙平車 1,880萬)</button>
+        <button class="preset-btn" onclick="loadPreset('dingtai', this)">🏡 小檜溪 定泰清溪翫 1F庭院 (1,768萬)</button>
+        <button class="preset-btn" onclick="loadPreset('hehui', this)">🌳 中路 合輝雲門 8F (雙平車 1,968萬)</button>
+        <button class="preset-btn" onclick="loadPreset('yashang', this)">✨ 小檜溪 亞昕向陽 6F (1,688萬)</button>
+        <button class="preset-btn" onclick="loadPreset('libao', this)">🏫 三峽北大 麗寶維也納 3F (1,838萬)</button>
+        <button class="preset-btn" onclick="loadPreset('cambridge', this)">🌲 三峽北大 遠雄大學劍橋 (1,998萬)</button>
+        <button class="preset-btn" onclick="loadPreset('yes', this)">🌤️ 三峽北大 YES歐洲 14F (1,856萬)</button>
+      </div>
+
+      <div class="grid">
+        <label class="field">物件名稱 / 社區樓層
+          <input type="text" id="propName" value="青埔A19《巴黎線上》2F 花園三房雙平車" />
+        </label>
+        <label class="field">總建坪（含車位, 坪）
+          <input type="number" step="0.01" id="totalPing" value="64.99" oninput="calcPrice()" />
+        </label>
+        <label class="field">車位登記坪數（坪）
+          <input type="number" step="0.01" id="carPing" value="20.50" oninput="calcPrice()" />
+        </label>
+        <label class="field">同社區車位實登總價（萬）
+          <input type="number" step="1" id="carPrice" value="330" oninput="calcPrice()" />
+        </label>
+        <label class="field">屋主目前開價總價（萬）
+          <input type="number" step="1" id="askTotal" value="1880" oninput="calcPrice()" />
+        </label>
+        <label class="field">同社區近1年拆車位均價（萬/坪）
+          <input type="number" step="0.1" id="mktUnit" value="36.5" oninput="calcPrice()" />
+        </label>
+      </div>
+
+      <div class="results-grid">
+        <div class="stat">
+          <div class="k">房屋淨建坪（扣車位）</div>
+          <div class="v" id="netPingOut">44.49 坪</div>
+        </div>
+        <div class="stat">
+          <div class="k">【陷阱】混算車位表面單價</div>
+          <div class="v" id="blendedUnitOut">28.93 萬/坪</div>
+        </div>
+        <div class="stat warn">
+          <div class="k">【真實】拆車位後開價單價</div>
+          <div class="v" id="realAskUnitOut">34.84 萬/坪</div>
+        </div>
+        <div class="stat">
+          <div class="k">實登合理總價估值（含車位）</div>
+          <div class="v" id="fairTotalOut">1,954 萬</div>
+        </div>
+        <div class="stat">
+          <div class="k">屋主開價溢價率</div>
+          <div class="v" id="premiumOut">-3.8%</div>
+        </div>
+        <div class="stat highlight">
+          <div class="k">🎯 建議第一口起始斡旋（94.5%）</div>
+          <div class="v" id="anchorOfferOut">1,777 萬</div>
+        </div>
+        <div class="stat highlight">
+          <div class="k">🛑 目標成交底價上限（98%）</div>
+          <div class="v" id="maxOfferOut">1,842 萬</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🛑 模組二：三大「一票否決紅線」（勾選任一項即刻淘汰）</h2>
+      <label class="veto-item"><input type="checkbox" class="veto" onchange="calcScore()" /> <div><strong>[紅線 1] 社區規約不友善毛孩</strong>：禁養中大型犬，或進出電梯大廳強制全程關籠且禁止推車。</div></label>
+      <label class="veto-item"><input type="checkbox" class="veto" onchange="calcScore()" /> <div><strong>[紅線 2] 機械車位或車道死角</strong>：配屬機械車位（抱狗危險、轉手抗性高）或車道過度狹窄。</div></label>
+      <label class="veto-item"><input type="checkbox" class="veto" onchange="calcScore()" /> <div><strong>[紅線 3] 重大屋況與產權瑕疵</strong>：非自然身故、海砂輻射、即報即拆新違建或主結構嚴重滲漏壁癌。</div></label>
+    </div>
+
+    <div class="card">
+      <h2>📋 模組三：20 項看屋避坑與養寵動線量化評分（滿分 100 分）</h2>
+      <div id="checklistContainer"></div>
+    </div>
+
+    <div class="score-bar">
+      <div>
+        <div style="font-size:13px;color:var(--muted);">目前看屋綜合評分與行動建議</div>
+        <div id="scoreText" style="font-size:19px;font-weight:800;">0 / 100 分 — 請勾選上方檢核項目</div>
+      </div>
+      <button class="btn" onclick="window.print()">🖨️ 列印 / 存為看屋 PDF 紀錄</button>
+    </div>
+  </div>
+
+  <script>
+    const presets = {
+      paris: { name: "青埔A19《巴黎線上》2F 花園三房雙平車", totalPing: 64.99, carPing: 20.50, carPrice: 330, askTotal: 1880, mktUnit: 36.5 },
+      dingtai: { name: "小檜溪《定泰清溪翫》1F 8坪庭院三房平車", totalPing: 41.63, carPing: 13.59, carPrice: 220, askTotal: 1768, mktUnit: 49.0 },
+      hehui: { name: "中路《合輝雲門》8F 精裝三房雙平車", totalPing: 49.01, carPing: 16.43, carPrice: 365, askTotal: 1968, mktUnit: 42.5 },
+      yashang: { name: "小檜溪《亞昕向陽》6F 雙衛開窗大兩房平車", totalPing: 41.34, carPing: 12.55, carPrice: 195, askTotal: 1688, mktUnit: 52.5 },
+      libao: { name: "三峽北大《麗寶維也納花園》3F 三房平車", totalPing: 44.51, carPing: 9.89, carPrice: 155, askTotal: 1838, mktUnit: 47.0 },
+      cambridge: { name: "三峽北大《遠雄大學劍橋》57.11坪大三房平車", totalPing: 57.11, carPing: 12.80, carPrice: 150, askTotal: 1998, mktUnit: 39.8 },
+      yes: { name: "三峽北大《YES歐洲》14F 次頂樓三房平車", totalPing: 42.12, carPing: 8.60, carPrice: 165, askTotal: 1856, mktUnit: 47.0 }
+    };
+
+    function loadPreset(key, btn) {
+      document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      const p = presets[key];
+      document.getElementById("propName").value = p.name;
+      document.getElementById("totalPing").value = p.totalPing;
+      document.getElementById("carPing").value = p.carPing;
+      document.getElementById("carPrice").value = p.carPrice;
+      document.getElementById("askTotal").value = p.askTotal;
+      document.getElementById("mktUnit").value = p.mktUnit;
+      calcPrice();
+    }
+
+    const items = [
+      { id: 1, cat: "A. 毛孩友善與居住品質", text: "01. 社區《住戶規約》無犬隻體型限制，牽繩或寵物推車可正常進出電梯", pts: 10 },
+      { id: 2, cat: "A. 毛孩友善與居住品質", text: "02. 下樓步行 3 分鐘（300m）內有綠園道、水岸步道或公園草皮可遛狗", pts: 6 },
+      { id: 3, cat: "A. 毛孩友善與居住品質", text: "03. 梯戶比優良（單層 ≤ 4～6 戶配 2 梯），尖峰等電梯不超過 90 秒", pts: 5 },
+      { id: 4, cat: "A. 毛孩友善與居住品質", text: "04. 樓板隔音佳（或位於 1F 庭院／2F 公設上方，零樓下鄰居抗議腳步聲風險）", pts: 5 },
+      { id: 5, cat: "A. 毛孩友善與居住品質", text: "05. 陽台設有低位水龍頭與順暢排水孔方便散步洗腳，室內前後對流不悶臭", pts: 4 },
+      { id: 6, cat: "B. 車位規格與電動車趨勢", text: "06. 產權獨立之坡道平面車位或 1F 車庫，車道雙向會車平緩安全", pts: 8 },
+      { id: 7, cat: "B. 車位規格與電動車趨勢", text: "07. 優先位於 B1/B2 大車位（250×550cm）或柱邊，車門全開上下毛孩不擁擠", pts: 6 },
+      { id: 8, cat: "B. 車位規格與電動車趨勢", text: "08. 附雙平車，或附單平車但社區可月租第二車位（省下買車位資金投入 ETF）", pts: 6 },
+      { id: 9, cat: "B. 車位規格與電動車趨勢", text: "09. 社區已建置 EMS 充電系統或管委會允許安裝電動車充電樁", pts: 5 },
+      { id: 10, cat: "C. 5年增值潛力與轉手性", text: "10. 總價落在 1,550～1,950 萬黃金帶，未來 5 年轉手買盤最厚實", pts: 6 },
+      { id: 11, cat: "C. 5年增值潛力與轉手性", text: "11. 主建物＋陽台實坪 ≥ 18～22 坪，公設比合理（≤ 33%），格局方正無暗廳", pts: 6 },
+      { id: 12, cat: "C. 5年增值潛力與轉手性", text: "12. 雙衛浴開窗或主衛開窗＋全室當層排氣與暖風機", pts: 4 },
+      { id: 13, cat: "C. 5年增值潛力與轉手性", text: "13. 口碑建商興建、外牆與 B1 垃圾冷藏室維護良好、管委會公共基金充裕", pts: 4 },
+      { id: 14, cat: "C. 5年增值潛力與轉手性", text: "14. 具備公園水岸首排永久棟距，或距捷運／高鐵站步行 10 分鐘內", pts: 5 },
+      { id: 15, cat: "D. 實價去水份與談判彈性", text: "15. 拆車位後屋主開價單價相較近 1 年實登均價溢價率 < 10%", pts: 5 },
+      { id: 16, cat: "D. 實價去水份與談判彈性", text: "16. 原屋況或實用裝修，無投資客廉價木皮遮蓋漏水之灌水裝潢費", pts: 4 },
+      { id: 17, cat: "D. 實價去水份與談判彈性", text: "17. 已查明屋主取得年份與稅負區間（過 5 年閉鎖期或滿 6 年免稅戶讓利空間大）", pts: 4 },
+      { id: 18, cat: "D. 實價去水份與談判彈性", text: "18. 屋主為空屋或願意配合 60～90 天彈性交屋期銜接福山街換屋", pts: 3 },
+      { id: 19, cat: "D. 實價去水份與談判彈性", text: "19. 國泰世華或主力銀行初估鑑價 ≥ 目標成交價之 95%", pts: 2 },
+      { id: 20, cat: "D. 實價去水份與談判彈性", text: "20. 每月管理費合理（約 65～85 元/坪），無高耗能蚊子公設", pts: 2 }
+    ];
+
+    const container = document.getElementById("checklistContainer");
+    items.forEach(it => {
+      const lbl = document.createElement("label");
+      lbl.className = "check-item";
+      lbl.innerHTML = `<input type="checkbox" class="chk" data-pts="${it.pts}" onchange="calcScore()" />
+        <div><div style="font-size:11px;color:var(--muted);">${it.cat}</div><div>${it.text}</div></div>
+        <span class="pts">+${it.pts} 分</span>`;
+      container.appendChild(lbl);
+    });
+
+    function calcPrice() {
+      const totalPing = parseFloat(document.getElementById("totalPing").value) || 0;
+      const carPing = parseFloat(document.getElementById("carPing").value) || 0;
+      const carPrice = parseFloat(document.getElementById("carPrice").value) || 0;
+      const askTotal = parseFloat(document.getElementById("askTotal").value) || 0;
+      const mktUnit = parseFloat(document.getElementById("mktUnit").value) || 0;
+
+      const netPing = Math.max(0.01, totalPing - carPing);
+      const blendedUnit = totalPing > 0 ? askTotal / totalPing : 0;
+      const realAskUnit = (askTotal - carPrice) / netPing;
+      const fairTotal = Math.round(netPing * mktUnit + carPrice);
+      const premium = fairTotal > 0 ? ((askTotal - fairTotal) / fairTotal) * 100 : 0;
+      const anchorBase = Math.min(askTotal, fairTotal);
+      const anchorOffer = Math.round(anchorBase * 0.945);
+      const maxOffer = Math.round(anchorBase * 0.98);
+
+      document.getElementById("netPingOut").textContent = netPing.toFixed(2) + " 坪";
+      document.getElementById("blendedUnitOut").textContent = blendedUnit.toFixed(2) + " 萬/坪";
+      document.getElementById("realAskUnitOut").textContent = realAskUnit.toFixed(2) + " 萬/坪";
+      document.getElementById("fairTotalOut").textContent = fairTotal.toLocaleString() + " 萬";
+      document.getElementById("premiumOut").textContent = (premium >= 0 ? "+" : "") + premium.toFixed(1) + "%";
+      document.getElementById("anchorOfferOut").textContent = anchorOffer.toLocaleString() + " 萬";
+      document.getElementById("maxOfferOut").textContent = maxOffer.toLocaleString() + " 萬";
+    }
+
+    function calcScore() {
+      const vetoes = Array.from(document.querySelectorAll(".veto")).some(v => v.checked);
+      let sum = 0;
+      document.querySelectorAll(".chk:checked").forEach(c => {
+        sum += parseInt(c.getAttribute("data-pts"), 10);
+      });
+      const el = document.getElementById("scoreText");
+      if (vetoes) {
+        el.style.color = "var(--red)";
+        el.textContent = `🛑 觸發一票否決紅線（目前得分 ${sum} 分）— 建議直接淘汰！`;
+      } else if (sum >= 82) {
+        el.style.color = "var(--green)";
+        el.textContent = `🏆 ${sum} / 100 分（A 級首選標的）— 可排入 Top 3 送國泰世華初估鑑價！`;
+      } else if (sum >= 70) {
+        el.style.color = "var(--amber)";
+        el.textContent = `⚖️ ${sum} / 100 分（B 級觀察標的）— 除非屋主讓利達實登 94% 以下，否則不急出手`;
+      } else {
+        el.style.color = "var(--text)";
+        el.textContent = `${sum} / 100 分 — 請繼續勾選檢核項目（≥ 82 分列入首選）`;
+      }
+    }
+
+    calcPrice();
+  </script>
+</body>
+</html>

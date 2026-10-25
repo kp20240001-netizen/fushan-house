@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>全專案中控儀表板 Master Command Center｜零 Token 戰情室與外部 AI 算力池分流中心</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Command Header -->
+  <header class="hub-topbar">
+    <div class="hub-brand">
+      <span class="hub-badge-seal">MASTER HUB v2.1</span>
+      <div>
+        <h1 class="hub-title">全專案中控儀表板・Master Command Center</h1>
+        <div class="hub-subtitle">8 大專案戰情總覽 × 進行／暫停開關 × 零 Token 自動同步 × 五大外部付費 AI 算力分流</div>
+      </div>
+    </div>
+    <div class="hub-top-actions">
+      <button type="button" class="btn btn-gold" id="globalSyncBtn" onclick="triggerGlobalSync()">🔄 立即刷新全站數據</button>
+      <a class="btn btn-outline" href="../bonus/dashboard.html" target="_blank" rel="noopener">🏠 福山屋主後台 ↗</a>
+      <a class="btn btn-outline" href="checklist_self_use.html" target="_blank" rel="noopener">🧮 自用看屋20項檢核 ↗</a>
+      <a class="btn btn-outline" href="flight-dashboard-2027-01.html" target="_blank" rel="noopener">✈️ 2027日本機票雷達 ↗</a>
+    </div>
+  </header>
+
+  <!-- Zero-AI Sync Status Strip -->
+  <div class="sync-strip" role="status" aria-live="polite">
+    <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+      <span class="sync-pill">🟢 100% 零 AI Token 自動同步開啟（下次輪詢：<span id="hubCountdownSec">60s</span>）</span>
+      <span class="sync-meta" id="hubLastSyncText">最後同步：2026/10/25 14:38:00 (UTC+8)｜Linux Cron 每 30 分鐘本機 Python 巡檢</span>
+    </div>
+    <div style="font-size:0.78rem;color:#cfa358;font-weight:600;">
+      💡 點擊任一開關或按鈕，皆自動產生「極簡省 Token 指令碼」或「外部付費 AI 專用 Prompt」
+    </div>
+  </div>
+
+  <main class="hub-container">
+    <!-- External Paid AI Compute Pool Quick-Offload Strip -->
+    <section class="ai-pool-banner" aria-label="五大外部付費 AI 算力池分流中心">
+      <div class="ai-pool-head">
+        <h2>⚡ 五大外部付費 AI 算力池分流中心（優先榨乾外部訂閱・0 Grok Token 消耗）</h2>
+        <span style="font-size:0.78rem;color:#a7bdc9;">
+          🔥 <strong>Claude Pro (Jay • Pro)</strong> 將於 <strong>2026-11-13</strong> 到期（剩餘 19 天），重度腳本／文案／財務模型優先派發！
+        </span>
+      </div>
+      <div class="ai-pool-grid" id="aiPoolGrid">
+        <!-- Populated dynamically from master-data.json -->
+      </div>
+    </section>
+
+    <!-- Category Filter & Search Toolbar -->
+    <div class="toolbar-row">
+      <div class="filter-tabs" role="tablist" aria-label="專案分類篩選">
+        <button type="button" class="filter-btn active" onclick="setCategoryFilter('all', this)">全部 8 大專案 (8)</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('real-estate', this)">🏠 福山里居自售</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('b2b-saas', this)">💼 自售系統代建</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('concert', this)">🩰 X管《繾綣足尖》</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('music-media', this)">🎵 林知夏 (DistroKid暫停)</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('film-buzz', this)">🎬 《消失的金鳳娜》</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('wealth-home', this)">🏡 桃北新自住房</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('quant-travel', this)">📈 量化＆日本機票</button>
+        <button type="button" class="filter-btn" onclick="setCategoryFilter('ai-compute', this)">⚡ 外部 AI 算力池</button>
+      </div>
+      <div class="search-box">
+        <input type="search" id="hubSearchInput" placeholder="🔍 搜尋專案、任務代碼 (如 T4-3)、連結或關鍵字..." oninput="onHubSearchInput(this.value)">
+      </div>
+    </div>
+
+    <!-- 8 Project Cards Grid -->
+    <section class="projects-grid" id="projectsGrid" aria-label="八大專案卡片區">
+      <!-- Rendered by app.js from master-data.json -->
+    </section>
+  </main>
+
+  <!-- Floating One-Click Command & External AI Offload Drawer -->
+  <aside class="cmd-drawer" id="cmdDrawer" role="dialog" aria-live="polite" aria-label="一鍵指令與外部AI提示詞面板">
+    <div class="cmd-drawer-head">
+      <span class="cmd-drawer-title" id="cmdDrawerTitle">📋 已自動複製極簡省 Token 指令碼</span>
+      <button type="button" class="btn btn-outline" style="padding:0.2rem 0.55rem;font-size:0.75rem;" onclick="closeCommandDrawer()">✕ 關閉</button>
+    </div>
+    <pre class="cmd-code-box" id="cmdDrawerCode">[CMD:SYNC:ALL]</pre>
+    <div class="cmd-drawer-actions">
+      <button type="button" class="btn btn-outline" onclick="reCopyDrawerText()">📋 再次複製內容</button>
+      <a id="cmdExternalAiBtn" class="btn btn-gold" href="https://claude.ai/" target="_blank" rel="noopener" style="display:none;">🚀 開啟外部付費 AI 貼上執行 ↗</a>
+    </div>
+  </aside>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>2027 01｜日本機票極簡比價 — 北海道 & 大阪</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+/* Washi Editorial Surface Tokens (Hoshino / Good Design Inspired) */
+--bg-washi: #F8F6F1;
+--bg-surface: #FFFFFF;
+--bg-subtle: #F1EDE4;
+--bg-elevated: #FAF9F6;
+
+/* High-Contrast Ink Tokens (WCAG AAA/AA compliant) */
+--ink-900: #171614;
+--ink-700: #45423D;
+--ink-500: #6E6A63;
+--ink-400: #948F86;
+
+/* Hairline Rules */
+--rule-light: #E6E1D6;
+--rule-medium: #D5CFC2;
+--rule-strong: #171614;
+
+/* Refined Japanese Traditional Colors (Nippon Colors) */
+--c-ci: #9E2A47; /* 茜紅 Akane - China Airlines */
+--c-jx: #8C6D32; /* 琥珀金 Kohaku - STARLUX */
+--c-br: #1B5E49; /* 千歳緑 Chitose - EVA Air */
+--c-nh: #1A447C; /* 瑠璃紺 Ruri - ANA */
+--c-jl: #A62424; /* 朱紅 Shu - JAL */
+--c-it: #B87B14; /* 山吹 Yamabuki - Tigerair */
+
+/* Motion Curves */
+--spring-snap: cubic-bezier(0.22, 1, 0.36, 1);
+--spring-drawer: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+background-color: var(--bg-washi);
+color: var(--ink-900);
+font-family: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+-webkit-font-smoothing: antialiased;
+min-height: 100vh;
+padding: 56px 32px 96px;
+/* Subtle Washi paper grain texture */
+background-image: radial-gradient(rgba(23, 22, 20, 0.03) 1px, transparent 0);
+background-size: 24px 24px;
+}
+
+.shell {
+max-width: 960px;
+margin: 0 auto;
+}
+
+/* ─── Editorial Masthead ─── */
+.masthead {
+display: grid;
+grid-template-columns: 1fr auto;
+align-items: end;
+gap: 24px;
+padding-bottom: 28px;
+border-bottom: 1.5px solid var(--ink-900);
+margin-bottom: 20px;
+}
+
+.eyebrow {
+font-family: "JetBrains Mono", monospace;
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--ink-500);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.eyebrow-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: var(--c-jx);
+display: inline-block;
+}
+
+.hero-title {
+font-family: "Noto Serif TC", "Hiragino Mincho ProN", "Yu Mincho", serif;
+font-size: 34px;
+font-weight: 700;
+letter-spacing: 0.03em;
+line-height: 1.2;
+color: var(--ink-900);
+display: flex;
+align-items: baseline;
+gap: 14px;
+}
+
+.hero-code {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 38px;
+font-weight: 600;
+font-style: italic;
+color: var(--ink-500);
+letter-spacing: 0.02em;
+}
+
+/* ─── Sliding Pill Destination Switcher (oil-ui motion #2) ─── */
+.seg-track {
+position: relative;
+display: inline-grid;
+grid-template-columns: 1fr 1fr;
+background: var(--bg-subtle);
+padding: 4px;
+border-radius: 999px;
+border: 1px solid var(--rule-medium);
+user-select: none;
+}
+
+.seg-thumb {
+position: absolute;
+top: 4px;
+bottom: 4px;
+left: 4px;
+width: calc(50% - 4px);
+background: var(--bg-surface);
+border-radius: 999px;
+box-shadow: 0 2px 10px rgba(23, 22, 20, 0.08), 0 0 1px rgba(23, 22, 20, 0.12);
+transition: transform 280ms var(--spring-snap);
+z-index: 1;
+}
+
+.seg-track[data-active="KIX"] .seg-thumb {
+transform: translateX(100%);
+}
+
+.seg-btn {
+position: relative;
+z-index: 2;
+appearance: none;
+border: none;
+background: transparent;
+padding: 9px 22px;
+font-family: inherit;
+font-size: 13.5px;
+font-weight: 600;
+letter-spacing: 0.02em;
+color: var(--ink-500);
+cursor: pointer;
+transition: color 200ms ease, transform 100ms ease;
+min-height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+
+.seg-btn:active {
+transform: scale(0.97);
+}
+
+.seg-btn.active {
+color: var(--ink-900);
+}
+
+.seg-btn:focus-visible {
+outline: 2px solid var(--ink-900);
+outline-offset: 2px;
+border-radius: 999px;
+}
+
+/* ─── Filter Sub-Navigation Bar ─── */
+.toolbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+margin-bottom: 28px;
+padding-bottom: 16px;
+border-bottom: 1px solid var(--rule-light);
+}
+
+.filter-group {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.chip-btn {
+appearance: none;
+background: transparent;
+border: 1px solid var(--rule-medium);
+color: var(--ink-700);
+padding: 7px 16px;
+border-radius: 999px;
+font-family: inherit;
+font-size: 12.5px;
+font-weight: 500;
+cursor: pointer;
+transition: all 180ms var(--spring-snap);
+min-height: 36px;
+}
+
+.chip-btn:hover {
+border-color: var(--ink-900);
+color: var(--ink-900);
+}
+
+.chip-btn:active {
+transform: scale(0.96);
+}
+
+.chip-btn.active {
+background: var(--ink-900);
+color: var(--bg-washi);
+border-color: var(--ink-900);
+}
+
+.lowest-summary {
+font-size: 12.5px;
+color: var(--ink-500);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.lowest-summary strong {
+font-family: "JetBrains Mono", monospace;
+color: var(--ink-900);
+font-weight: 600;
+}
+
+/* ─── Timetable Ledger Rows (1 Card per Airline) ─── */
+.ledger {
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
+
+.ticket-card {
+background: var(--bg-surface);
+border: 1px solid var(--rule-light);
+border-radius: 12px;
+position: relative;
+overflow: hidden;
+transition: transform 220ms var(--spring-snap), box-shadow 220ms var(--spring-snap), border-color 220ms ease;
+opacity: 0;
+transform: translateY(10px);
+animation: staggerIn 380ms var(--spring-snap) forwards;
+}
+
+@keyframes staggerIn {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.ticket-card:hover {
+border-color: var(--rule-medium);
+box-shadow: 0 10px 30px -10px rgba(23, 22, 20, 0.07);
+}
+
+/* Left Brand Crest Bar */
+.crest-bar {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: 4px;
+}
+
+.ticket-body {
+display: grid;
+grid-template-columns: 184px 1fr 196px;
+align-items: center;
+gap: 28px;
+padding: 22px 28px 22px 30px;
+}
+
+/* Col 1: Carrier Identity & Date Window */
+.carrier-col {
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.carrier-top {
+display: flex;
+align-items: center;
+gap: 9px;
+}
+
+.iata-badge {
+font-family: "JetBrains Mono", monospace;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.05em;
+color: #FFFFFF;
+padding: 2px 7px;
+border-radius: 4px;
+line-height: 1.3;
+}
+
+.carrier-name {
+font-size: 17px;
+font-weight: 600;
+color: var(--ink-900);
+letter-spacing: 0.01em;
+}
+
+.date-window {
+font-family: "JetBrains Mono", monospace;
+font-size: 12.5px;
+color: var(--ink-700);
+letter-spacing: -0.01em;
+}
+
+.kicker-pill {
+display: inline-flex;
+align-items: center;
+gap: 5px;
+font-size: 11px;
+font-weight: 500;
+color: var(--ink-500);
+background: var(--bg-washi);
+border: 1px solid var(--rule-light);
+padding: 2px 8px;
+border-radius: 4px;
+width: fit-content;
+margin-top: 2px;
+}
+
+.kicker-pill.highlight {
+color: #7A5A1E;
+background: #FBF6EB;
+border-color: #E6D5B0;
+}
+
+/* Col 2: Precision Horizontal Flight Axis (ANA / Good Design Timetable) */
+.axis-col {
+display: flex;
+flex-direction: column;
+gap: 14px;
+padding: 0 8px;
+border-left: 1px solid var(--rule-light);
+border-right: 1px solid var(--rule-light);
+padding-left: 24px;
+padding-right: 24px;
+}
+
+.flight-leg {
+display: grid;
+grid-template-columns: 62px 84px 1fr 84px;
+align-items: center;
+gap: 12px;
+}
+
+.flt-num {
+font-family: "JetBrains Mono", monospace;
+font-size: 11.5px;
+font-weight: 500;
+color: var(--ink-500);
+}
+
+.node-time {
+display: flex;
+align-items: baseline;
+gap: 5px;
+}
+
+.node-time.arrive {
+justify-content: flex-end;
+}
+
+.clock {
+font-family: "JetBrains Mono", monospace;
+font-size: 18px;
+font-weight: 600;
+color: var(--ink-900);
+font-variant-numeric: tabular-nums;
+letter-spacing: -0.03em;
+}
+
+.station {
+font-family: "JetBrains Mono", monospace;
+font-size: 11.5px;
+font-weight: 500;
+color: var(--ink-500);
+}
+
+.vector-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+}
+
+.vector-caption {
+font-size: 11px;
+color: var(--ink-500);
+letter-spacing: 0.03em;
+white-space: nowrap;
+}
+
+.vector-svg {
+width: 100%;
+height: 10px;
+display: block;
+overflow: visible;
+}
+
+/* Col 3: Pure TWD Tax-Included Price & Primary Action */
+.fare-col {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+justify-content: center;
+gap: 10px;
+}
+
+.fare-Block {
+text-align: right;
+}
+
+.fare-caption {
+font-size: 11px;
+color: var(--ink-500);
+letter-spacing: 0.04em;
+margin-bottom: 2px;
+}
+
+.fare-twd {
+font-family: "JetBrains Mono", monospace;
+font-size: 27px;
+font-weight: 600;
+color: var(--ink-900);
+font-variant-numeric: tabular-nums;
+letter-spacing: -0.03em;
+line-height: 1.05;
+}
+
+.cta-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+background: var(--ink-900);
+color: var(--bg-washi);
+text-decoration: none;
+font-size: 12.5px;
+font-weight: 500;
+letter-spacing: 0.03em;
+padding: 8px 18px;
+border-radius: 999px;
+transition: background 180ms ease, transform 100ms ease;
+min-height: 36px;
+}
+
+.cta-btn:hover {
+background: #33312E;
+}
+
+.cta-btn:active {
+transform: scale(0.96);
+}
+
+.cta-icon {
+width: 12px;
+height: 12px;
+stroke: currentColor;
+stroke-width: 1.8;
+fill: none;
+}
+
+/* ─── Smooth CSS Grid Accordion Drawer for Secondary Dates (Rule B) ─── */
+.drawer-bar {
+width: 100%;
+appearance: none;
+border: none;
+border-top: 1px solid var(--rule-light);
+background: var(--bg-elevated);
+padding: 9px 28px 9px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+font-family: inherit;
+font-size: 12px;
+color: var(--ink-500);
+transition: background 180ms ease, color 180ms ease;
+}
+
+.drawer-bar:hover {
+background: var(--bg-subtle);
+color: var(--ink-900);
+}
+
+.drawer-bar-left {
+display: flex;
+align-items: center;
+gap: 6px;
+font-weight: 500;
+}
+
+.chevron-svg {
+width: 13px;
+height: 13px;
+stroke: currentColor;
+stroke-width: 1.75;
+fill: none;
+transition: transform 280ms var(--spring-drawer);
+}
+
+.ticket-card.expanded .chevron-svg {
+transform: rotate(180deg);
+}
+
+.drawer-grid {
+display: grid;
+grid-template-rows: 0fr;
+transition: grid-template-rows 300ms var(--spring-drawer);
+background: var(--bg-subtle);
+}
+
+.ticket-card.expanded .drawer-grid {
+grid-template-rows: 1fr;
+}
+
+.drawer-inner {
+overflow: hidden;
+}
+
+.drawer-list {
+padding: 12px 28px 14px 30px;
+border-top: 1px solid var(--rule-light);
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.sub-option {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+padding: 6px 0;
+border-bottom: 1px dashed var(--rule-medium);
+font-size: 12.5px;
+}
+
+.sub-option:last-child {
+border-bottom: none;
+}
+
+.sub-meta {
+display: flex;
+align-items: center;
+gap: 14px;
+flex-wrap: wrap;
+color: var(--ink-700);
+}
+
+.sub-date {
+font-family: "JetBrains Mono", monospace;
+font-weight: 600;
+color: var(--ink-900);
+}
+
+.sub-right {
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.sub-price {
+font-family: "JetBrains Mono", monospace;
+font-size: 14.5px;
+font-weight: 600;
+color: var(--ink-900);
+font-variant-numeric: tabular-nums;
+}
+
+.sub-link {
+font-size: 12px;
+font-weight: 500;
+color: var(--ink-900);
+text-decoration: underline;
+text-underline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+body { padding: 32px 16px 64px; }
+.masthead { grid-template-columns: 1fr; align-items: start; }
+.ticket-body { grid-template-columns: 1fr; gap: 18px; padding: 20px; }
+.axis-col { border-left: none; border-right: none; border-top: 1px solid var(--rule-light); border-bottom: 1px solid var(--rule-light); padding: 14px 0; }
+.fare-col { flex-direction: row; justify-content: space-between; align-items: center; }
+.fare-Block { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+transition-duration: 0.01ms !important;
+}
+}
+  </style>
+</head>
+<body>
+  <div class="shell">
+<!-- Editorial Masthead -->
+<header class="masthead">
+<div>
+<div class="eyebrow">
+<span class="eyebrow-dot"></span>
+<span>2027 JANUARY · 10-DAY ROUND TRIP TIMETABLE</span>
+</div>
+<h1 class="hero-title">
+<span id="dest-title">北海道 新千歲</span>
+<span class="hero-code" id="dest-code">CTS</span>
+</h1>
+</div>
+
+<!-- Sliding Segmented Destination Switcher -->
+<div class="seg-track" id="dest-switcher" data-active="CTS" role="tablist" aria-label="目的地切換">
+<div class="seg-thumb"></div>
+<button class="seg-btn active" id="tab-cts" role="tab" aria-selected="true" onclick="selectDest('CTS')">
+北海道（CTS）
+</button>
+<button class="seg-btn" id="tab-kix" role="tab" aria-selected="false" onclick="selectDest('KIX')">
+大阪關西（KIX）
+</button>
+</div>
+</header>
+
+<!-- Sub-Navigation Filter & Lowest Price Indicator -->
+<div class="toolbar">
+<div class="filter-group" role="group" aria-label="航班篩選">
+<button class="chip-btn active" onclick="selectCat('ALL', this)">全部航空</button>
+<button class="chip-btn" onclick="selectCat('DIRECT', this)">桃園直飛（華航 · 星宇 · 長榮 · 虎航）</button>
+<button class="chip-btn" onclick="selectCat('JP', this)">日本籍轉機（全日空 · 日航｜松山經羽田）</button>
+</div>
+<div class="lowest-summary" id="lowest-summary">
+直飛最低價 <strong>NT$19,095</strong> · 轉機最低價 <strong>NT$18,872</strong>
+</div>
+</div>
+
+<!-- Main Timetable Ledger -->
+<main class="ledger" id="ledger-container"></main>
+  </div>
+
+  <!-- =========================================================================
+SINGLE DATA SECTION: 未來新增或更新航班只需編輯此 FLIGHT_DATA 物件
+========================================================================= -->
+  <script>
+const FLIGHT_DATA = {
+CTS: {
+title: "北海道 新千歲",
+code: "CTS",
+summaryHTML: "直飛最低價 <strong>NT$19,095</strong> · 日籍羽田轉機最低價 <strong>NT$18,872</strong>",
+airlines: [
+{
+code: "CI",
+name: "中華航空",
+color: "var(--c-ci)",
+cat: "DIRECT",
+kicker: "直飛最低價",
+highlight: true,
+dates: "01/01 – 01/11（10天）",
+outNo: "CI 2130",
+outDep: "05:00",
+outOrig: "TPE",
+outArr: "09:40",
+outDest: "CTS",
+outNote: "直飛 · 3h 40m",
+isStop: false,
+inNo: "CI 131",
+inDep: "14:40",
+inOrig: "CTS",
+inArr: "18:15",
+inDest: "TPE",
+inNote: "直飛 · 4h 35m",
+price: 19095,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpAEgoyMDI3LTAxLTAxIiAKA1RQRRIKMjAyNy0wMS0wMRoDQ1RTKgJDSTIEMjEzMGoHCAESA1RQRXIHCAESA0NUUxo_EgoyMDI3LTAxLTExIh8KA0NUUxIKMjAyNy0wMS0xMRoDVFBFKgJDSTIDMTMxagcIARIDQ1RTcgcIARIDVFBFQAFIAXABggELCP___________wGYAQE&curr=TWD",
+alts: [
+{
+dates: "01/12 – 01/22",
+desc: "早去午回正班機｜去 CI 130 (08:35→13:20) · 回 CI 131 (14:40→18:15)",
+price: 19397,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTEyIh8KA1RQRRIKMjAyNy0wMS0xMhoDQ1RTKgJDSTIDMTMwagcIARIDVFBFcgcIARIDQ1RTGj8SCjIwMjctMDEtMjIiHwoDQ1RTEgoyMDI3LTAxLTIyGgNUUEUqAkNJMgMxMzFqBwgBEgNDVFNyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD"
+}
+]
+},
+{
+code: "JX",
+name: "星宇航空",
+color: "var(--c-jx)",
+cat: "DIRECT",
+kicker: "黃金早去午回直飛",
+highlight: true,
+dates: "01/12 – 01/22（10天）",
+outNo: "JX 850",
+outDep: "09:15",
+outOrig: "TPE",
+outArr: "14:05",
+outDest: "CTS",
+outNote: "直飛 · 3h 50m",
+isStop: false,
+inNo: "JX 851",
+inDep: "15:20",
+inOrig: "CTS",
+inArr: "19:05",
+inDest: "TPE",
+inNote: "直飛 · 4h 45m",
+price: 19270,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTEyIh8KA1RQRRIKMjAyNy0wMS0xMhoDQ1RTKgJKWDIDODUwagcIARIDVFBFcgcIARIDQ1RTGj8SCjIwMjctMDEtMjIiHwoDQ1RTEgoyMDI3LTAxLTIyGgNUUEUqAkpYMgM4NTFqBwgBEgNDVFNyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: [
+{
+dates: "01/01 – 01/11",
+desc: "跨元旦連假直飛｜去 JX 850 (09:15→14:05) · 回 JX 851 (15:20→19:05)",
+price: 19608,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTAxIh8KA1RQRRIKMjAyNy0wMS0wMRoDQ1RTKgJKWDIDODUwagcIARIDVFBFcgcIARIDQ1RTGj8SCjIwMjctMDEtMTEiHwoDQ1RTEgoyMDI3LTAxLTExGgNUUEUqAkpYMgM4NTFqBwgBEgNDVFNyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD"
+},
+{
+dates: "01/05 – 01/15",
+desc: "道南函館直飛（HKD）｜去 JX 860 (12:00→16:30) · 回 JX 861 (18:00→21:40)",
+price: 22712,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDSEtEKgJKWDIDODYwagcIARIDVFBFcgcIARIDSEtEGj8SCjIwMjctMDEtMTUiHwoDSEtEEgoyMDI3LTAxLTE1GgNUUEUqAkpYMgM4NjFqBwgBEgNIS0RyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD"
+}
+]
+},
+{
+code: "BR",
+name: "長榮航空",
+color: "var(--c-br)",
+cat: "DIRECT",
+kicker: "桃園直飛",
+highlight: false,
+dates: "01/01 – 01/11（10天）",
+outNo: "BR 116",
+outDep: "09:30",
+outOrig: "TPE",
+outArr: "14:05",
+outDest: "CTS",
+outNote: "直飛 · 3h 35m",
+isStop: false,
+inNo: "BR 115",
+inDep: "15:20",
+inOrig: "CTS",
+inArr: "18:55",
+inDest: "TPE",
+inNote: "直飛 · 4h 35m",
+price: 19452,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTAxIh8KA1RQRRIKMjAyNy0wMS0wMRoDQ1RTKgJCUjIDMTE2agcIARIDVFBFcgcIARIDQ1RTGj8SCjIwMjctMDEtMTEiHwoDQ1RTEgoyMDI3LTAxLTExGgNUUEUqAkJSMgMxMTVqBwgBEgNDVFNyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: []
+},
+{
+code: "NH",
+name: "全日空 ANA",
+color: "var(--c-nh)",
+cat: "JP",
+kicker: "松山出發 · 傳統航空最低價",
+highlight: true,
+dates: "01/09 – 01/19（10天）",
+outNo: "NH 854+",
+outDep: "16:50",
+outOrig: "TSA",
+outArr: "08:30",
+outDest: "CTS",
+outNote: "東京羽田 HND 過夜轉機",
+isStop: true,
+inNo: "NH 84+",
+inDep: "21:25",
+inOrig: "CTS",
+inArr: "12:30",
+inDest: "TSA",
+inNote: "東京羽田 HND 過夜轉機",
+price: 18872,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA5Ih8KA1RTQRIKMjAyNy0wMS0wORoDSE5EKgJOSDIDODU0Ih4KA0hORBIKMjAyNy0wMS0xMBoDQ1RTKgJOSDICNTFqBwgBEgNUU0FyBwgBEgNDVFMaXxIKMjAyNy0wMS0xOSIeCgNDVFMSCjIwMjctMDEtMTkaA0hORCoCTkgyAjg0Ih8KA0hORBIKMjAyNy0wMS0yMBoDVFNBKgJOSDIDODUxagcIARIDQ1RTcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD",
+alts: [
+{
+dates: "01/08 – 01/18",
+desc: "雙向當日順接免過夜｜去 13:30 TSA→21:35 CTS（羽田轉2.5h）· 回 09:00→15:50",
+price: 27122,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA4Ih8KA1RTQRIKMjAyNy0wMS0wOBoDSE5EKgJOSDIDODUyIh4KA0hORBIKMjAyNy0wMS0wOBoDQ1RTKgJOSDICNzlqBwgBEgNUU0FyBwgBEgNDVFMaXxIKMjAyNy0wMS0xOCIeCgNDVFMSCjIwMjctMDEtMTgaA0hORCoCSEQyAjE0Ih8KA0hORBIKMjAyNy0wMS0xOBoDVFNBKgJOSDIDODUzagcIARIDQ1RTcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD"
+}
+]
+},
+{
+code: "JL",
+name: "日本航空 JAL",
+color: "var(--c-jl)",
+cat: "JP",
+kicker: "松山出發 · 羽田當日順接",
+highlight: false,
+dates: "01/06 – 01/16（10天）",
+outNo: "JL 96+",
+outDep: "09:10",
+outOrig: "TSA",
+outArr: "16:10",
+outDest: "CTS",
+outNote: "羽田 HND 轉機 1h 35m",
+isStop: true,
+inNo: "JL 514+",
+inDep: "15:10",
+inOrig: "CTS",
+inArr: "21:00",
+inDest: "TSA",
+inNote: "羽田 HND 轉機 1h 10m",
+price: 28064,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA2Ih4KA1RTQRIKMjAyNy0wMS0wNhoDSE5EKgJKTDICOTYiHwoDSE5EEgoyMDI3LTAxLTA2GgNDVFMqAkpMMgM1MTlqBwgBEgNUU0FyBwgBEgNDVFMaXxIKMjAyNy0wMS0xNiIfCgNDVFMSCjIwMjctMDEtMTYaA0hORCoCSkwyAzUxNCIeCgNITkQSCjIwMjctMDEtMTYaA1RTQSoCSkwyAjk5agcIARIDQ1RTcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD",
+alts: [
+{
+dates: "01/06 – 01/16、01/12 – 01/22",
+desc: "日航最低價（去程羽田過夜）｜去 JL 98+501 · 回 JL 514+99 當日順接",
+price: 25464,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA2Ih4KA1RTQRIKMjAyNy0wMS0wNhoDSE5EKgJKTDICOTgiHwoDSE5EEgoyMDI3LTAxLTA3GgNDVFMqAkpMMgM1MDFqBwgBEgNUU0FyBwgBEgNDVFMaXxIKMjAyNy0wMS0xNiIfCgNDVFMSCjIwMjctMDEtMTYaA0hORCoCSkwyAzUxNCIeCgNITkQSCjIwMjctMDEtMTYaA1RTQSoCSkwyAjk5agcIARIDQ1RTcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD"
+}
+]
+},
+{
+code: "IT",
+name: "台灣虎航",
+color: "var(--c-it)",
+cat: "DIRECT",
+kicker: "廉航桃園直飛",
+highlight: false,
+dates: "01/01 – 01/11（10天）",
+outNo: "IT 234",
+outDep: "06:20",
+outOrig: "TPE",
+outArr: "10:55",
+outDest: "CTS",
+outNote: "直飛 · 3h 35m",
+isStop: false,
+inNo: "IT 235",
+inDep: "11:55",
+inOrig: "CTS",
+inArr: "15:35",
+inDest: "TPE",
+inNote: "直飛 · 4h 40m",
+price: 16093,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTAxIh8KA1RQRRIKMjAyNy0wMS0wMRoDQ1RTKgJJVDIDMjM0agcIARIDVFBFcgcIARIDQ1RTGj8SCjIwMjctMDEtMTEiHwoDQ1RTEgoyMDI3LTAxLTExGgNUUEUqAklUMgMyMzVqBwgBEgNDVFNyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: [
+{
+dates: "01/07 – 01/17",
+desc: "捷星日本 GK（經大阪關西轉機 1 次）｜去 GK 54+153 · 回 GK 156+57",
+price: 11291,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA3Ih4KA1RQRRIKMjAyNy0wMS0wNxoDS0lYKgJHSzICNTQiHwoDS0lYEgoyMDI3LTAxLTA4GgNDVFMqAkdLMgMxNTNqBwgBEgNUUEVyBwgBEgNDVFMaXxIKMjAyNy0wMS0xNyIfCgNDVFMSCjIwMjctMDEtMTcaA0tJWCoCR0syAzE1NiIeCgNLSVgSCjIwMjctMDEtMTcaA1RQRSoCR0syAjU3agcIARIDQ1RTcgcIARIDVFBFQAFIAXABggELCP___________wGYAQE&curr=TWD"
+}
+]
+}
+]
+},
+KIX: {
+title: "大阪 關西",
+code: "KIX",
+summaryHTML: "傳統航空直飛最低價 <strong>NT$12,334</strong> · 台灣虎航直飛最低價 <strong>NT$7,758</strong>",
+airlines: [
+{
+code: "JX",
+name: "星宇航空",
+color: "var(--c-jx)",
+cat: "DIRECT",
+kicker: "傳統航空最低價",
+highlight: true,
+dates: "01/05 – 01/15（10天）",
+outNo: "JX 820",
+outDep: "07:40",
+outOrig: "TPE",
+outArr: "11:10",
+outDest: "KIX",
+outNote: "直飛 · 2h 30m",
+isStop: false,
+inNo: "JX 823",
+inDep: "14:00",
+inOrig: "KIX",
+inArr: "16:20",
+inDest: "TPE",
+inNote: "直飛 · 3h 20m",
+price: 12334,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJKWDIDODIwagcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAkpYMgM4MjNqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: [
+{
+dates: "01/03 – 01/13、01/04 – 01/14",
+desc: "同價日期｜去程可選 JX 822 (09:20→12:50) · 回程可選 JX 821 (12:20→14:40)",
+price: 12334,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJKWDIDODIwagcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAkpYMgM4MjFqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD"
+}
+]
+},
+{
+code: "CI",
+name: "中華航空",
+color: "var(--c-ci)",
+cat: "DIRECT",
+kicker: "並列傳統航空最低價",
+highlight: true,
+dates: "01/05 – 01/15（10天）",
+outNo: "CI 172",
+outDep: "14:20",
+outOrig: "TPE",
+outArr: "17:50",
+outDest: "KIX",
+outNote: "直飛 · 2h 30m",
+isStop: false,
+inNo: "CI 157",
+inDep: "12:45",
+inOrig: "KIX",
+inArr: "15:00",
+inDest: "TPE",
+inNote: "直飛 · 3h 15m",
+price: 12334,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJDSTIDMTcyagcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAkNJMgMxNTdqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: [
+{
+dates: "01/05 – 01/15",
+desc: "早去晚回組合｜去 CI 152 (09:45→13:15) · 回 CI 173 (19:00→21:25)",
+price: 12646,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJDSTIDMTcyagcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAkNJMgMxNTNqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD"
+}
+]
+},
+{
+code: "BR",
+name: "長榮航空",
+color: "var(--c-br)",
+cat: "DIRECT",
+kicker: "早去午晚回直飛",
+highlight: false,
+dates: "01/05 – 01/15（10天）",
+outNo: "BR 178",
+outDep: "06:30",
+outOrig: "TPE",
+outArr: "09:55",
+outDest: "KIX",
+outNote: "直飛 · 2h 25m",
+isStop: false,
+inNo: "BR 131",
+inDep: "12:55",
+inOrig: "KIX",
+inArr: "15:05",
+inDest: "TPE",
+inNote: "直飛 · 3h 10m",
+price: 12880,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJCUjIDMTc4agcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAkJSMgMxMzFqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: []
+},
+{
+code: "IT",
+name: "台灣虎航",
+color: "var(--c-it)",
+cat: "DIRECT",
+kicker: "全場直飛最低價",
+highlight: true,
+dates: "01/05 – 01/15（10天）",
+outNo: "IT 212",
+outDep: "14:40",
+outOrig: "TPE",
+outArr: "17:55",
+outDest: "KIX",
+outNote: "直飛 · 2h 15m",
+isStop: false,
+inNo: "IT 211",
+inDep: "11:30",
+inOrig: "KIX",
+inArr: "13:50",
+inDest: "TPE",
+inNote: "直飛 · 3h 20m",
+price: 7758,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI3LTAxLTA1Ih8KA1RQRRIKMjAyNy0wMS0wNRoDS0lYKgJJVDIDMjEyagcIARIDVFBFcgcIARIDS0lYGj8SCjIwMjctMDEtMTUiHwoDS0lYEgoyMDI3LTAxLTE1GgNUUEUqAklUMgMyMTFqBwgBEgNLSVhyBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&curr=TWD",
+alts: [
+{
+dates: "01/13 – 01/23",
+desc: "捷星日本 GK 54 去 (18:15→21:45) ＋ 泰越捷 VZ 567 回 (12:00→14:15)",
+price: 9657,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAho-EgoyMDI3LTAxLTEzIh4KA1RQRRIKMjAyNy0wMS0xMxoDS0lYKgJHSzICNTRqBwgBEgNUUEVyBwgBEgNLSVgaPxIKMjAyNy0wMS0yMyIfCgNLSVgSCjIwMjctMDEtMjMaA1RQRSoCVloyAzU2N2oHCAESA0tJWHIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&curr=TWD"
+}
+]
+},
+{
+code: "NH",
+name: "全日空 / 日航",
+color: "var(--c-nh)",
+cat: "JP",
+kicker: "松山出發 · 經羽田轉機",
+highlight: false,
+dates: "01/08 – 01/18（10天）",
+outNo: "NH 854+",
+outDep: "16:50",
+outOrig: "TSA",
+outArr: "09:00",
+outDest: "KIX",
+outNote: "東京羽田 HND 轉機",
+isStop: true,
+inNo: "NH 94+",
+inDep: "07:05",
+inOrig: "KIX",
+inArr: "12:30",
+inDest: "TSA",
+inNote: "東京羽田 HND 轉機",
+price: 18950,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA4Ih8KA1RTQRIKMjAyNy0wMS0wOBoDSE5EKgJOSDIDODU0Ih4KA0hORBIKMjAyNy0wMS0wORoDS0lYKgJOSDICOTNqBwgBEgNUU0FyBwgBEgNLSVgaXxIKMjAyNy0wMS0xOCIeCgNLSVgSCjIwMjctMDEtMTgaA0hORCoCTkgyAjk0Ih8KA0hORBIKMjAyNy0wMS0xOBoDVFNBKgJOSDIDODUxagcIARIDS0lYcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD",
+alts: [
+{
+dates: "01/05 – 01/15",
+desc: "日本航空 JAL（松山經羽田轉關西）｜去 JL 96+221 · 回 JL 224+99",
+price: 20441,
+url: "https://www.google.com/travel/flights/booking?tfs=CBwQAhpfEgoyMDI3LTAxLTA1Ih4KA1RTQRIKMjAyNy0wMS0wNRoDSE5EKgJKTDICOTYiHwoDSE5EEgoyMDI3LTAxLTA2GgNLSVgqAkpMMgMyMjFqBwgBEgNUU0FyBwgBEgNLSVgaXxIKMjAyNy0wMS0xNSIfCgNLSVgSCjIwMjctMDEtMTUaA0hORCoCSkwyAzIyNCIeCgNITkQSCjIwMjctMDEtMTUaA1RTQSoCSkwyAjk5agcIARIDS0lYcgcIARIDVFNBQAFIAXABggELCP___________wGYAQE&curr=TWD"
+}
+]
+}
+]
+}
+};
+
+let activeDest = "CTS";
+let activeCat = "ALL";
+
+function fmtTWD(n) {
+return "NT$" + n.toLocaleString("en-US");
+}
+
+function renderVectorSVG(isStop) {
+return `
+<svg class="vector-svg" viewBox="0 0 180 10" preserveAspectRatio="none" aria-hidden="true">
+<line x1="4" y1="5" x2="174" y2="5" stroke="#D5CFC2" stroke-width="1.25" />
+<circle cx="4" cy="5" r="2.5" fill="#FFFFFF" stroke="#45423D" stroke-width="1.5" />
+${isStop ? '<circle cx="90" cy="5" r="3" fill="#8C6D32" />' : ''}
+<path d="M170 2 L175 5 L170 8" fill="none" stroke="#45423D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+`;
+}
+
+function selectDest(dest) {
+activeDest = dest;
+const track = document.getElementById("dest-switcher");
+track.setAttribute("data-active", dest);
+document.getElementById("tab-cts").classList.toggle("active", dest === "CTS");
+document.getElementById("tab-kix").classList.toggle("active", dest === "KIX");
+document.getElementById("tab-cts").setAttribute("aria-selected", dest === "CTS");
+document.getElementById("tab-kix").setAttribute("aria-selected", dest === "KIX");
+
+const data = FLIGHT_DATA[dest];
+document.getElementById("dest-title").textContent = data.title;
+document.getElementById("dest-code").textContent = data.code;
+document.getElementById("lowest-summary").innerHTML = data.summaryHTML;
+
+renderCards();
+}
+
+function selectCat(cat, btn) {
+activeCat = cat;
+document.querySelectorAll(".chip-btn").forEach(b => b.classList.remove("active"));
+btn.classList.add("active");
+renderCards();
+}
+
+function toggleCardDrawer(idx) {
+const card = document.getElementById("card-" + idx);
+const label = document.getElementById("drawer-text-" + idx);
+const count = card.getAttribute("data-alt-count");
+const expanded = card.classList.toggle("expanded");
+label.textContent = expanded ? "收起備選方案" : `展開其他 ${count} 個日期／轉機備選`;
+}
+
+function renderCards() {
+const list = FLIGHT_DATA[activeDest].airlines.filter(a =>
+activeCat === "ALL" ? true : a.cat === activeCat
+);
+
+const container = document.getElementById("ledger-container");
+container.innerHTML = list.map((item, idx) => {
+const hasAlts = item.alts && item.alts.length > 0;
+const delayMs = idx * 45;
+return `
+<article class="ticket-card" id="card-${idx}" data-alt-count="${item.alts.length}" style="animation-delay: ${delayMs}ms">
+<div class="crest-bar" style="background: ${item.color}"></div>
+<div class="ticket-body">
+<!-- Col 1: Carrier -->
+<div class="carrier-col">
+<div class="carrier-top">
+<span class="iata-badge" style="background: ${item.color}">${item.code}</span>
+<span class="carrier-name">${item.name}</span>
+</div>
+<div class="date-window">${item.dates}</div>
+<span class="kicker-pill ${item.highlight ? 'highlight' : ''}">${item.kicker}</span>
+</div>
+
+<!-- Col 2: Horizontal Flight Axis -->
+<div class="axis-col">
+<div class="flight-leg">
+<span class="flt-num">${item.outNo}</span>
+<div class="node-time">
+<span class="clock">${item.outDep}</span>
+<span class="station">${item.outOrig}</span>
+</div>
+<div class="vector-box">
+<span class="vector-caption">${item.outNote}</span>
+${renderVectorSVG(item.isStop)}
+</div>
+<div class="node-time arrive">
+<span class="clock">${item.outArr}</span>
+<span class="station">${item.outDest}</span>
+</div>
+</div>
+
+<div class="flight-leg">
+<span class="flt-num">${item.inNo}</span>
+<div class="node-time">
+<span class="clock">${item.inDep}</span>
+<span class="station">${item.inOrig}</span>
+</div>
+<div class="vector-box">
+<span class="vector-caption">${item.inNote}</span>
+${renderVectorSVG(item.isStop)}
+</div>
+<div class="node-time arrive">
+<span class="clock">${item.inArr}</span>
+<span class="station">${item.inDest}</span>
+</div>
+</div>
+</div>
+
+<!-- Col 3: Pure TWD Price & CTA -->
+<div class="fare-col">
+<div class="fare-Block">
+<div class="fare-caption">來回含稅總價</div>
+<div class="fare-twd">${fmtTWD(item.price)}</div>
+</div>
+<a class="cta-btn" href="${item.url}" target="_blank" rel="noopener noreferrer">
+<span>Google Flights 預訂</span>
+<svg class="cta-icon" viewBox="0 0 16 16" aria-hidden="true">
+<path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+</div>
+</div>
+
+${hasAlts ? `
+<button class="drawer-bar" type="button" onclick="toggleCardDrawer(${idx})">
+<span class="drawer-bar-left">
+<span id="drawer-text-${idx}">展開其他 ${item.alts.length} 個日期／轉機備選</span>
+<svg class="chevron-svg" viewBox="0 0 16 16" aria-hidden="true">
+<path d="M4 6L8 10L12 6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+<span>同航空次要方案</span>
+</button>
+<div class="drawer-grid">
+<div class="drawer-inner">
+<div class="drawer-list">
+${item.alts.map(alt => `
+<div class="sub-option">
+<div class="sub-meta">
+<span class="sub-date">${alt.dates}</span>
+<span>${alt.desc}</span>
+</div>
+<div class="sub-right">
+<span class="sub-price">${fmtTWD(alt.price)}</span>
+<a class="sub-link" href="${alt.url}" target="_blank" rel="noopener noreferrer">前往預訂 ↗</a>
+</div>
+</div>
+`).join("")}
+</div>
+</div>
+</div>
+` : ''}
+</article>
+`;
+}).join("");
+}
+
+renderCards();
+  </script>
+</body>
+</html>

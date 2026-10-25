@@ -1,0 +1,48 @@
+{
+  "updatedAt": "2026-10-25T13:47:58+08:00",
+  "stats": {
+    "views": 128,
+    "uniqueVisitors": 94,
+    "viewings": 1,
+    "deals": 1,
+    "topSource": "Google Ads 搜尋 / 社群導流"
+  },
+  "leads": [
+    {
+      "id": "FS-2026-8391",
+      "code": "FS-2026-8391",
+      "type": "introducer",
+      "name": "陳怡君（範例）",
+      "phone": "0918-000-123",
+      "contact": "LINE: yijun_chen",
+      "relation": "親友／家人",
+      "status": "已核發介紹承諾書",
+      "source": "/bonus/ 活動頁",
+      "createdAt": "2026/10/24 19:30:00"
+    },
+    {
+      "id": "BK-2026-4102",
+      "code": "BK-2026-4102",
+      "type": "buyer",
+      "name": "林先生（範例買家）",
+      "phone": "0933-000-456",
+      "viewingTime": "週末下午",
+      "refCode": "FS-2026-8391",
+      "status": "已完成身分證實名看屋",
+      "source": "/bonus/ 活動頁",
+      "createdAt": "2026/10/24 19:35:00"
+    },
+    {
+      "id": "SYS-2026-6820",
+      "code": "SYS-2026-6820",
+      "type": "B2B_系統代建洽詢",
+      "name": "張屋主（範例代建洽詢）",
+      "phone": "0910-888-999 / LINE: chang_home",
+      "contact": "物件：桃園藝文特區 3,200 萬電梯透天",
+      "relation": "方案：16,800 懸賞防跳單＋導流旗艦全配包",
+      "status": "待聯繫報價（B2B代建）",
+      "source": "/turnkey/ 代建專頁",
+      "createdAt": "2026/10/25 04:48:00"
+    }
+  ]
+}

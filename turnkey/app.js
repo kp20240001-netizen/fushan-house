@@ -296,6 +296,7 @@
           waBtn.href = 'https://wa.me/886975066275?text=' + encodeURIComponent(msg);
         }
 
+        if (typeof window.gtag_report_conversion === 'function') { window.gtag_report_conversion(); }
         var resBox = document.getElementById('tkResultBox');
         if (resBox) resBox.classList.add('show');
       });

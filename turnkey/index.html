@@ -1,6 +1,56 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18532399026"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18326742150"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18532399026');
+    gtag('config', 'AW-18326742150');
+    gtag('event', 'page_view');
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18326742150/KFbKCLuOopAdEIbJ76JE',
+        'value': 1.0,
+        'currency': 'TWD',
+        'event_callback': callback
+      });
+      gtag('event', 'generate_lead', {
+        'send_to': 'AW-18532399026',
+        'value': 1.0,
+        'currency': 'TWD'
+      });
+      return false;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        var a = e.target && e.target.closest ? e.target.closest('a,button') : null;
+        if (!a) return;
+        var href = (a.getAttribute('href') || '').toLowerCase();
+        var trackAttr = a.getAttribute('data-track') || '';
+        if (href.indexOf('line.me') !== -1 || href.indexOf('wa.me') !== -1 || href.indexOf('m.me') !== -1 || href.indexOf('mailto:') !== -1 || href.indexOf('#register-section') !== -1 || href.indexOf('#lead-form') !== -1 || a.hasAttribute('data-whatsapp-link') || trackAttr) {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18326742150/KFbKCLuOopAdEIbJ76JE',
+            'value': 1.0,
+            'currency': 'TWD'
+          });
+          gtag('event', 'generate_lead', {
+            'send_to': 'AW-18532399026',
+            'value': 1.0,
+            'currency': 'TWD'
+          });
+        }
+      }, true);
+    });
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>屋主自售防詐懸賞官網代建服務｜省下百萬仲介費・一次買斷 0 月租｜福山里居同款實戰系統</title>

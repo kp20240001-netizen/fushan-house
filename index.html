@@ -11,6 +11,9 @@
     gtag('config', 'AW-18532399026');
     gtag('config', 'AW-18326742150');
     gtag('event', 'page_view');
+    if (window.location.search.indexOf('gads_verify=1') !== -1) {
+      gtag('event', 'conversion', {'send_to': 'AW-18532399026/E3kCCPjEjakdELLv94RF', 'value': 1.0, 'currency': 'TWD'});
+    }
     function gtag_report_conversion(url) {
       var callback = function () {
         if (typeof(url) != 'undefined') {
@@ -18,10 +21,15 @@
         }
       };
       gtag('event', 'conversion', {
-        'send_to': 'AW-18326742150/KFbKCLuOopAdEIbJ76JE',
+        'send_to': 'AW-18532399026/E3kCCPjEjakdELLv94RF',
         'value': 1.0,
         'currency': 'TWD',
         'event_callback': callback
+      });
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18326742150/KFbKCLuOopAdEIbJ76JE',
+        'value': 1.0,
+        'currency': 'TWD'
       });
       gtag('event', 'generate_lead', {
         'send_to': 'AW-18532399026',
@@ -37,6 +45,11 @@
         var href = (a.getAttribute('href') || '').toLowerCase();
         var trackAttr = a.getAttribute('data-track') || '';
         if (href.indexOf('line.me') !== -1 || href.indexOf('wa.me') !== -1 || href.indexOf('m.me') !== -1 || href.indexOf('mailto:') !== -1 || href.indexOf('#register-section') !== -1 || href.indexOf('#lead-form') !== -1 || a.hasAttribute('data-whatsapp-link') || trackAttr) {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18532399026/E3kCCPjEjakdELLv94RF',
+            'value': 1.0,
+            'currency': 'TWD'
+          });
           gtag('event', 'conversion', {
             'send_to': 'AW-18326742150/KFbKCLuOopAdEIbJ76JE',
             'value': 1.0,
@@ -54,7 +67,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>福山里居｜桃園區福山街透天 2,795萬・土地約39坪・室內車庫｜屋主自售</title>
-<meta name="description" content="桃園市桃園區福山街42巷10號 透天三層，土地約39.1坪，登記建坪45.11坪，3房2廳4衛（三間套房皆有獨立衛浴），一樓車庫可停雙車位，開價2,795萬含車位。屋主自售，非房仲。">
+<meta name="description" content="桃園市桃園區福山街 透天三層，土地約39.1坪，登記建坪45.11坪，3房2廳4衛（三間套房皆有獨立衛浴），一樓車庫可停雙車位，開價2,795萬含車位。屋主自售，非房仲。">
 <link rel="canonical" href="https://kp20240001-netizen.github.io/fushan-street/">
 <meta property="og:type" content="website"><meta property="og:locale" content="zh_TW"><meta property="og:url" content="https://kp20240001-netizen.github.io/fushan-street/">
 <meta property="og:title" content="福山里居｜桃園區透天 2,795萬・土地約39坪・室內車庫">
@@ -248,7 +261,7 @@
     <section class="ai-staging"><div class="ai-staging-head reveal"><div><div class="eyebrow" style="color:var(--gold)">AI concept staging</div><h2>看見空間，<br>還能成為什麼樣子。</h2></div><p>以不同生活情境，為室內的尺度與彈性提供想像。每一張示意圖都清楚區隔於實拍，讓您先感受可能，再親臨現場確認。</p></div><div class="ai-gallery"><figure class="ai-scene reveal"><span class="ai-tag">AI 情境示意，非現況</span><img class="ai-zoom" src="img/ai-bedroom.webp" alt="AI 示意：臥室休憩情境" loading="lazy"><figcaption>臥室｜靜謐休憩</figcaption></figure><figure class="ai-scene reveal"><span class="ai-tag">AI 情境示意，非現況</span><img class="ai-zoom" src="img/ai-flex.webp" alt="AI 示意：三樓彈性書房與工作室情境" loading="lazy"><figcaption>三樓彈性空間｜書房／工作室</figcaption></figure><figure class="ai-scene reveal"><span class="ai-tag">AI 情境示意，非現況</span><img class="ai-zoom" src="img/ai-kitchen.webp" alt="AI 示意：餐廚共餐情境" loading="lazy"><figcaption>餐廚空間｜家人共餐想像</figcaption></figure><figure class="ai-scene reveal"><span class="ai-tag">AI 情境示意，非現況</span><img class="ai-zoom" src="img/ai-living.webp" alt="AI 示意：家庭客廳相聚情境" loading="lazy"><figcaption>家庭客廳｜相聚的日常</figcaption></figure></div><p class="ai-disclaimer">本區圖片為 AI 情境示意，僅用於呈現空間規劃與生活想像；非物件現況、非施工承諾，實際屋況以現場及正式文件為準。</p></section>
     <section class="value-scenes"><div class="reveal"><div class="eyebrow" style="color:var(--gold)">Four dimensions of value</div><h2>現在好住，<br>未來仍有選擇。</h2></div><div class="scene-grid"><article class="scene reveal"><small>01 · LOCATION</small><h3>成熟生活圈，不必等待機能成形</h3><p>位於大業、大有生活圈周邊，餐飲、採買、學校與休憩資源已融入日常；相較仰賴未來建設的區域，居住便利能立即感受。</p><ul><li>南昌森林運動公園步行約 12 分鐘</li><li>最近的全聯步行約 4 分鐘</li><li>會稽國中步行約 10 分鐘</li></ul></article><article class="scene reveal"><small>02 · CONNECTION</small><h3>市區生活與主要道路之間，轉換自然</h3><p>從福山街可銜接大業路、春日路與省道台四線，日常採買、通勤與跨區移動皆具彈性；南崁溪沿線也提供開放休憩空間。</p><ul><li>國道1號桃園交流道離峰車程約 7–8 分鐘</li><li>市區機能近，同時保有巷內住宅氛圍</li><li>開車、機車與日常步行各有使用情境</li></ul></article><article class="scene reveal"><small>03 · FLEXIBILITY</small><h3>一棟家，能回應不同人生階段</h3><p>從新婚、育兒、與父母同住，到成年子女需要獨立空間，三層配置與多衛浴能減少搬家的壓力；工作型態改變時，也有空間轉為辦公或工作室。</p><ul><li>三代同堂可分層生活</li><li>套房格局兼顧隱私與照護</li><li>彈性房可作書房、健身、收納或創作空間</li></ul></article><article class="scene reveal"><small>04 · LONG-TERM VALUE</small><h3>價值來自稀缺，而非增值承諾</h3><p>市區透天同時具備室內停車、完整生活機能與大尺度使用空間，供給相對有限。這些條件能形成長期自住與轉售的價值支撐，但實際價格仍會隨市場、屋況與交易條件變動。</p><ul><li>透天土地持分與獨立出入口</li><li>室內車庫與多用途空間具辨識度</li><li>成熟生活圈降低居住機能的不確定性</li></ul></article></div></section>
     <section class="radius" id="area"><div class="radius-head reveal"><div><div class="eyebrow" style="color:#795e31">Everyday radius</div><h2>生活所需，<br>都在熟悉的日常裡。</h2></div><p>不是等待一個生活圈形成，而是直接住進成熟的機能。公園、採買、教育與主要道路，各自支撐一家人的每一天。</p></div><div class="radius-grid"><article class="radius-card reveal"><span>🌳</span><h3>公園與休憩</h3><ul><li>南昌森林運動公園：約1公里，步行約12分鐘</li><li>小檜溪重劃區親水公園：最近的「小檜之心」步行約16分鐘</li><li>大有梯田生態公園：開車約5分鐘</li></ul></article><article class="radius-card reveal"><span>🛒</span><h3>採買與文化</h3><ul><li>附近多家全聯，最近的步行約4分鐘</li><li>桃園展演中心：約2公里，離峰開車約4–5分鐘</li></ul></article><article class="radius-card reveal"><span>🎓</span><h3>教育資源</h3><ul><li>會稽國中：步行約10分鐘</li><li>會稽國小：步行約14分鐘</li><li>學區依鄰別，請先確認</li></ul></article><article class="radius-card reveal"><span>🚗</span><h3>道路與移動</h3><ul><li>國道1號桃園交流道：約4公里，離峰開車約7–8分鐘</li><li>105公車站牌約250公尺，可達桃園市區</li></ul></article></div><p class="note">以上距離與時間為地圖估算，實際以現場與交通狀況為準。</p></section>
-    <section class="facts" id="details"><div class="reveal"><div class="eyebrow" style="color:var(--gold)">Residence information</div><h2>關於這座家</h2><dl class="fact-list"><div class="fact"><dt>所在地</dt><dd>桃園市桃園區福山街42巷10號</dd></div><div class="fact"><dt>房屋型態</dt><dd>透天住宅</dd></div><div class="fact"><dt>登記建坪</dt><dd>45.11 坪</dd></div><div class="fact"><dt>土地面積</dt><dd>約 39.1 坪</dd></div><div class="fact"><dt>格局</dt><dd>3 房 · 2 廳 · 4 衛（三間套房皆獨立衛浴）</dd></div><div class="fact"><dt>空間配置</dt><dd>一客廳、一餐廳、一廚房・洗衣晒衣空間</dd></div><div class="fact"><dt>樓層</dt><dd>透天 3 層（含增建）</dd></div><div class="fact"><dt>屋齡</dt><dd>民國70年完工・加強磚造</dd></div><div class="fact"><dt>總價</dt><dd>2,795 萬元（含車位）</dd></div><div class="fact"><dt>停車</dt><dd>一樓車庫，可停雙車位</dd></div></dl><p class="note">※ 含三樓增建之使用面積約 67.67 坪，其中三樓為增建、未辦理登記，非權狀面積，不保證合法性，買方應自行評估（含貸款估價影響）。所有坪數以地政登記謄本為準。</p></div><div class="map-wrap map-card reveal"><span class="map-card-icon" aria-hidden="true">⌖</span><small>NEIGHBORHOOD LOCATION</small><h3>福山街生活圈</h3><p>為兼顧隱私，頁面僅呈現生活圈資訊；歡迎點選地圖，查看周邊機能與行車路線。</p><a class="map-open" href="https://maps.app.goo.gl/TQXUu6Tzvprm1nDR7" target="_blank" rel="noopener">在 Google 地圖開啟</a></div></section>
+    <section class="facts" id="details"><div class="reveal"><div class="eyebrow" style="color:var(--gold)">Residence information</div><h2>關於這座家</h2><dl class="fact-list"><div class="fact"><dt>所在地</dt><dd>桃園市桃園區福山街</dd></div><div class="fact"><dt>房屋型態</dt><dd>透天住宅</dd></div><div class="fact"><dt>登記建坪</dt><dd>45.11 坪</dd></div><div class="fact"><dt>土地面積</dt><dd>約 39.1 坪</dd></div><div class="fact"><dt>格局</dt><dd>3 房 · 2 廳 · 4 衛（三間套房皆獨立衛浴）</dd></div><div class="fact"><dt>空間配置</dt><dd>一客廳、一餐廳、一廚房・洗衣晒衣空間</dd></div><div class="fact"><dt>樓層</dt><dd>透天 3 層（含增建）</dd></div><div class="fact"><dt>屋齡</dt><dd>民國70年完工・加強磚造</dd></div><div class="fact"><dt>總價</dt><dd>2,795 萬元（含車位）</dd></div><div class="fact"><dt>停車</dt><dd>一樓車庫，可停雙車位</dd></div></dl><p class="note">※ 含三樓增建之使用面積約 67.67 坪，其中三樓為增建、未辦理登記，非權狀面積，不保證合法性，買方應自行評估（含貸款估價影響）。所有坪數以地政登記謄本為準。</p></div><div class="map-wrap map-card reveal"><span class="map-card-icon" aria-hidden="true">⌖</span><small>NEIGHBORHOOD LOCATION</small><h3>福山街生活圈</h3><p>為兼顧隱私，頁面僅呈現生活圈資訊；歡迎點選地圖，查看周邊機能與行車路線。</p><a class="map-open" href="https://maps.app.goo.gl/TQXUu6Tzvprm1nDR7" target="_blank" rel="noopener">在 Google 地圖開啟</a></div></section>
     <section class="value-scenes" id="news"><div class="reveal"><div class="eyebrow" style="color:var(--gold)">Latest</div><h2>最新動態</h2></div><div id="feed" class="scene-grid"><p class="scene">載入中…</p></div><p class="social"><a class="map-open" href="https://www.instagram.com/fushan.residence/" target="_blank" rel="noopener">Instagram</a><a class="map-open" href="https://www.threads.com/@fushan.residence" target="_blank" rel="noopener">Threads</a><a class="map-open" href="https://sale.591.com.tw/home/house/detail/2/21114969.html" target="_blank" rel="noopener">591 刊登</a></p></section>
     <section class="contact" id="contact"><div class="reveal"><div class="eyebrow">Private viewing</div><h2>親自走進來，<br>感受空間真正的尺度。</h2><p>透過 WhatsApp 直接聯絡屋主 Jay，索取完整房屋資料，並安排合適的賞屋時段。</p><div class="whatsapp-card"><div class="whatsapp-qr"><img src="img/whatsapp-jay.png" alt="Jay 的 WhatsApp 聯絡 QR Code" loading="lazy"></div><div class="whatsapp-copy"><h3>一鍵開啟對話</h3><p>使用 WhatsApp 直接與屋主 Jay 聯絡；確認後即可傳送，不必先儲存聯絡人。</p><a class="line-button whatsapp-button" data-whatsapp-link data-track="whatsapp_click" href="https://wa.me/886975066275?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E7%A6%8F%E5%B1%B1%E8%A1%97%E7%94%9F%E6%B4%BB%E5%9C%88%E9%80%99%E9%96%93%E9%80%8F%E5%A4%A9%EF%BC%8C%E8%AB%8B%E5%95%8F%E6%96%B9%E4%BE%BF%E6%8F%90%E4%BE%9B%E5%AE%8C%E6%95%B4%E8%B3%87%E6%96%99%E8%88%87%E9%A0%90%E7%B4%84%E8%B3%9E%E5%B1%8B%E5%97%8E%EF%BC%9F" target="_blank" rel="noopener" aria-label="使用 WhatsApp 聯絡 Jay 預約賞屋">WhatsApp 立即詢問</a><p class="line-note">LINE ID：<a href="https://line.me/ti/p/~rainbow0725" target="_blank" rel="noopener" style="color:inherit">rainbow0725</a></p><small>或使用手機掃描 QR Code 聯絡 Jay</small></div></div><div class="lead-section"><div class="eyebrow">Request details</div><h3>先留下需求，我們為你安排合適的賞屋時間。</h3><p>填寫後可選擇以 WhatsApp 或 Email 開啟已帶入需求的訊息，再確認送出即可。</p><form class="lead-form" id="lead-form"><label>姓名<input name="name" autocomplete="name" required></label><label>手機<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label><label>方便賞屋時間<select name="viewing_time" required><option value="">請選擇</option><option>平日上午</option><option>平日下午</option><option>平日晚上</option><option>週末上午</option><option>週末下午</option><option>可再聯繫安排</option></select></label><label>補充需求<textarea name="notes" placeholder="例如：預計購屋時間、家庭成員、想了解的空間等"></textarea></label><label class="full consent"><input name="consent" type="checkbox" required>我同意屋主就本次賞屋需求與我聯繫。</label><div class="lead-actions"><button class="line-button whatsapp-button lead-submit" type="submit">透過 WhatsApp 傳送賞屋需求</button><button class="line-button email-button lead-submit" type="button" id="email-lead-button">透過 Email 傳送賞屋需求</button></div><p class="lead-notice" aria-live="polite"></p></form></div></div></section>
   </main>

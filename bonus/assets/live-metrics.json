@@ -2,9 +2,9 @@
   "schemaVersion": "2.0.0",
   "zeroAiCompute": true,
   "syncMode": "Linux Cron (Every 30m) + Frontend Poll (Every 60s) + Google Sheets Hub",
-  "updatedAt": "2026-10-25T13:47:58+08:00",
-  "updatedAtDisplay": "2026/10/25 13:47:58 (UTC+8)",
-  "nextScheduledSync": "2026/10/25 14:17:58 (UTC+8)",
+  "updatedAt": "2026-10-25T15:00:01+08:00",
+  "updatedAtDisplay": "2026/10/25 15:00:01 (UTC+8)",
+  "nextScheduledSync": "2026/10/25 15:30:01 (UTC+8)",
   "pollIntervalSeconds": 60,
   "googleAds": {
     "accountId": "928-353-5590",

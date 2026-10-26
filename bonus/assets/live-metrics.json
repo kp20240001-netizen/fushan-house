@@ -2,9 +2,9 @@
   "schemaVersion": "2.0.0",
   "zeroAiCompute": true,
   "syncMode": "Linux Cron (Every 30m) + Frontend Poll (Every 60s) + Google Sheets Hub",
-  "updatedAt": "2026-10-26T15:00:01+08:00",
-  "updatedAtDisplay": "2026/10/26 15:00:01 (UTC+8)",
-  "nextScheduledSync": "2026/10/26 15:30:01 (UTC+8)",
+  "updatedAt": "2026-10-26T15:20:36+08:00",
+  "updatedAtDisplay": "2026/10/26 15:20:36 (UTC+8)",
+  "nextScheduledSync": "2026/10/26 15:50:36 (UTC+8)",
   "pollIntervalSeconds": 60,
   "googleAds": {
     "accountId": "928-353-5590",
@@ -19,13 +19,13 @@
     "promoProgressPct": 0.64,
     "promoCode": "AXPFL-QTVLC-6QM9",
     "promoWindow": "2026-10-24 ~ 2026-12-23",
-    "dailyBudgetNtd": 1000,
+    "dailyBudgetNtd": 300,
     "impressions": 298,
     "clicks": 9,
     "ctr": "3.02%",
     "avgCpcNtd": 8.56,
     "conversions": 0,
-    "strategyNote": "方案 C：維持 NT$1,000/天 跑滿 72 小時學習期，於 2026-10-28 檢視 CPC、CTR 與介紹人登記數",
+    "strategyNote": "2026-10-26 已拍板執行優化 ①～④：日預算調降至 NT$300/日、防漏血雙腳本 DRY_RUN=false 匯入 72 組負面詞與封鎖手遊 App、鎖定 35–65+ 歲與北北桃所在地點並設 Max CPC NT$25、首屏新增 LINE 秒傳格局圖微轉換 CTA",
     "abTestGroups": [
       {
         "id": "group_a",

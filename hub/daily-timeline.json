@@ -1,8 +1,32 @@
 {
-  "updatedAt": "2026-10-26T08:06:34+08:00",
-  "updatedAtDisplay": "2026/10/26 08:06:34 (UTC+8)",
-  "count": 55,
+  "updatedAt": "2026-10-26T08:30:02+08:00",
+  "updatedAtDisplay": "2026/10/26 08:30:02 (UTC+8)",
+  "count": 57,
   "items": [
+    {
+      "id": "T-20261026-082400-50",
+      "contractId": "C-20261026-TOOLS-AND-MUSE-PILOTS-ABCD",
+      "time": "2026-10-26 08:24:11",
+      "category": "ai-compute",
+      "projectBadge": "⚡ 外部AI算力",
+      "status": "completed",
+      "title": "安裝 auto-editor / stable-ts / ffsubsync 三大 0-Token 影音工具並建置方案 A/B/C/D 試跑與 YouTube API 直發包",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台 & 音樂頻道主理人 & 社群矩陣操盤手）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/"
+    },
+    {
+      "id": "T-20261026-080500-49",
+      "contractId": "T-20261026-080500-49",
+      "time": "2026-10-26 08:06:41",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "暫停金鳳娜戰情室 Agent 深度爬蟲（僅保留本機零 Token Python 監控）並確認 T7-1 本機零 Token 監控維持開啟",
+      "summary": "執行完成並寫入契約紀錄（負責人：影視聲量與公關戰情官 & 量化交易與盤勢研究員）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
     {
       "id": "T-20261026-031500-51",
       "contractId": "T-20261026-031500-51",

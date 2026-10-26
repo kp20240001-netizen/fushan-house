@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-26T09:05:08+08:00",
-  "updatedAtDisplay": "2026/10/26 09:05:08 (UTC+8)",
-  "count": 57,
+  "updatedAt": "2026-10-26T11:00:07+08:00",
+  "updatedAtDisplay": "2026/10/26 11:00:07 (UTC+8)",
+  "count": 58,
   "items": [
+    {
+      "id": "T-20261026-105500-51",
+      "contractId": "C-20261026-MORNING-CDE-LOCAL-PACK",
+      "time": "2026-10-26 10:53:51",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "完成晨間拍板任務 C/D/E 本機零 Token 產出：福山里居 auto-editor 15s & 6s 廣告四片、林知夏《蓮花身》stable-ts 卡拉OK逐字發光字幕版 Short、金鳳娜 10/29 首映 24h 口碑靜態快照頁與林知夏知識頻道 EP03 完整說書腳本包",
+      "summary": "執行完成並寫入契約紀錄（負責人：總指揮與自動排程中樞）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
     {
       "id": "T-20261026-082400-50",
       "contractId": "C-20261026-TOOLS-AND-MUSE-PILOTS-ABCD",

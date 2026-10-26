@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-26T15:00:08+08:00",
-  "updatedAtDisplay": "2026/10/26 15:00:08 (UTC+8)",
-  "count": 58,
+  "updatedAt": "2026-10-26T15:20:42+08:00",
+  "updatedAtDisplay": "2026/10/26 15:20:42 (UTC+8)",
+  "count": 59,
   "items": [
+    {
+      "id": "T-20261026-152036-56",
+      "contractId": "C-20261026-FUSHAN-GADS-CRO-OPT-1TO4",
+      "time": "2026-10-26 15:20:36",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "completed",
+      "title": "福山里居 Google Ads 四大降本增效優化（防漏血腳本 DRY_RUN=false・日算 300 元・鎖 35-65+ 歲與高意圖詞組・官網首屏 LINE 秒傳 1-3F 格局圖微轉換 CTA ＆ 靜巷合規去敏）",
+      "summary": "執行完成並寫入契約紀錄（負責人：地產行銷與廣告投手）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
     {
       "id": "T-20261026-105500-51",
       "contractId": "C-20261026-MORNING-CDE-LOCAL-PACK",

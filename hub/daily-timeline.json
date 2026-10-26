@@ -1,8 +1,80 @@
 {
-  "updatedAt": "2026-10-27T01:00:01+08:00",
-  "updatedAtDisplay": "2026/10/27 01:00:01 (UTC+8)",
-  "count": 64,
+  "updatedAt": "2026-10-27T05:00:02+08:00",
+  "updatedAtDisplay": "2026/10/27 05:00:02 (UTC+8)",
+  "count": 70,
   "items": [
+    {
+      "id": "T-20261027-045400-EFFICIENCY-LEARNING-BOT",
+      "contractId": "C-20261027-EFFICIENCY-LEARNING-BOT-INIT",
+      "time": "2026-10-27 04:56:22",
+      "category": "ai-compute",
+      "projectBadge": "⚡ 外部AI算力",
+      "status": "completed",
+      "title": "建立『AI 學習與效率進化官（效率學習專責 Bot）』(0311ec71-54b9-44e1-b8c6-ef429589dd58) 並將主動效率提案規則寫入 Profile、CLAUDE.md 與 task_registry.json",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 學習與效率進化官（效率學習專責 Bot））。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/"
+    },
+    {
+      "id": "T-20261027-010500-LIVIA-5LANG-SUBS-SEO",
+      "contractId": "C-20261027-YT-AI-UPGRADE-1",
+      "time": "2026-10-27 01:15:07",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "【林知夏｜跨國破圈 5 語系外掛 .srt 字幕與多語系標題說明包】產出繁中/簡中/日/英/韓/越 .srt 與多語 SEO 包並備份至 Google Drive",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人 & 總編審）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261027-010500-LIVIA-REWATCH-POLL",
+      "contractId": "C-20261027-YT-AI-UPGRADE-2",
+      "time": "2026-10-27 01:15:07",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "【林知夏｜重播峰值置頂留言＆三國人物四選一社群投票】產出《臥龍・星落秋風》時間戳記彩蛋留言與社群投票即貼包",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261027-010600-LIVIA-REMOTION-COMPILATION",
+      "contractId": "C-20261027-YT-AI-UPGRADE-3",
+      "time": "2026-10-27 01:15:07",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "【林知夏｜30–60 分鐘國風史詩合輯】建立 Remotion 動態水墨頻譜＋飄雪粒子＋章節進度條模板與一鍵合成 CLI",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261027-010700-TOOLS-FEEDCLASH-SUBTRANS",
+      "contractId": "C-20261027-YT-AI-UPGRADE-4",
+      "time": "2026-10-27 01:15:07",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "completed",
+      "title": "【系統工具｜安裝開源縮圖熱力圖 FeedClash 與多語字幕 llm-subtrans】整合進 livia-postprod 並完成《臥龍》A/B/C 三封面熱力圖預篩",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 架構與技能鍛造師）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
+    {
+      "id": "T-20261027-010800-FUSHAN-XGUAN-SEAMLESS-LOOP",
+      "contractId": "C-20261027-YT-AI-UPGRADE-5",
+      "time": "2026-10-27 01:15:07",
+      "category": "concert",
+      "projectBadge": "🩰 X管公演",
+      "status": "completed",
+      "title": "【福山里居＆X管｜導入黃金前 1.5 秒防滑走雙重鉤子＋尾接頭無縫循環】升級兩大專案 Shorts 生成腳本與手冊",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台 & 地產行銷與廣告投手）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.opentix.life/event/2113200035579109377"
+    },
     {
       "id": "T-20261027-002200-LIVIA-POSTPROD-CLI",
       "contractId": "C-20261027-NIGHT-OPT-1-LIVIA",

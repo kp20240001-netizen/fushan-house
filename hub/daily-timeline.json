@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-26T17:00:02+08:00",
-  "updatedAtDisplay": "2026/10/26 17:00:02 (UTC+8)",
-  "count": 59,
+  "updatedAt": "2026-10-26T18:30:02+08:00",
+  "updatedAtDisplay": "2026/10/26 18:30:02 (UTC+8)",
+  "count": 60,
   "items": [
+    {
+      "id": "wolong-183B-official-master-abc-covers",
+      "contractId": "wolong-183B-official-master-abc-covers",
+      "time": "2026-10-26 18:27:59",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "completed",
+      "title": "《臥龍・星落秋風》正式定稿MV檢核＋YouTube A/B/C三封面下載壓縮＋3支9:16 Shorts裁切",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
     {
       "id": "T-20261026-152036-56",
       "contractId": "C-20261026-FUSHAN-GADS-CRO-OPT-1TO4",

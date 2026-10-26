@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-26T07:46:34+08:00",
-  "updatedAtDisplay": "2026/10/26 07:46:34 (UTC+8)",
+  "updatedAt": "2026-10-26T08:00:02+08:00",
+  "updatedAtDisplay": "2026/10/26 08:00:02 (UTC+8)",
   "count": 55,
   "items": [
+    {
+      "id": "T-20261026-031500-51",
+      "contractId": "T-20261026-031500-51",
+      "time": "2026-10-26 07:46:40",
+      "category": "quant-travel",
+      "projectBadge": "📈 量化機票",
+      "status": "cancelled",
+      "title": "[CMD:TASK:T7-1:OFF] 暫停 @Amo02bot 訊號監控",
+      "summary": "執行完成並寫入契約紀錄（負責人：量化交易與盤勢研究員）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/flight-dashboard-2027-01.html"
+    },
     {
       "id": "T-20261026-030630-48",
       "contractId": "T-20261026-030630-48",
@@ -26,18 +38,6 @@
       "summary": "執行完成並寫入契約紀錄（負責人：商務開發與名單獵頭）。",
       "linkLabel": "查看對應專案 ↗",
       "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
-    },
-    {
-      "id": "T-20261026-031500-51",
-      "contractId": "T-20261026-031500-51",
-      "time": "2026-10-26 03:16:46",
-      "category": "quant-travel",
-      "projectBadge": "📈 量化機票",
-      "status": "in_progress",
-      "title": "[CMD:TASK:T7-1:ON] 保持 @Amo02bot EDGE/CM 訊號本機 Python 監控開啟",
-      "summary": "執行完成並寫入契約紀錄（負責人：量化交易與盤勢研究員）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/flight-dashboard-2027-01.html"
     },
     {
       "id": "T-20261026-031400-49",

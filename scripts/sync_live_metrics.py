@@ -148,13 +148,13 @@ def read_google_ads_metrics():
         "promoProgressPct": 0.64,
         "promoCode": "AXPFL-QTVLC-6QM9",
         "promoWindow": "2026-10-24 ~ 2026-12-23",
-        "dailyBudgetNtd": 1000,
+        "dailyBudgetNtd": 300,
         "impressions": 298,
         "clicks": 9,
         "ctr": "3.02%",
         "avgCpcNtd": 8.56,
         "conversions": 0,
-        "strategyNote": "方案 C：維持 NT$1,000/天 跑滿 72 小時學習期，於 2026-10-28 檢視 CPC、CTR 與介紹人登記數",
+        "strategyNote": "2026-10-26 已拍板執行優化 ①～④：日預算調降至 NT$300/日、防漏血雙腳本 DRY_RUN=false 匯入 72 組負面詞與封鎖手遊 App、鎖定 35–65+ 歲與北北桃所在地點並設 Max CPC NT$25、首屏新增 LINE 秒傳格局圖微轉換 CTA",
         "abTestGroups": [
             {
                 "id": "group_a",

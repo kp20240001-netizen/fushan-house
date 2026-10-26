@@ -323,8 +323,8 @@ def build_master_data():
                     },
                     {
                         "id": "T1-2",
-                        "title": "10/28 Google Ads 雙 AI 女主播 20s 短片 48h A/B 測試",
-                        "note": "帳戶 928-353-5590｜促銷碼 AXPFL-QTVLC-6QM9（滿 12,000 送 12,000）｜明早複查轉換燈號",
+                        "title": "Google Ads 四大降本增效優化（日算 NT$300・Max CPC 25・15s/6s 短片・LINE 格局圖微轉換）",
+                        "note": "帳戶 928-353-5590｜DRY_RUN=false 排除 72 負面詞與手遊 App｜鎖 35-65+ 歲與北北桃所在地｜停投 01:00-06:00",
                         "enabled": True,
                         "cmdOn": "[CMD:TASK:T1-2:ON] 繼續 Google Ads 72h 學習期與 A/B 測試監控",
                         "cmdOff": "[CMD:TASK:T1-2:OFF] 暫停 Google Ads A/B 測試巡檢"
@@ -545,8 +545,8 @@ def build_master_data():
                 "tasks": [
                     {
                         "id": "T5-1",
-                        "title": "7 大平台聲量爬蟲與熱力圖更新（嚴格過濾僅計金鳳娜相關影片）",
-                        "note": "本機 Python 零 Token 抓取 YT/FB/IG/Threads/PTT/Dcard/新聞，剔除導演頻道無關舊片",
+                        "title": "金鳳娜戰情室本機零 Token Python 監控（⏸️ Agent 深度爬蟲已暫停）",
+                        "note": "🟢 保留本機 sync_jinfengna_live.py 零 Token 定時更新；⏸️ Agent 跨平台深度爬蟲已依 08:05 指令暫停",
                         "enabled": True,
                         "cmdOn": "[CMD:TASK:T5-1:ON] 保持《消失的金鳳娜》7 平台聲量零 Token 爬蟲開啟",
                         "cmdOff": "[CMD:TASK:T5-1:OFF] 暫停《消失的金鳳娜》7 平台聲量爬蟲"
@@ -730,8 +730,10 @@ def build_master_data():
         "T2-2": (False, "⏸️ 已依使用者指令 [CMD:TASK:T2-2:OFF] (2026-10-26 03:17) 暫停 591 屋主名單私訊跟進"),
         "T2-3": (False, "鎖定「屋主自售 網站 / 省仲介費 自售合約」長尾字（目前預設待啟動）"),
         "T4-4": (False, "⏸️ 已完成《蓮花身》與 8–9 月批次建包，依使用者指示全面暫停後續派送"),
+        "T5-1": (False, "⏸️ 已依使用者 2026-10-26 08:05 指令暫停 Agent 深度爬蟲（🟢 僅保留本機 sync_jinfengna_live.py 零 Token 監控不動）"),
         "T5-2": (False, "⏸️ 已依使用者指令 [CMD:TASK:T5-2:OFF] (2026-10-26 03:14) 暫停 Top 3 黃金 60 秒切片發佈"),
         "T6-1": (False, "⏸️ 已依使用者指令 [CMD:TASK:T6-1:OFF] (2026-10-26 03:14) 暫停每日桃北雙核物件巡檢"),
+        "T7-1": (True, "🟢 本機 Python 零 Token 監控維持開啟（0 Token 驗證回測勝率與 @Amo02bot 訊號）"),
     }
 
     active_cnt = 0

@@ -45,6 +45,14 @@
         var href = (a.getAttribute('href') || '').toLowerCase();
         var trackAttr = a.getAttribute('data-track') || '';
         if (href.indexOf('line.me') !== -1 || href.indexOf('wa.me') !== -1 || href.indexOf('m.me') !== -1 || href.indexOf('mailto:') !== -1 || href.indexOf('#register-section') !== -1 || href.indexOf('#lead-form') !== -1 || a.hasAttribute('data-whatsapp-link') || trackAttr) {
+          if (trackAttr.indexOf('line_floorplan_click') !== -1) {
+            gtag('event', 'line_floorplan_click', {
+              'event_category': 'micro_conversion',
+              'event_label': a.getAttribute('data-cta-pos') || 'line_floorplan_cta',
+              'value': 1.0,
+              'currency': 'TWD'
+            });
+          }
           gtag('event', 'conversion', {
             'send_to': 'AW-18532399026/E3kCCPjEjakdELLv94RF',
             'value': 1.0,
@@ -1101,6 +1109,7 @@
               <span style="font-size:0.88rem;color:#55605d;margin-left:0.5rem;">一般民眾皆可登記，謝絕房仲雙重抽佣。</span>
             </div>
             <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <a class="btn-primary" href="https://line.me/ti/p/~rainbow0725" data-line-oa="https://line.me/R/ti/p/@cfb7429v" target="_blank" rel="noopener" data-track="line_floorplan_click" data-cta-pos="bonus_hero" onclick="if(typeof gtag==='function'){gtag('event','line_floorplan_click',{event_category:'micro_conversion',event_label:'bonus_hero',value:1.0,currency:'TWD'});}" style="background:#06c755;border-color:#06c755;color:#fff;">📐 索取 1–3F 完整格局圖＆實價比較表（LINE 秒傳・免填表）</a>
               <a class="btn-primary" href="#register-section" onclick="switchTab('introducer')">我是介紹人：立即登記拿 30 萬</a>
               <a class="btn-secondary" href="#register-section" onclick="switchTab('buyer')">我是買家：確認介紹／預約看屋</a>
             </div>

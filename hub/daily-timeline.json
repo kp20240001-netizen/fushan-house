@@ -1,8 +1,44 @@
 {
-  "updatedAt": "2026-10-26T21:45:35+08:00",
-  "updatedAtDisplay": "2026/10/26 21:45:35 (UTC+8)",
-  "count": 61,
+  "updatedAt": "2026-10-27T00:30:02+08:00",
+  "updatedAtDisplay": "2026/10/27 00:30:02 (UTC+8)",
+  "count": 64,
   "items": [
+    {
+      "id": "T-20261027-002200-LIVIA-POSTPROD-CLI",
+      "contractId": "C-20261027-NIGHT-OPT-1-LIVIA",
+      "time": "2026-10-27 00:22:46",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "completed",
+      "title": "【林知夏】封裝一鍵後製與圖卡正規化腳本 /workspace/tools/livia_postprod_pipeline.py 與 /home/box/.local/bin/livia-postprod",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台 & 音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261027-002200-FUSHAN-GADS300-SNAPSHOT",
+      "contractId": "C-20261027-NIGHT-OPT-3-FUSHAN",
+      "time": "2026-10-27 00:22:46",
+      "category": "real-estate",
+      "projectBadge": "🏠 福山里居",
+      "status": "completed",
+      "title": "【福山里居】整理 Google Ads（NT$300/日預算）與官網雙軌微轉換快照報告 /workspace/fushan-street/ads/2026-10-27_晨間巡檢快照_GoogleAds300日預算與微轉換核對表.md",
+      "summary": "執行完成並寫入契約紀錄（負責人：地產行銷與廣告投手）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/bonus/dashboard.html"
+    },
+    {
+      "id": "T-20261027-002200-JINFENGNA-1029-48H-BURST",
+      "contractId": "C-20261027-NIGHT-OPT-4-JINFENGNA",
+      "time": "2026-10-27 00:22:46",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "【金鳳娜】維持 0-token 本機腳本監測並建置 10/29 首映後 48 小時口碑高峰快篩方案 premiere_1029_48h_burst_filter.py",
+      "summary": "執行完成並寫入契約紀錄（負責人：影視聲量與公關戰情官）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
     {
       "id": "T-20261026-204200-XGUAN-FIRSTCOMMENT",
       "contractId": "C-20261025-XYMPHONIA-1026-SCHEDULE",

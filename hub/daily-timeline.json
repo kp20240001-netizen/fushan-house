@@ -1,8 +1,32 @@
 {
-  "updatedAt": "2026-10-27T21:00:08+08:00",
-  "updatedAtDisplay": "2026/10/27 21:00:08 (UTC+8)",
-  "count": 79,
+  "updatedAt": "2026-10-27T21:30:01+08:00",
+  "updatedAtDisplay": "2026/10/27 21:30:01 (UTC+8)",
+  "count": 80,
   "items": [
+    {
+      "id": "T-20261027-GITHUB-4SKILLS-INSTALL",
+      "contractId": "T-20261027-GITHUB-4SKILLS-INSTALL",
+      "time": "2026-10-27 21:18:47",
+      "category": "ai-compute",
+      "projectBadge": "⚡ 外部AI算力",
+      "status": "completed",
+      "title": "四大 GitHub 開源專案（diagram-design / taste-skill / hyperframes / agency-agents）省算力部署與萃取落地",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 學習與效率進化官（效率學習專責 Bot））。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/"
+    },
+    {
+      "id": "T-20261027-193300-LIVIA-THE-OGS-SUNO",
+      "contractId": "C-20261027-LIVIALIN-THE-OGS-SUNO",
+      "time": "2026-10-27 21:02:30",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "in_progress",
+      "title": "【林知夏】群像陪伴曲《過來人・留一盞燈》42行精煉純台語版（74 BPM，控制 5:00-5:30 內完整唱完）於 Suno Pro 掛載『+ Voice: 林知夏 Livia Lin』重新生成（不自動下載）",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
     {
       "id": "T-20261027-173400-LIVIA-CIHANG-MV",
       "contractId": "C-20261027-LIVIALIN-CIHANG-MV",
@@ -11,18 +35,6 @@
       "projectBadge": "🎵 林知夏頻道",
       "status": "in_progress",
       "title": "【林知夏】《慈航・暗暝的燈》（5:53，Suno ID: e83e36ba-539a-4cc9-a022-354abb89be42）正式 MV 製作（片頭 2.5s GPT 含歌名封面 + 片尾 6.0s 固定品牌片尾 + GPT 靜態圖 + Flow PRO 雙帳 & SuperGrok 動態影片，禁用 Muse AI）",
-      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://www.youtube.com/@livialin-music"
-    },
-    {
-      "id": "T-20261027-193300-LIVIA-THE-OGS-SUNO",
-      "contractId": "C-20261027-LIVIALIN-THE-OGS-SUNO",
-      "time": "2026-10-27 19:33:30",
-      "category": "music-media",
-      "projectBadge": "🎵 林知夏頻道",
-      "status": "in_progress",
-      "title": "【林知夏】群像陪伴曲《過來人・留一盞燈》於 Suno Pro 掛載『+ Voice: 林知夏 Livia Lin』生成初版音軌（不自動下載，待使用者試聽挑歌）",
       "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
       "linkLabel": "查看對應專案 ↗",
       "linkUrl": "https://www.youtube.com/@livialin-music"

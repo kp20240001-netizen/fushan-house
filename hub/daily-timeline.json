@@ -1,8 +1,32 @@
 {
-  "updatedAt": "2026-10-28T00:00:01+08:00",
-  "updatedAtDisplay": "2026/10/28 00:00:01 (UTC+8)",
-  "count": 82,
+  "updatedAt": "2026-10-28T00:30:02+08:00",
+  "updatedAtDisplay": "2026/10/28 00:30:02 (UTC+8)",
+  "count": 84,
   "items": [
+    {
+      "id": "T-20261028-BAOBEI-AIREN-FINAL-MV-COMPLETE",
+      "contractId": "T-20261028-BAOBEI-AIREN-FINAL-MV-COMPLETE",
+      "time": "2026-10-28 00:25:59",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "《寶貝愛人（林知夏版）｜電影《消失的金鳳娜》10/29 上映催票 MV》方案 C 正式成片（03:33.50 / -14 LUFS）與 7 語系字幕封裝完成",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
+    {
+      "id": "T-20261028-JINFENGNA-SCHEME-C-READY",
+      "contractId": "T-20261028-JINFENGNA-SCHEME-C-READY",
+      "time": "2026-10-28 00:02:34",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "《寶貝愛人（林知夏版）》×《消失的金鳳娜》方案 C（35%林知夏 : 65%電影預告劇情催票版）14段無字電影精華、一鍵合成腳本與18鏡預覽圖就緒",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
     {
       "id": "T-20261027-JINFENGNA-BAOBEI-AIREN-MV",
       "contractId": "T-20261027-JINFENGNA-BAOBEI-AIREN-MV",

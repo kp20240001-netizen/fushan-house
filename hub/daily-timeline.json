@@ -1,8 +1,44 @@
 {
-  "updatedAt": "2026-10-28T06:00:02+08:00",
-  "updatedAtDisplay": "2026/10/28 06:00:02 (UTC+8)",
-  "count": 84,
+  "updatedAt": "2026-10-28T06:30:01+08:00",
+  "updatedAtDisplay": "2026/10/28 06:30:01 (UTC+8)",
+  "count": 85,
   "items": [
+    {
+      "id": "T-20261027-173400-LIVIA-CIHANG-MV",
+      "contractId": "C-20261027-LIVIALIN-CIHANG-MV",
+      "time": "2026-10-28 06:20:00",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "in_progress",
+      "title": "【林知夏】《慈航・暗暝的燈》（5:53，Suno ID: e83e36ba-539a-4cc9-a022-354abb89be42）正式 MV 製作（片頭 2.5s GPT 含歌名封面 + 片尾 6.0s 固定品牌片尾 + GPT 靜態圖 + Flow PRO 雙帳 & SuperGrok 動態影片，禁用 Muse AI）",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人 & AI 影視導演與剪輯中台）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261027-193300-LIVIA-THE-OGS-SUNO",
+      "contractId": "C-20261027-LIVIALIN-THE-OGS-SUNO",
+      "time": "2026-10-28 06:20:00",
+      "category": "music-media",
+      "projectBadge": "🎵 林知夏頻道",
+      "status": "in_progress",
+      "title": "【林知夏】群像陪伴曲《過來人・留一盞燈》42行精煉純台語版（74 BPM，控制 5:00-5:30 內完整唱完）於 Suno Pro 掛載『+ Voice: 林知夏 Livia Lin』重新生成（不自動下載）",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://www.youtube.com/@livialin-music"
+    },
+    {
+      "id": "T-20261028-061500-MV-FLOW-GEMINI-QUOTA-UPGRADE",
+      "contractId": "C-20261028-MV-FLOW-GEMINI-QUOTA-UPGRADE",
+      "time": "2026-10-28 06:20:00",
+      "category": "ai-compute",
+      "projectBadge": "⚡ 外部AI算力",
+      "status": "completed",
+      "title": "【算力配額重構】清查近期 3 支 MV 影片生成工具實績，並將 Google Flow (Veo PRO 雙帳號 >=70%) 與 Gemini PRO 主導配額正式寫入 CLAUDE.md 與 task_registry.json",
+      "summary": "執行完成並寫入契約紀錄（負責人：AI 影視導演與剪輯中台 & 音樂頻道主理人）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/fushan-street/hub/"
+    },
     {
       "id": "T-20261028-BAOBEI-AIREN-FINAL-MV-COMPLETE",
       "contractId": "T-20261028-BAOBEI-AIREN-FINAL-MV-COMPLETE",
@@ -40,30 +76,6 @@
       "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
     },
     {
-      "id": "T-20261027-173400-LIVIA-CIHANG-MV",
-      "contractId": "C-20261027-LIVIALIN-CIHANG-MV",
-      "time": "2026-10-27 23:38:00",
-      "category": "music-media",
-      "projectBadge": "🎵 林知夏頻道",
-      "status": "in_progress",
-      "title": "【林知夏】《慈航・暗暝的燈》（5:53，Suno ID: e83e36ba-539a-4cc9-a022-354abb89be42）正式 MV 製作（片頭 2.5s GPT 含歌名封面 + 片尾 6.0s 固定品牌片尾 + GPT 靜態圖 + Flow PRO 雙帳 & SuperGrok 動態影片，禁用 Muse AI）",
-      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://www.youtube.com/@livialin-music"
-    },
-    {
-      "id": "T-20261027-193300-LIVIA-THE-OGS-SUNO",
-      "contractId": "C-20261027-LIVIALIN-THE-OGS-SUNO",
-      "time": "2026-10-27 23:38:00",
-      "category": "music-media",
-      "projectBadge": "🎵 林知夏頻道",
-      "status": "in_progress",
-      "title": "【林知夏】群像陪伴曲《過來人・留一盞燈》42行精煉純台語版（74 BPM，控制 5:00-5:30 內完整唱完）於 Suno Pro 掛載『+ Voice: 林知夏 Livia Lin』重新生成（不自動下載）",
-      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
-      "linkLabel": "查看對應專案 ↗",
-      "linkUrl": "https://www.youtube.com/@livialin-music"
-    },
-    {
       "id": "T-20261027-233300-LIVIA-3TIER-SCHEDULE-CALENDAR",
       "contractId": "C-20261027-LIVIA-3TIER-SCHEDULE",
       "time": "2026-10-27 23:38:00",
@@ -71,7 +83,7 @@
       "projectBadge": "🎵 林知夏頻道",
       "status": "completed",
       "title": "【林知夏】全面導入《頻率策略研究報告》三層時程與 10/27–11/30 雙波段發布日曆（週二《慈航・暗暝的燈》首發、週五《過來人・留一盞燈》或 60 分鐘常駐歌單、週日嚴禁發主打、二四六等距 Shorts、冬至節氣提前卡位）",
-      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人）。",
+      "summary": "執行完成並寫入契約紀錄（負責人：音樂頻道主理人 & AI 學習與效率進化官）。",
       "linkLabel": "查看對應專案 ↗",
       "linkUrl": "https://www.youtube.com/@livialin-music"
     },

@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-10-28T08:30:02+08:00",
-  "updatedAtDisplay": "2026/10/28 08:30:02 (UTC+8)",
-  "count": 16,
+  "updatedAt": "2026-10-28T09:00:01+08:00",
+  "updatedAtDisplay": "2026/10/28 09:00:01 (UTC+8)",
+  "count": 17,
   "items": [
+    {
+      "id": "T-20261028-JINFENGNA-AMO02-HANDOFF",
+      "contractId": "T-20261028-JINFENGNA-AMO02-HANDOFF",
+      "time": "2026-10-28 08:55:15",
+      "category": "film-buzz",
+      "projectBadge": "🎬 金鳳娜聲量",
+      "status": "completed",
+      "title": "《消失的金鳳娜》即時聲量戰情室每日自動爬文與數據更新交辦 Muse Amo02 專責包（含 GitHub Actions 自動編譯＋Google Drive 雙軌同步）",
+      "summary": "執行完成並寫入契約紀錄（負責人：影視聲量與公關戰情官）。",
+      "linkLabel": "查看對應專案 ↗",
+      "linkUrl": "https://kp20240001-netizen.github.io/jinfengna-buzz-dashboard/"
+    },
     {
       "id": "T-20261028-070000-WEEKLY-MEMORY-PRUNE-ROUTINE",
       "contractId": "C-20261028-WEEKLY-MEMORY-PRUNE",
